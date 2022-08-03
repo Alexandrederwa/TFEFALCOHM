@@ -1,0 +1,15 @@
+.profilePage h3{
+    margin: 20px auto;
+
+
+}
+.profilePage h1{
+    text-align: center;
+    margin: 20px;
+}
+.profilePage .details{
+    margin-top: 50px;
+    width: 50%;
+    margin: auto;
+    
+}

@@ -1,0 +1,21 @@
+.loading{
+    margin: 50 auto;
+    text-align: center;
+    font-size: x-large;
+}
+.homePage {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.homePage .heading{
+    text-align: center;
+}
+.searchContainer{
+    width: 80%;
+
+    text-align: center;
+    margin: 20px auto;
+}

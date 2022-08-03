@@ -1,0 +1,35 @@
+.navbar{
+    padding: 10px 50px;
+    background-color: crimson;
+    color:#fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
+.navbar .navlist{
+    display: inline;
+    list-style: none;
+
+
+}
+.navbar .navlist li{
+    color:rgb(226, 222, 222);
+
+    margin-left: 20px;
+    display:inline;
+    font-size: 20px;
+    
+    cursor: pointer;
+}
+a{
+    color:rgb(226, 222, 222);
+    text-decoration: none;
+}
+.navbar .navlist li:hover,.navLink:hover{
+    color:rgb(255, 255, 255);
+  
+
+}

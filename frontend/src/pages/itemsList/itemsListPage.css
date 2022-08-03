@@ -1,0 +1,14 @@
+
+
+.itemsListPage {
+    margin: 40px;
+   
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.itemsListPage h1{
+    text-align: center;
+}
+

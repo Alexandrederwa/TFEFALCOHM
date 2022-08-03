@@ -1,0 +1,90 @@
+.itemsListSection {
+  margin: 15px;
+  width: 95%;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px;
+}
+.itemsListSection .searchBox {
+  padding: 8px 13px;
+  background: transparent;
+  border-radius: 4px;
+  outline: 1px solid rgb(196, 187, 187);
+  border: none;
+  width: 30%;
+  font-size: 18px;
+  margin: 10px auto;
+}
+.itemsListSection .itemsDetail {
+  box-shadow: 1px 1px 2px 1px rgb(207, 200, 200);
+  min-width: 25%;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  padding: 30px 50px;
+}
+.itemsListSection .itemsBoxList {
+  width: 95%;
+  overflow-x: scroll;
+  margin: 5px auto;
+  display: flex;
+
+  padding: 10px 0;
+  box-shadow: 1px 1px 2px 1px rgb(207, 200, 200);
+}
+.itemsDetail h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.itemsBox {
+  display: flex;
+  box-shadow: 1px 1px 2px 1px rgb(207, 200, 200);
+
+  flex-direction: column;
+  margin: 10px 20px;
+  justify-content: center;
+  text-align: center;
+
+  background-color: rgb(246, 248, 250);
+  border-radius: 3px;
+  padding: 10px 30px;
+  transition: all 0.2s;
+}
+.itemsBox img{
+  margin: auto;
+}
+.itemsBox:hover {
+  background-color: rgb(227, 227, 228);
+}
+.itemsBox .itemname {
+  text-align: center;
+  font-size: x-large;
+  font-family: "Times New Roman", Times, serif;
+}
+.itemsBox small {
+  margin: 0 3px;
+  color: rgb(169, 170, 172);
+}
+.itemsBox h4 {
+  margin: 5px 0;
+}
+.itemsBox .qtyInput {
+  margin: 0 auto;
+  text-align: center;
+  padding: 2px;
+  width: 30%;
+}
+
+.itemsDetail .quoteBtn {
+  margin: 20px auto;
+  display: block;
+  padding: 8px 14px;
+  background-color: rgb(136, 199, 199);
+  border: none;
+  color: black;
+
+  border-radius: 3px;
+}

@@ -1,0 +1,32 @@
+.addProduct{
+    padding: 10px;
+    margin: 10px auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.addProduct .formControl label{
+    margin: 0 5px;
+}
+.addProduct .formControl{
+    display: flex;
+    
+    justify-content: space-around;
+    width: 24%;
+    align-items: center;
+    margin: 12px;
+}
+.addProduct .formControlImg{
+    display: flex;
+    
+    justify-content: center;
+    width: 30%!important;
+    align-items: center;
+    margin: 10px;
+}
+.addProduct .submitBtn{
+    padding: 6px;
+    
+}
