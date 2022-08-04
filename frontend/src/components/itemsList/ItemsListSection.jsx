@@ -25,6 +25,7 @@ const ItemListSection = () => {
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [searchQ, setSearchQ] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -67,6 +68,7 @@ const ItemListSection = () => {
     try {
       setSubmitLoading(true);
       const { data } = await axios.post("quotes/request", {
+        name,
         email,
         phone,
         itemsList,
@@ -169,11 +171,21 @@ const ItemListSection = () => {
           >
             <Box sx={{ textAlign: "center" }}>
               <TextField
+                required
+                value={name}
+                sx={{ margin: " 5px auto", padding: "4px" }}
+                onChange={(e) => setName(e.target.value)}
+                label="Name "
+              />
+            </Box>
+            <Box sx={{ textAlign: "center" }}>
+              <TextField
+                required
                 type="email"
                 value={email}
                 sx={{ margin: " 5px auto", padding: "4px" }}
                 onChange={(e) => setEmail(e.target.value)}
-                label="Email "
+                label="Email"
               />
             </Box>
 

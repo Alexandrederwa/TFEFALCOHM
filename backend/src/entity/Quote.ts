@@ -88,6 +88,9 @@ export class ReqQuotes {
   @Column({ name: "user_email" })
   userEmail: string;
 
+  @Column({nullable: true, name: "name_client" })
+  nameClient: string;
+
   @Column({ name: "party" ,nullable:true})
   party: string;
   @Column({ name: "phone_number" })

@@ -28,7 +28,7 @@ const MyProfile = () => {
             Profile
           </Typography>
       <div className="details">
-        <h3>Username : {user.name}</h3>
+        <h3>Name : {user.name}</h3>
         <h3>Email : {user.email}</h3>
         <h4>Member since : {dayjs().from(user.createdAt, true)}</h4>
       </div>

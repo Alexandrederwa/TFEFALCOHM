@@ -23,6 +23,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
         <TableCell style={{ textAlign: "center" }}>
           {quote?.userEmail}
         </TableCell>
+        
         <TableCell style={{ textAlign: "center" }}>
           {JSON.stringify(quote?.emailRegistered)}
         </TableCell>

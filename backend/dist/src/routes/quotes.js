@@ -368,15 +368,12 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
     }
 }));
 const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _b, _c;
-    const { email, phone, party, itemsList, totalPrice } = req.body;
-    console.log((_b = res.locals) === null || _b === void 0 ? void 0 : _b.user);
-    console.log(res.locals.user);
-    const { role } = (_c = res.locals) === null || _c === void 0 ? void 0 : _c.user;
-    console.log(role);
-    console.log('test');
+    var _b;
+    const { name, email, phone, party, itemsList, totalPrice } = req.body;
+    const { role } = (_b = res.locals) === null || _b === void 0 ? void 0 : _b.user;
     const quote = new Quote_2.ReqQuotes();
     quote.userEmail = email;
+    quote.nameClient = name;
     if (phone) {
         quote.phone = phone;
     }
@@ -411,6 +408,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         quote.totalPrice = Number(totalPrice);
         quote.emailRegistered = false;
     }
+    console.log(quote);
     const saved = yield quotesRespository.save(quote);
     if (!saved) {
         return next(new errorHandler_1.errorHandler("Failed to save the quote", 400));
@@ -423,7 +421,9 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         text: "Hey,A new quote has been requested, go check it out.",
         html: `<a href=${string} style="color:red;">${string} </a>`,
     };
+    console.log("1");
     yield mail_1.default.send(msg);
+    console.log("2");
     console.log("Email send is => ", string);
     return res.status(200).json({ success: true });
 }));

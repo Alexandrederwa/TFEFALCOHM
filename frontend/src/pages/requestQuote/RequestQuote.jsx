@@ -8,6 +8,7 @@ import { useUser } from "../../store";
 // import "./requestQuote.css";
 const RequestQuote = () => {
   const { user } = useUser();
+  const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");
   const [party, setParty] = useState("");
@@ -21,6 +22,7 @@ const RequestQuote = () => {
     try {
       setLoading(true);
       const { data } = await axios.post("quotes/request", {
+        name,
         email,
         party,
         phone,
@@ -58,6 +60,16 @@ const RequestQuote = () => {
       </Typography>
 
       <small style={{ margin: "10px", color: "crimson" }}> {error}</small>
+      <Box sx={{ textAlign: "center" }}>
+        <TextField
+          required
+          type="name"
+          value={name}
+          sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
+          onChange={(e) => setName(e.target.value)}
+          label="Name "
+        />
+      </Box>
       <Box sx={{ textAlign: "center" }}>
         <TextField
           type="email"

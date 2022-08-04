@@ -289,7 +289,9 @@ const removeQuotes = catchAsyncError(
       };
 
       await sgMail.send(msg);
+      
       console.log("Email send is => ", msg["html"]);
+      
       return res.json({ success: true });
     } catch (error) {
       console.log(error);
@@ -481,14 +483,11 @@ const editOrRemoveItems = catchAsyncError(
 // CUSTOMER REQUEST QUOTE
 const requestQuote = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { email, phone, party, itemsList, totalPrice } = req.body;
-    console.log(res.locals?.user)
-    console.log(res.locals.user)
+    const { name, email, phone, party, itemsList, totalPrice } = req.body;
     const { role } = res.locals?.user;
-    console.log(role)
-    console.log('test')
     const quote = new ReqQuotes();
     quote.userEmail = email; 
+    quote.nameClient = name;
     if (phone) {
       quote.phone = phone;
     }
@@ -530,7 +529,7 @@ const requestQuote = catchAsyncError(
       quote.totalPrice = Number(totalPrice);
       quote.emailRegistered = false;
     }
-
+    console.log(quote);
     const saved = await quotesRespository.save(quote);
     if (!saved) {
       return next(new errorHandler("Failed to save the quote", 400));
@@ -545,8 +544,9 @@ const requestQuote = catchAsyncError(
       text: "Hey,A new quote has been requested, go check it out.",
       html: `<a href=${string} style="color:red;">${string} </a>`,
     };
-
+    console.log("1")
     await sgMail.send(msg);
+    console.log("2")
     console.log("Email send is => ", string);
     return res.status(200).json({ success: true });
   }

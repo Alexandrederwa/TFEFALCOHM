@@ -105,6 +105,10 @@ __decorate([
     __metadata("design:type", String)
 ], ReqQuotes.prototype, "userEmail", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true, name: "name_client" }),
+    __metadata("design:type", String)
+], ReqQuotes.prototype, "nameClient", void 0);
+__decorate([
     (0, typeorm_1.Column)({ name: "party", nullable: true }),
     __metadata("design:type", String)
 ], ReqQuotes.prototype, "party", void 0);
