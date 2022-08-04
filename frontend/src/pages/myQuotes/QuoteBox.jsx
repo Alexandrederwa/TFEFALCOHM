@@ -5,7 +5,7 @@ dayjs().format();
 const QuoteBox = ({ quote }) => {
   const startDate = dayjs(quote.rentDate).format("DD/MM/YYYY");
   const endDate = dayjs(quote.deliverDate).format("DD/MM/YYYY");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="quoteBox">
       <div className="quoteDetails">
@@ -52,7 +52,11 @@ const QuoteBox = ({ quote }) => {
       quote.status !== "asked"
         ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote?quoteId="+quote.id))}>Action</button>
         : null}
-      </div>
+      {(quote.userDecision === "accepted") &&
+      quote.status !== "asked"
+        ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote/" + quote.id))}>Invoice</button>
+        : null}
+      </div> 
 
       <div className="itemBoxWrapper">
         {quote.itemDetails.map((item) => (

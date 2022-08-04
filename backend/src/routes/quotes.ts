@@ -536,10 +536,10 @@ const requestQuote = catchAsyncError(
       return next(new errorHandler("Failed to save the quote", 400));
     }
 
-    const string = `${process.env.ORIGIN}/dashboard/item_list/${saved.id}`;
+    const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
     const msg = {
-      to: "falcohm6tm@outlook.com",
+      to: "face.alex.d@gmail.com",
       from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
       subject: "Your Quote is Ready",
       text: "Hey,A new quote has been requested, go check it out.",

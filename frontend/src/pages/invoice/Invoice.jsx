@@ -15,6 +15,7 @@ import { BrowserRouter as Router,
     useParams
  } from "react-router-dom";
 import { useEffect } from "react";
+import logoInvoice from '../../img/logoInvoice.png'
 
 const Invoice = () => {
 
@@ -31,12 +32,11 @@ const Invoice = () => {
     const printInvoice = () => {
         setDisplayButton("none");
         setTimeout(() => {
-            console.log("PDF is preparing");
-          }, "3000")
-        const input = document.getElementById('divToPrint')
-        var w = input.offsetWidth;
-        var h = input.offsetHeight;
-        html2canvas(input, {
+            console.log("PDF is preparing mettre un toast");
+            const input = document.getElementById('divToPrint')
+            var w = input.offsetWidth;
+            var h = input.offsetHeight;
+            html2canvas(input, {
             dpi: 300, // Set to 300 DPI
             scale: 3, // Adjusts your resolution
            }).then((canvas) => {
@@ -45,6 +45,8 @@ const Invoice = () => {
             doc.addImage(img, 'JPEG', 0, 0, w, h);
             doc.save('sample-file.pdf');
            }) 
+          }, "3000")
+
             
           };
         
@@ -112,7 +114,7 @@ const Invoice = () => {
                 <table className="tableOfInfo">
                   <tr>
                     <td class="title">
-                      <img src={"https://res.cloudinary.com/dutkkgjm5/image/upload/v1659471503/falcohm_system_final_couleur_bhenk7.png"} className ='invoiceLogo' />
+                      <img src={logoInvoice} className ='invoiceLogo' />
                     </td>
 
                     <td>

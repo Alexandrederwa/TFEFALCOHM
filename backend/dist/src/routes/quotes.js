@@ -415,9 +415,9 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     if (!saved) {
         return next(new errorHandler_1.errorHandler("Failed to save the quote", 400));
     }
-    const string = `${process.env.ORIGIN}/dashboard/item_list/${saved.id}`;
+    const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
     const msg = {
-        to: "falcohm6tm@outlook.com",
+        to: "face.alex.d@gmail.com",
         from: "falcohm6tm@outlook.com",
         subject: "Your Quote is Ready",
         text: "Hey,A new quote has been requested, go check it out.",
