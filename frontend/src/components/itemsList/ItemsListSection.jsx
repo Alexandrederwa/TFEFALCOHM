@@ -178,6 +178,7 @@ const ItemListSection = () => {
                 label="Name "
               />
             </Box>
+            
             <Box sx={{ textAlign: "center" }}>
               <TextField
                 required

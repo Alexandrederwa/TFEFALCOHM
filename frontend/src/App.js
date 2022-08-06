@@ -7,7 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 // import Nav from "./components/navbar/Nav";
-import AppBar from "./components/appbar/AppBar"
+import NavBar from "./components/navBar/NavBar"
 import Dashboard from "./pages/dashboard/Dashboard";
 import UserList from "./pages/dashboard/users/UserList";
 import Home from "./pages/home/Home";
@@ -56,7 +56,7 @@ function App() {
   return ( 
     <Router>
    
-      <AppBar/>
+      <NavBar/>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route

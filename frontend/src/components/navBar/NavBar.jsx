@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
+import "./navbar.css"
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +13,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../store";
+import logoFont from "../../img/ecriture.png"
 
 const AppBarX = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -43,10 +45,10 @@ const AppBarX = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "crimson" }}>
+    <AppBar position="static " style={{ background: 'transparent', boxShadow: 'none'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="a"
@@ -63,9 +65,14 @@ const AppBarX = () => {
               textDecoration: "none",
             }}
           >
-            MarketPlace
-          </Typography>
-
+            MarketPlacezeza
+          </Typography> */}
+          <Box
+            component="img"
+              className="logoFont"
+              alt="logoFont"
+              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1659795295/ecriture_bxrax0.png"
+              />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -74,6 +81,7 @@ const AppBarX = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              style={{color: "black"}}
             >
               <MenuIcon />
             </IconButton>
@@ -201,6 +209,7 @@ const AppBarX = () => {
               )}
             </Menu>
           </Box>
+          {/* Little screen title */}
           <Typography
             variant="h5"
             noWrap
@@ -218,6 +227,8 @@ const AppBarX = () => {
             }}
           >
             MarketPlace
+
+            {/* Big screen navbar */}
           </Typography>
           <Box
             sx={{
@@ -227,7 +238,7 @@ const AppBarX = () => {
             }}
           >
             <Button
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ my: 2, color: "black", display: "block" }}
               onClick={handleCloseNavMenu}
               component={Link}
               to={"/"}
@@ -237,7 +248,7 @@ const AppBarX = () => {
 
             {user && (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/profile"}
@@ -247,7 +258,7 @@ const AppBarX = () => {
             )}
             {user?.role === "admin" ? (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/dashboard"}
@@ -257,7 +268,7 @@ const AppBarX = () => {
             ) : null}
             {user?.role === "admin" ? (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/items_list"}
@@ -267,7 +278,7 @@ const AppBarX = () => {
             ) : null}
             {user?.role !== "admin" ? (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/request_quote"}
@@ -277,7 +288,7 @@ const AppBarX = () => {
             ) : null}
             {user?.role === "user" ? (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/my_quotes"}
@@ -287,7 +298,7 @@ const AppBarX = () => {
             ) : null}
             {!user && (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/login"}
@@ -297,7 +308,7 @@ const AppBarX = () => {
             )}
             {!user && (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
                 to={"/register"}
@@ -307,7 +318,7 @@ const AppBarX = () => {
             )}
             {user && (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
                 onClick={logout}
               >
                 logout
