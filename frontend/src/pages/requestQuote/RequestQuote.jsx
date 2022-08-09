@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
-// import "./requestQuote.css";
+import "./requestQuote.css";
 const RequestQuote = () => {
   const { user } = useUser();
   const [name, setName] = useState(user?.name || "");
@@ -14,10 +14,11 @@ const RequestQuote = () => {
   const [party, setParty] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState("");
-
+  console.log(user)
   const [loading, setLoading] = useState(false);
   const handleRequestQuote = async (e) => {
     e.preventDefault();
+    
 
     try {
       setLoading(true);
@@ -33,7 +34,8 @@ const RequestQuote = () => {
       setLoading(false);
 
     } catch (error) {
-      alert(error?.message);
+      alert("Pour accéder à cette fonctionnalitée veuillez créer un compte sur la page d'enregistrement");
+      navigate(`/register`);
       setError(error?.response.data.message);
       setLoading(false);
       console.log(error?.response.data.message);
@@ -56,10 +58,15 @@ const RequestQuote = () => {
         sx={{ textAlign: "center", fontWeight: "bold", marginTop: "20px" }}
         component="div"
       >
-        Request Quote
+        Demande de devis
       </Typography>
-
       <small style={{ margin: "10px", color: "crimson" }}> {error}</small>
+      {user === null && 
+      <div className="createAccount">
+      <small style={{ margin: "10px", color: "crimson" }}> Veuillez créer un compte avant d'accéder à cette fonctionnalitée </small> <p></p>
+      <small style={{ margin: "10px", color: "crimson" }}> <a href='/register'>Je créer mon compte</a> </small>
+      </div>
+      }
       <Box sx={{ textAlign: "center" }}>
         <TextField
           required

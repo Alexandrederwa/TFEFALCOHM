@@ -69,7 +69,7 @@ const Home = () => {
       {/* Big picture */}
       <Box 
               component="img"
-              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1659797001/70584983_102126571174899_3609682788359340032_n_x392ps.jpg"
+              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660060391/sound_htbfif.webp"
               className="homePicture"
               alt="homePicture"
               
@@ -77,7 +77,7 @@ const Home = () => {
                 
       </Box>
       <div className="centered">
-         Falc'ohm system, votre référence sonore belge
+         Falc'ohm System, la seule solution.
         </div>
 
       <div class="container aboutContainer">
@@ -216,6 +216,68 @@ const Home = () => {
         </Button>
       </Box>
     </Box>
+      </div>
+      <div className="container footerContainer">
+        <div className="row">
+            <div className="col logoDiv">
+            <Box 
+              component="img"
+              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660062946/Falc_ohm_n_et_b_txt_circulaire_i5oy9p.png"
+              className="logoFooter"
+              alt="logoFooter"
+              
+              >
+                
+            </Box>
+            
+            </div>
+            <div className="col ">
+              <div className="row linkFooter">
+                <div className="col ">
+                FAQ
+              </div><div className="col ">
+                Mentions légales
+              </div>
+              </div>
+            </div>
+            <div className="col ">
+              <div className="row">
+                  <div className="col">
+                  <Box 
+                      component="img"
+                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Instagram_zhzxba.png"
+                      className="logoFooter"
+                      alt="logoFooter"
+                      
+                      >
+                        
+                    </Box>
+                  </div>
+                  <div className="col">
+                  <Box 
+                      component="img"
+                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_ioag3a.png"
+                      className="logoFooter"
+                      alt="logoFooter"
+                      
+                      >
+                        
+                    </Box>
+                  </div>
+                  <div className="col">
+                  <Box 
+                      component="img"
+                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_1_tcpv1s.png"
+                      className="logoFooter"
+                      alt="logoFooter"
+                      
+                      >
+                        
+                    </Box>
+                  </div>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   );

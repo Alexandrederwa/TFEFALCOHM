@@ -71,7 +71,7 @@ const AppBarX = () => {
             component="img"
               className="logoFont"
               alt="logoFont"
-              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1659795295/ecriture_bxrax0.png"
+              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/FALC_OHM_SYSTEM_typo_white_1_bvlsxv.png"
               />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
