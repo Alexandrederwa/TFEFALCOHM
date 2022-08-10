@@ -3,5 +3,5 @@
 }
 
 www.falcohmsystem.be  {
-  reverse_proxy 192.168.10.6:4000
+  reverse_proxy 192.168.10.6:8000
 }

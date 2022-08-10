@@ -6,10 +6,10 @@ services:
   
   falcohm:
     image: node:14.15.1
-    container_name: market
+    container_name: falcohm
     restart: unless-stopped
     ports:
-      - 8081:4000
+      - 8081:8000
     networks:
       slg-network:
         ipv4_address: 192.168.10.6
@@ -21,9 +21,9 @@ services:
 
   caddyWebsite:
     depends_on:
-      - market   
+      - falcohm   
     image: caddy:2.3.0
-    container_name: caddyMarket
+    container_name: caddyWebsite
     restart: unless-stopped
     ports:
       - "80:80"
