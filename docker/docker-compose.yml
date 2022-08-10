@@ -17,6 +17,24 @@ services:
       - ../:/var/www/backend
     command: bash -c "cd /var/www/backend && npm i && npm run watch && npm run dev"
 
+
+  db:
+    image: postgres
+    container_name: database
+    restart: always
+    environment:
+        - POSTGRES_DB=${rent_db}
+        - POSTGRES_USER=userdb
+        - POSTGRES_PASSWORD=U5Htr/#J!/5<B_X7
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    networks:
+      slg-network:
+        ipv4_address: 192.168.10.11
+    volumes :
+      - ./db/createdb.sql:/docker-entrypoint-initdb.d/createdb.sql
  
 
   caddyWebsite:
