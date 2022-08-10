@@ -23,9 +23,9 @@ services:
     container_name: database
     restart: always
     environment:
-        POSTGRES_DB : "rent_db"
-        POSTGRES_USER : "userdb"
-        POSTGRES_PASSWORD : "admin"
+        POSTGRES_PASSWORD : admin
+        # POSTGRES_DB : "rent_db"
+        # POSTGRES_USER : "userdb"
     logging:
       options:
         max-size: 10m
