@@ -8,8 +8,6 @@ services:
     image: node:14.15.1
     container_name: market
     restart: unless-stopped
-    depends_on:
-      - "db"
     ports:
       - 8081:4000
     networks:
