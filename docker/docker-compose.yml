@@ -1,0 +1,51 @@
+
+
+version: '2'
+
+services:
+  
+  falcohm:
+    image: node:14.15.1
+    container_name: market
+    restart: unless-stopped
+    depends_on:
+      - "db"
+    ports:
+      - 8081:4000
+    networks:
+      slg-network:
+        ipv4_address: 192.168.10.6
+    volumes:
+      - ../:/var/www/backend
+    command: bash -c "cd /var/www/backend && npm i && npm run watch && npm run dev"
+
+ 
+
+  caddyWebsite:
+    depends_on:
+      - market   
+    image: caddy:2.3.0
+    container_name: caddyMarket
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/caddy_data:/data
+      - ./caddy/caddy_config:/config
+    networks:
+      slg-network:
+        ipv4_address: 192.168.10.7
+
+#--------------------
+
+networks:
+
+    slg-network:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 192.168.10.0/24
+            gateway: 192.168.10.1
+ 

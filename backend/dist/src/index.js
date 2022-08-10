@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
@@ -22,15 +21,21 @@ const cors_1 = __importDefault(require("cors"));
 if (process.env.NODE_ENV !== "production") {
     dotenv_1.default.config();
 }
+var bodyParser = require('body-parser');
 const auth_1 = __importDefault(require("./routes/auth"));
 const product_1 = __importDefault(require("./routes/product"));
 const quotes_1 = __importDefault(require("./routes/quotes"));
 const data_source_1 = require("./data-source");
-const app = (0, express_1.default)();
+const express = require("express");
+const path = require('path');
+const app = express();
 const PORT = process.env.PORT;
 app.use((0, cookie_parser_1.default)());
-app.use(express_1.default.static("public"));
-app.use(express_1.default.json());
+app.use(express.static(__dirname + "../../../build/"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 if (process.env.NODE_ENV !== "production") {
     app.use((0, morgan_1.default)("dev"));
 }
@@ -46,6 +51,10 @@ app.use((0, cors_1.default)({
     origin: process.env.ORIGIN,
     optionsSuccessStatus: 200,
 }));
+app.get('*', (res) => {
+    return res.sendFile(path
+        .join(__dirname + '../../../build/', 'index.html'));
+});
 process.on("uncaughtException", (err) => {
     console.log(`Error = ${err.message}`);
     console.log("Shutting down server due to uncaughtException Error");

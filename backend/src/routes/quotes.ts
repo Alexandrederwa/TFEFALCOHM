@@ -538,7 +538,7 @@ const requestQuote = catchAsyncError(
     const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
     const msg = {
-      to: "face.alex.d@gmail.com",
+      to: `${quote.userEmail}`,
       from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
       subject: "Your Quote is Ready",
       text: "Hey,A new quote has been requested, go check it out.",

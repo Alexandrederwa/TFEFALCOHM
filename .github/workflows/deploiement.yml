@@ -1,0 +1,59 @@
+name: deployement
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  VPS-deploiement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Build application
+        working-directory: .
+        run: |
+          ls
+          
+          cp -R docker backend
+          cd frontend 
+          npm install
+          CI= npm run build
+          ls
+          mv build ../backend/
+          
+          
+      
+      - name: Application folder to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: backend
+          remote: falcohm
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_PORT}}
+          username: ${{ secrets.VPS_USER }}
+          privateKey: ${{ secrets.VPS_PRIVATEKEY }}
+      
+      - name: Restart services
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_PORT}}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_PRIVATEKEY }}
+          script: |
+            ls -a
+            
+            docker stop website
+            docker stop caddyWebsite
+            cd falcohm/docker
+            ls -a            
+            docker rm website
+            docker rm caddyWebsite
+            docker-compose up -d
+        
+            

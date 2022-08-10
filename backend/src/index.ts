@@ -1,16 +1,18 @@
 import "reflect-metadata";
 
-import express from "express";
+// import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import ErrorMiddleware from "./middlewares/errors";
 import cors from "cors";
 
+
 // LOADING ENV VARIABLES
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
+var bodyParser = require('body-parser');
 
 // API ROUTES
 import authRoutes from "./routes/auth";
@@ -18,7 +20,8 @@ import productRoutes from "./routes/product";
 import requestQuotesRoutes from "./routes/quotes";
 
 import { AppDataSource } from "./data-source";
-
+const express = require("express");
+const path = require('path');
 const app = express();
 
 // PORT
@@ -26,8 +29,13 @@ const PORT = process.env.PORT;
 
 // MIDDLEWARES
 app.use(cookieParser());
-app.use(express.static("public"));
+app.use(express.static(__dirname + "../../../build/"));
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+//dev localhost
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 } else {
@@ -46,6 +54,11 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+//dev prodction on vps
+app.get('*', ( res: any) => {
+  return res.sendFile(path
+    .join(__dirname + '../../../build/', 'index.html'))
+});
 
 // TERMINATING SERVER ON INTERNAL ERROR
 process.on("uncaughtException", (err: any) => {

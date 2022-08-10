@@ -29,7 +29,8 @@ const RequestQuote = () => {
         phone,
       });
       if (data) {
-        navigate(`/`);
+        alert("Votre demande de devis à bien été enregistré et un résumé à été envoyé par mail, vous allez être rediriger vers votre historique de devis");
+        navigate(`/my_quotes`);
       }
       setLoading(false);
 

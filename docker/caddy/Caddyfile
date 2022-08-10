@@ -1,0 +1,7 @@
+{
+  email face.alex.d@gmail.com
+}
+
+www.falcohmsystem.be  {
+  reverse_proxy 192.168.10.6:4000
+}

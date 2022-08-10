@@ -415,7 +415,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     }
     const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
     const msg = {
-        to: "face.alex.d@gmail.com",
+        to: `${quote.userEmail}`,
         from: "falcohm6tm@outlook.com",
         subject: "Your Quote is Ready",
         text: "Hey,A new quote has been requested, go check it out.",
