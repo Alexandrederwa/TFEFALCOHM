@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
     app.use((0, morgan_1.default)("dev"));
 }
 else {
@@ -45,16 +45,16 @@ else {
         origin: process.env.ORIGIN,
         optionsSuccessStatus: 200,
     }));
+    app.get('*', (res) => {
+        return res.sendFile(path
+            .join(__dirname + '../../../build/', 'index.html'));
+    });
 }
 app.use((0, cors_1.default)({
     credentials: true,
     origin: process.env.ORIGIN,
     optionsSuccessStatus: 200,
 }));
-app.get('*', (res) => {
-    return res.sendFile(path
-        .join(__dirname + '../../../build/', 'index.html'));
-});
 process.on("uncaughtException", (err) => {
     console.log(`Error = ${err.message}`);
     console.log("Shutting down server due to uncaughtException Error");

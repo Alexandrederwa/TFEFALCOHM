@@ -8,10 +8,10 @@ const Quote_1 = require("./entity/Quote");
 const User_1 = require("./entity/User");
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
-    host: process.env.DBHOST || "localhost",
+    host: process.env.HOST || "192.168.10.11",
     port: Number(process.env.DBPORT) || 5432,
     username: process.env.DBUSER || "userdb",
-    password: process.env.DBPASSWORD || "U5Htr/#J!/5<B_X7",
+    password: process.env.DBPSW || "xela12899821",
     database: process.env.DBNAME || "rent_db",
     synchronize: process.env.NODE_ENV !== "production",
     logging: process.env.NODE_ENV === "production",

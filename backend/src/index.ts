@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 //dev localhost
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } else {
   app.use(
@@ -46,6 +46,10 @@ if (process.env.NODE_ENV !== "production") {
       optionsSuccessStatus: 200,
     })
   );
+  app.get('*', ( res: any) => {
+    return res.sendFile(path
+      .join(__dirname + '../../../build/', 'index.html'))
+  });
 }
 app.use(
   cors({
@@ -55,10 +59,6 @@ app.use(
   })
 );
 //dev prodction on vps
-app.get('*', ( res: any) => {
-  return res.sendFile(path
-    .join(__dirname + '../../../build/', 'index.html'))
-});
 
 // TERMINATING SERVER ON INTERNAL ERROR
 process.on("uncaughtException", (err: any) => {
