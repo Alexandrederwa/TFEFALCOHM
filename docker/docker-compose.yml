@@ -13,12 +13,12 @@ services:
     networks:
       slg-network:
         ipv4_address: 192.168.10.6
-    environment:
-      SEQ_DB: rent_db
-      SEQ_USER: userdb
-      SEQ_PW: xela12899821
-      PORT: 8000
-      DATABASE_URL: postgres://userdb:xela12899821@db:5432/mydatabase
+    # environment:
+    #   SEQ_DB: rent_db
+    #   SEQ_USER: userdb
+    #   SEQ_PW: xela12899821
+    #   PORT: 8000
+    #   DATABASE_URL: postgres://userdb:xela12899821@db:5432/mydatabase
     volumes:
       - ../:/var/www/backend
     command: bash -c "cd /var/www/backend && npm i && npm run watch && npm run dev"
