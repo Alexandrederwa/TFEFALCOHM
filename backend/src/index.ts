@@ -36,14 +36,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 //dev localhost
-console.log('1')
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 } else {
   app.use(
     cors({
       credentials: true,
-      origin: "192.168.10.7",
+      origin: process.env.ORIGIN,
       optionsSuccessStatus: 200,
     })
   );
@@ -51,7 +50,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(
   cors({
     credentials: true,
-    origin: "192.168.10.7",
+    origin: process.env.ORIGIN,
     optionsSuccessStatus: 200,
   })
 );
@@ -79,7 +78,6 @@ app.use(ErrorMiddleware);
 // LISTENING TO THE PORT
 app.listen(PORT, async () => {
   try {
-    console.log("2")
     await AppDataSource.initialize();
     console.log("Database connected!");
     console.log(`Server running at http://localhost:${PORT}`);
