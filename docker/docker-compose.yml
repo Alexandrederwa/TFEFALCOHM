@@ -34,7 +34,7 @@ services:
       slg-network:
         ipv4_address: 192.168.10.11
     volumes :
-      - ./db/createdb.sql:/docker-entrypoint-initdb.d/createdb.sql
+      - ./db/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
  
 
   caddyWebsite:
