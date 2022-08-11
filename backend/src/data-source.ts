@@ -5,9 +5,9 @@ import { ReqQuotes } from "./entity/Quote";
 import { User } from "./entity/User";
 
 // Connecting to data
-export const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({ 
     type: "postgres",
-    host: process.env.DBHOST||"localhost",
+    host: "192.168.10.11",
     port: Number(process.env.DBPORT)||5432,
     username: process.env.DBUSER||"userdb", 
     password: process.env.DBPASSWORD||"U5Htr/#J!/5<B_X7",
