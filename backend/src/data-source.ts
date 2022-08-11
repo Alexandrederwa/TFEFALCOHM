@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
     host: "192.168.10.11",
     port: Number(process.env.DBPORT)||5432,
     username: process.env.DBUSER||"userdb", 
-    password: process.env.DBPASSWORD||"U5Htr/#J!/5<B_X7",
+    password: "xela12899821",
     database: process.env.DBNAME||"rent_db",
     synchronize: process.env.NODE_ENV !== "production",
     logging: process.env.NODE_ENV === "production",
