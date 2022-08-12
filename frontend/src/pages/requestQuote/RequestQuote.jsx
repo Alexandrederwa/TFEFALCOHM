@@ -22,7 +22,7 @@ const RequestQuote = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post("api/quotes/request", {
+      const { data } = await axios.post("/api/quotes/request", {
         name,
         email,
         party,
