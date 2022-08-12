@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post("auth/login", { email, password });
+      const { data } = await axios.post("/api/auth/login", { email, password });
       if (data) {
 		  // If the user is trying to login before accepting the quote
         if (state?.quoteId) {
