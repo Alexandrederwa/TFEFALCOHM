@@ -11,7 +11,7 @@ const useProducts = create((set) => ({
   fetchProducts: () =>
     set(async () => {
       try {
-        const { data } = await axios.get("products/all");
+        const { data } = await axios.get("/api/products/all");
          return {
            products:data
          }

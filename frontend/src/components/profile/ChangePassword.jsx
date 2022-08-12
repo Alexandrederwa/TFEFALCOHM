@@ -48,7 +48,7 @@ const ChangePassword = () => {
       return setError("old and new Emails cannot be same");
     }
     try {
-      const { data } = await axios.put("auth/change_password", {
+      const { data } = await axios.put("/api/auth/change_password", {
         newPassword,
         oldPassword,
       });

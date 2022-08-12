@@ -22,7 +22,7 @@ const Register = () => {
     setError("");
     try {
       setLoading(true);
-      const { data } = await axios.post("auth/register", {
+      const { data } = await axios.post("/api/auth/register", {
         email,
         password,
         name: username,

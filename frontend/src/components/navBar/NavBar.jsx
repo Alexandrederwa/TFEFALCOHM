@@ -20,13 +20,13 @@ const AppBarX = () => {
   const { setUser, user } = useUser();
   const navigate = useNavigate();
   const logout = async () => {
-    await axios.post("auth/logout");
+    await axios.post("/api/auth/logout");
     window.location.reload();
   };
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const { data } = await axios.get("/auth/getUser");
+        const { data } = await axios.get("/api/auth/getUser");
         setUser(data);
       } catch (error) {}
     };
