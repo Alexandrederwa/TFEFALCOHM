@@ -9,7 +9,7 @@ import cors from "cors";
 
 
 const bodyParser = require('body-parser');
-
+dotenv.config();
 // API ROUTES
 import authRoutes from "./routes/auth";
 import productRoutes from "./routes/product";
