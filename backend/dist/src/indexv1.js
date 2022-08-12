@@ -13,7 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
+const morgan_1 = __importDefault(require("morgan"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const errors_1 = __importDefault(require("./middlewares/errors"));
 const cors_1 = __importDefault(require("cors"));
+if (process.env.NODE_ENV !== "production") {
+    dotenv_1.default.config();
+}
 var bodyParser = require('body-parser');
 const auth_1 = __importDefault(require("./routes/auth"));
 const product_1 = __importDefault(require("./routes/product"));
@@ -22,15 +29,32 @@ const data_source_1 = require("./data-source");
 const express = require("express");
 const path = require('path');
 const app = express();
-app.use((0, cors_1.default)());
-app.use(bodyParser.json());
-var corsOptions = {
-    origin: "http://localhost:8081"
-};
-app.use((0, cors_1.default)(corsOptions));
+const PORT = 8000;
+app.use((0, cookie_parser_1.default)());
+app.use(express.static(__dirname + "../../../build/"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+if (process.env.NODE_ENV === "development") {
+    app.use((0, morgan_1.default)("dev"));
+}
+else {
+    app.use((0, cors_1.default)({
+        credentials: true,
+        origin: "http://localhost:8081",
+        optionsSuccessStatus: 200,
+    }));
+    app.get('*', (res) => {
+        return res.sendFile(path
+            .join(__dirname + '../../../build/', 'index.html'));
+    });
+}
+app.use((0, cors_1.default)({
+    credentials: true,
+    origin: "http://localhost:8081",
+    optionsSuccessStatus: 200,
+}));
 process.on("uncaughtException", (err) => {
     console.log(`Error = ${err.message}`);
     console.log("Shutting down server due to uncaughtException Error");
@@ -39,12 +63,7 @@ process.on("uncaughtException", (err) => {
 app.use("/api/auth", auth_1.default);
 app.use("/api/products", product_1.default);
 app.use("/api/quotes", quotes_1.default);
-app.use(express.static(__dirname + "../../../build/"));
-app.get('*', (res) => {
-    return res.sendFile(path
-        .join(__dirname + '../../../build/', 'index.html'));
-});
-const PORT = 8000;
+app.use(errors_1.default);
 app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield data_source_1.AppDataSource.initialize();
@@ -58,4 +77,4 @@ app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
         process.exit();
     }
 }));
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=indexv1.js.map

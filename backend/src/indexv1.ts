@@ -8,6 +8,10 @@ import ErrorMiddleware from "./middlewares/errors";
 import cors from "cors";
 
 
+// LOADING ENV VARIABLES
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 var bodyParser = require('body-parser');
 
 // API ROUTES
@@ -19,21 +23,42 @@ import { AppDataSource } from "./data-source";
 const express = require("express");
 const path = require('path');
 const app = express();
-app.use(cors())
-app.use(bodyParser.json())
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-app.use(cors(corsOptions));
+// PORT
+const PORT = 8000;
 
+// MIDDLEWARES
+app.use(cookieParser());
+app.use(express.static(__dirname + "../../../build/"));
+app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-
-
-
+//dev localhost
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+} else {
+  app.use(
+    cors({
+      credentials: true,
+      origin: "http://localhost:8081",
+      optionsSuccessStatus: 200,
+    })
+  );
+  app.get('*', ( res: any) => {
+    return res.sendFile(path
+      .join(__dirname + '../../../build/', 'index.html'))
+  });
+}
+app.use(
+  cors({
+    credentials: true, 
+    origin: "http://localhost:8081",
+    optionsSuccessStatus: 200,
+  })
+);
+//dev prodction on vps
 
 // TERMINATING SERVER ON INTERNAL ERROR
 process.on("uncaughtException", (err: any) => {
@@ -48,15 +73,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/quotes", requestQuotesRoutes);
 // ERROR MIDDLEWARE
-app.use(express.static(__dirname + "../../../build/"));
+app.use(ErrorMiddleware);
   
-
-app.get('*', ( res: any) => {
-  return res.sendFile(path
-    .join(__dirname + '../../../build/', 'index.html'))
-});
 // LISTENING TO THE PORT
-const PORT= 8000; 
 app.listen(PORT, async () => {
   try {
     await AppDataSource.initialize();
