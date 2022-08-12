@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "development") {
       optionsSuccessStatus: 200,
     })
   );
-  app.get('*', ( res: any) => {
+  app.use('*', ( res: any) => {
     return res.sendFile(path
       .join(__dirname + '../../../build/', 'index.html'))
   });
