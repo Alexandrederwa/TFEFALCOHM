@@ -25,7 +25,8 @@ export const SetAuthUser = catchAsyncError(
     }
     // IF VERIFIED THEN FIND USER
     const user = await userRepository.findOneBy({ id: decoded.id });
-
+    console.log(user)
+    console.log("tg")
     // SETTING USER in RESPONSE
     res.locals.user = user;
 
@@ -33,16 +34,17 @@ export const SetAuthUser = catchAsyncError(
   }
 );
 // CHECK IF USER IS in RESPONSE OR NOT
-export const authMiddleware = catchAsyncError(
-  async (_: Request, res: Response, next: NextFunction) => {
-    const { user } = res.locals;
-    if (!user) {
-      return next(new errorHandler("Please login again", 401));
-    }
+// export const authMiddleware = catchAsyncError(
+//   async (_: Request, res: Response, next: NextFunction) => {
+//     const { user } = res.locals;
+//     console.log(res.locals);
+//     if (!user) {
+//       return next(new errorHandler("Please login again", 401));
+//     }
 
-    return  next();
-  }
-);
+//     return  next();
+//   }
+// );
 
 // ROLES MIDDLEWARE TO RESTRICT USER TO PERFORM ADMIN TASKS
 export const authorizeRoles = (...roles: string[]) => {
