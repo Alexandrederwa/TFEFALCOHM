@@ -23,7 +23,7 @@ const QuotePage = () => {
   // ACtion to accept or reject a quote
   const handleUserQuoteAction = async (decision) => {
     try {
-      const { data } = await axios.put(`/quotes/user_quote/${quoteId}`, {
+      const { data } = await axios.put(`/api/quotes/user_quote/${quoteId}`, {
         decision,
       });
       if (data.success) {
@@ -55,7 +55,7 @@ const QuotePage = () => {
 	  // fetching quote with quote id from the url
     const getQuote = async () => {
       try {
-        const { data } = await axios.get(`/quotes/${quoteId}`);
+        const { data } = await axios.get(`/api/quotes/${quoteId}`);
         if (data) {
 			// Checking if user already took these action then redirect to home page
           if (
