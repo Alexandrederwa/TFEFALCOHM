@@ -1,10 +1,11 @@
 import { SetAuthUser } from "./../middlewares/auth";
 import { Status, UserDecision } from "./../entity/Quote";
+import dotenv from "dotenv";
 import { Product } from "./../entity/Product";
 import sgMail from "@sendgrid/mail";
-sgMail.setApiKey(
-  "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"
-);
+dotenv.config();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 import { NextFunction, Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";
 import { ItemDetail } from "../entity/itemDetail";
