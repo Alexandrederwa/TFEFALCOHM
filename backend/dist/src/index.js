@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const bodyParser = require('body-parser');
 dotenv_1.default.config();
@@ -34,6 +35,9 @@ app.use((0, cors_1.default)(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use((0, cookie_parser_1.default)());
+app.use(express.static(__dirname + "../../../build/"));
+app.use(express.json());
 process.on("uncaughtException", (err) => {
     console.log(`Error = ${err.message}`);
     console.log("Shutting down server due to uncaughtException Error");

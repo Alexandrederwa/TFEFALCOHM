@@ -33,6 +33,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
+// MIDDLEWARES
+app.use(cookieParser());
+app.use(express.static(__dirname + "../../../build/"));
+app.use(express.json());
 
 
 // TERMINATING SERVER ON INTERNAL ERROR
