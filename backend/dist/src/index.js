@@ -44,7 +44,7 @@ app.get('*', (res) => {
     return res.sendFile(path
         .join(__dirname + '../../../build/', 'index.html'));
 });
-const PORT = 8000;
+const PORT = 4000;
 app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield data_source_1.AppDataSource.initialize();

@@ -56,7 +56,7 @@ app.get('*', ( res: any) => {
     .join(__dirname + '../../../build/', 'index.html'))
 });
 // LISTENING TO THE PORT
-const PORT= 8000; 
+const PORT= 4000; 
 app.listen(PORT, async () => {
   try {
     await AppDataSource.initialize();
