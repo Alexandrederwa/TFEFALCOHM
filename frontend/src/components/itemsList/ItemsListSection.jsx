@@ -111,7 +111,7 @@ const ItemListSection = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("products/all");
+      const { data } = await axios.get("/api/products/all");
       if (data) {
         setProducts(data);
       }
