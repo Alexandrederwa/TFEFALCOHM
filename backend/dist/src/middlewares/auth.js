@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.authorizeRoles = exports.SetAuthUser = void 0;
+exports.authorizeRoles = exports.authMiddleware = exports.SetAuthUser = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const data_source_1 = require("../data-source");
 const User_1 = require("../entity/User");
@@ -33,6 +33,14 @@ exports.SetAuthUser = (0, catchAsyncError_1.default)((req, res, next) => __await
     console.log("tg");
     res.locals.user = user;
     next();
+}));
+exports.authMiddleware = (0, catchAsyncError_1.default)((_, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user } = res.locals;
+    console.log(res.locals);
+    if (!user) {
+        return next(new errorHandler_1.errorHandler("Please login again", 401));
+    }
+    return next();
 }));
 const authorizeRoles = (...roles) => {
     return (_, res, next) => {

@@ -34,17 +34,17 @@ export const SetAuthUser = catchAsyncError(
   }
 );
 // CHECK IF USER IS in RESPONSE OR NOT
-// export const authMiddleware = catchAsyncError(
-//   async (_: Request, res: Response, next: NextFunction) => {
-//     const { user } = res.locals;
-//     console.log(res.locals);
-//     if (!user) {
-//       return next(new errorHandler("Please login again", 401));
-//     }
+export const authMiddleware = catchAsyncError(
+  async (_: Request, res: Response, next: NextFunction) => {
+    const { user } = res.locals;
+    console.log(res.locals);
+    if (!user) {
+      return next(new errorHandler("Please login again", 401));
+    }
 
-//     return  next();
-//   }
-// );
+    return  next();
+  }
+);
 
 // ROLES MIDDLEWARE TO RESTRICT USER TO PERFORM ADMIN TASKS
 export const authorizeRoles = (...roles: string[]) => {

@@ -210,7 +210,7 @@ router.post("/login", auth_1.SetAuthUser, login);
 router.put("/change_password", auth_1.SetAuthUser, auth_2.authMiddleware, changePassword);
 router.put("/change_email", auth_1.SetAuthUser, auth_2.authMiddleware, changeEmail);
 router.post("/logout", auth_1.SetAuthUser, auth_2.authMiddleware, logout);
-router.get("/getUser", auth_1.SetAuthUser, auth_2.authMiddleware, getUser);
+router.get("/getUser", auth_1.SetAuthUser, getUser);
 router.delete("/:id", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), removeUser);
 router.put("/change_role/:id", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), changeRole);
 router.get("/all", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), getAllUsers);

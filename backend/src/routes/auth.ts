@@ -247,7 +247,7 @@ router.put("/change_password", SetAuthUser, authMiddleware, changePassword);
 router.put("/change_email", SetAuthUser, authMiddleware, changeEmail);
 
 router.post("/logout", SetAuthUser, authMiddleware, logout);
-router.get("/getUser", SetAuthUser, authMiddleware, getUser);
+router.get("/getUser", SetAuthUser, getUser);
 // ADMIN ROUTES
 router.delete(
   "/:id",
