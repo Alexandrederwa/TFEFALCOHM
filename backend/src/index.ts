@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(
     cors({
       credentials: true,
-      origin: process.env.ORIGIN,
+      origin: "http://localhost:8081",
       optionsSuccessStatus: 200,
     })
   );
