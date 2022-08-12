@@ -26,7 +26,7 @@ jobs:
           ls
           mv build ../backend/
           cd ../backend
-          tsc -w
+          # tsc -w
           
           
       

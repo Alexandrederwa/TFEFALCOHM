@@ -21,7 +21,7 @@ services:
       DATABASE_URL: postgres://userdb:xela12899821@db:5432/mydatabase
     volumes:
       - ../:/var/www/backend
-    command: bash -c "cd /var/www/backend && npm i && node dist/src/index.js"
+    command: bash -c "cd /var/www/backend && npm i && npm run dev 
    
 
 
