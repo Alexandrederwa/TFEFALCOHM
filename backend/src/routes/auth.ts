@@ -104,8 +104,8 @@ const login = catchAsyncError(
         "Set-Cookie",
         cookie.serialize("token", token, {
           httpOnly: true,
-          secure: true,
-          sameSite: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
           maxAge: 100000000,
           path: "/",
         })

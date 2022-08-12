@@ -93,8 +93,8 @@ const login = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 
         const token = jsonwebtoken_1.default.sign({ id: user.id }, process.env.JWT_SECRET);
         res.set("Set-Cookie", cookie_1.default.serialize("token", token, {
             httpOnly: true,
-            secure: true,
-            sameSite: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             maxAge: 100000000,
             path: "/",
         }));
