@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const { data } = await axios.get("/auth/getUser");
+        const { data } = await axios.get("/api/auth/getUser");
 
         setUser(data);
         setLoading(false);

@@ -50,11 +50,11 @@ jobs:
           script: |
             ls -a
             
-            docker stop website
+            docker stop falcohm
             docker stop caddyWebsite
             cd falcohm/docker
             ls -a            
-            docker rm website
+            docker rm falcohm
             docker rm caddyWebsite
             docker-compose up -d
         
