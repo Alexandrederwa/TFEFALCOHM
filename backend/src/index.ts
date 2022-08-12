@@ -25,7 +25,7 @@ const path = require('path');
 const app = express();
 
 // PORT
-const PORT = process.env.PORT;
+const PORT = 8000;
 
 // MIDDLEWARES
 app.use(cookieParser());

@@ -9,7 +9,7 @@ services:
     container_name: falcohm
     restart: unless-stopped
     ports:
-      - 8000:8000
+      - 8081:8000
     networks:
       slg-network:
         ipv4_address: 192.168.10.6
