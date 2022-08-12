@@ -85,7 +85,7 @@ const AddProduct = ({
 
     try {
       setLoading(true);
-      const { data } = await axios.post("products/add", {
+      const { data } = await axios.post("/api/products/add", {
         name,
         category,
         stock,

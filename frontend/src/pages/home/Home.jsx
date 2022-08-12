@@ -49,7 +49,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get("products/all");
+        const { data } = await axios.get("/api/products/all");
         setProducts(data);
         setLoading(false);
       } catch (error) {
