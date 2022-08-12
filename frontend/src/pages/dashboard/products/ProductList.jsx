@@ -49,7 +49,7 @@ const ProductList = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("products/all");
+      const { data } = await axios.get("/api/products/all");
       if (data) {
         setProducts(data);
       }
@@ -62,7 +62,7 @@ const ProductList = () => {
   const handleDeleteProduct = async (id) => {
     try {
       console.log("Deleting Quote");
-      const { data } = await axios.delete(`/products/${id}`);
+      const { data } = await axios.delete(`/api/products/${id}`);
       if (data?.success) {
         fetchProducts();
       }

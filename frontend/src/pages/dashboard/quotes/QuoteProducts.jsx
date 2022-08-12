@@ -25,7 +25,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
   };
   const handleUpdateProduct = async () => {
     setEditLoading(true);
-    const { data: products } = await axios.get("products/all");
+    const { data: products } = await axios.get("/api/products/all");
     const { stock, reserved } = products?.find(
       (prod) => prod.id === item.productId
     );

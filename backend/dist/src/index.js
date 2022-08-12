@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const cors_1 = __importDefault(require("cors"));
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const auth_1 = __importDefault(require("./routes/auth"));
 const product_1 = __importDefault(require("./routes/product"));
 const quotes_1 = __importDefault(require("./routes/quotes"));
@@ -24,6 +24,7 @@ const path = require('path');
 const app = express();
 app.use((0, cors_1.default)());
 app.use(bodyParser.json());
+app.use(express.json());
 var corsOptions = {
     origin: "http://localhost:8081"
 };
