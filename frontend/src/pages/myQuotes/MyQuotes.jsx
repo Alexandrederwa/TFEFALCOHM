@@ -45,7 +45,7 @@ const MyQuotes = () => {
     const getMyQuotes = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get("/quotes/my_quotes");
+        const { data } = await axios.get("/api/quotes/my_quotes");
         if (data) {
           setAllQuotes(data);
           setQuotes(data);
