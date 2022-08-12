@@ -25,6 +25,8 @@ jobs:
           CI= npm run build
           ls
           mv build ../backend/
+          cd ../backend
+          tsc -w
           
           
       
