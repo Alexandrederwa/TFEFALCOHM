@@ -75,37 +75,40 @@ const RequestQuote = () => {
           value={name}
           sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
           onChange={(e) => setName(e.target.value)}
-          label="Name "
+          label="Nom"
         />
       </Box>
       <Box sx={{ textAlign: "center" }}>
         <TextField
+          required
           type="email"
           value={email}
           sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
           onChange={(e) => setEmail(e.target.value)}
-          label="Email "
+          label="Adresse E-mail "
         />
       </Box>
 
       <Box sx={{ textAlign: "center" }}>
         <TextField
+          required
           inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
           value={phone}
           sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
           onChange={(e) => setPhone(e.target.value)}
-          label="Phone number"
+          label="Numéro de téléphone"
         />
       </Box>
       <Box sx={{ textAlign: "center" }}>
         <TextField
+          required
           type="number"
           value={party}
           multiline
           rows={5}
           sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
           onChange={(e) => setParty(e.target.value)}
-          label="Party Details "
+          label="Détails de votre événement "
         />
       </Box>
       <Box sx={{ textAlign: "center" }}>
