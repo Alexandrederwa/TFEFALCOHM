@@ -537,7 +537,7 @@ const requestQuote = catchAsyncError(
       return next(new errorHandler("Failed to save the quote", 400));
     }
 
-    const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
+    const string = `https://www.falcohmsystem.be/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
     const msg = {
       to: `${quote.userEmail}`,
