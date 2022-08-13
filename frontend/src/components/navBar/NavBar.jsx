@@ -20,6 +20,7 @@ const AppBarX = () => {
   const { setUser, user } = useUser();
   const navigate = useNavigate();
   const logout = async () => {
+    navigate(`/`);
     await axios.post("/api/auth/logout");
     window.location.reload();
   };

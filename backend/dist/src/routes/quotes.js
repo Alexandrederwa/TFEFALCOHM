@@ -416,7 +416,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     if (!saved) {
         return next(new errorHandler_1.errorHandler("Failed to save the quote", 400));
     }
-    const string = `${process.env.ORIGIN}/item_list?id=${saved.id}`;
+    const string = `https://www.falcohmsystem.be/item_list?id=${saved.id}`;
     const msg = {
         to: `${quote.userEmail}`,
         from: "falcohm6tm@outlook.com",

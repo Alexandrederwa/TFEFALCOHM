@@ -108,7 +108,7 @@ const login = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 
 const logout = (0, catchAsyncError_1.default)((_, res) => {
     res.set("Set-Cookie", cookie_1.default.serialize("token", "", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: false,
         sameSite: "strict",
         expires: new Date(0),
         path: "/",
