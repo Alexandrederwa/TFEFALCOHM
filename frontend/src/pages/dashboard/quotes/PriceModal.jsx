@@ -56,7 +56,7 @@ const PriceModal = ({ quote, fetchQuotes }) => {
     setError("");
 
     try {
-      const { data } = await axios.put(`/quotes/discount/${quote.id}`, {
+      const { data } = await axios.put(`/api/quotes/discount/${quote.id}`, {
         totalPrice,
       });
       if (data?.success) {

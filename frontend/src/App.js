@@ -94,7 +94,7 @@ function App() {
         {/* ADMIN DASHBOARD ROUTES */}
         <Route
           exact
-          path="items_list"
+          path="/items_list"
           element={
             <AdminProtectedRoute
               Element={ItemListSection}

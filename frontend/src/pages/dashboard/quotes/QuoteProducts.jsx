@@ -9,7 +9,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
   const handleRemoveProduct = async () => {
     setremoveLoading(true);
     try {
-      const { data } = await axios.put(`/quotes/item/${item.id}`, {
+      const { data } = await axios.put(`/api/quotes/item/${item.id}`, {
         remove: true,
         quoteId: quote.id,
       });
@@ -42,7 +42,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
         return alert("Change items quantity");
       }
 
-      const { data } = await axios.put(`/quotes/item/${item.id}`, {
+      const { data } = await axios.put(`/api/quotes/item/${item.id}`, {
         remove: false,
         quoteId: quote.id,
         units,

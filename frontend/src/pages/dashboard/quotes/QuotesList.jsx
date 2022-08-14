@@ -39,7 +39,7 @@ const QuotesList = () => {
   const fetchQuotes = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("quotes/all");
+      const { data } = await axios.get("/api/quotes/all");
       if (data) {
         setQuotes(data);
       }
@@ -52,7 +52,7 @@ const QuotesList = () => {
   const handleDeleteQuote = async (id) => {
     try {
       console.log("Deleting Quote");
-      const { data } = await axios.delete(`/quotes/${id}`);
+      const { data } = await axios.delete(`/api/quotes/${id}`);
       if (data?.success) {
         fetchQuotes();
       }

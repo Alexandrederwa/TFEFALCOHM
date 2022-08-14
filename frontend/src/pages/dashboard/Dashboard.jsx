@@ -6,7 +6,7 @@ import "./dashboard.css";
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <h1>MANAGE</h1>
+      <h1>Panneau d'administration de Falc'ohm System</h1>
       {/* <div className="dashboardNav">
       <Link to={"users"}>   <button className='buttons'>Users</button></Link>
       <Link to={"products"}>  <button className='buttons'>Products</button></Link>
@@ -28,7 +28,7 @@ const Dashboard = () => {
           component={Link}
           to="users"
         >
-          Users
+          Utilisateurs
         </Button>
         <Button
           sx={{ margin: "5px 20px", fontSize: "22px" }}
@@ -37,7 +37,7 @@ const Dashboard = () => {
           component={Link}
           to={"products"}
         >
-          Products
+          Produits
         </Button>
         <Button
           variant="contained"
@@ -46,7 +46,7 @@ const Dashboard = () => {
           component={Link}
           to={"quotes"}
         >
-          Quotes
+          Devis
         </Button>
       </Box>
       <br />

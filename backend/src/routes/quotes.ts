@@ -307,7 +307,6 @@ const giveDiscount = catchAsyncError(
     const { totalPrice } = req.body;
 
     const { id } = req.params;
-    console.log({ totalPrice });
     try {
       const found = await quotesRespository.findOne({
         where: { id },
@@ -316,8 +315,10 @@ const giveDiscount = catchAsyncError(
       if (!found) return next(new errorHandler("Quote not found", 400));
       // CHECKING IF THE USER IS REGISTERED OR NOT
       found.checkUser();
-
+      // CHANGING DATA FOR THE QUOTE DB
+      found.totalPrice = totalPrice
       found.status = Status.DISCOUNTED;
+    
 
       const saved = await quotesRespository.save(found, { reload: true });
       if (!saved)

@@ -248,7 +248,6 @@ const removeQuotes = (0, catchAsyncError_1.default)((req, res, next) => __awaite
 const giveDiscount = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { totalPrice } = req.body;
     const { id } = req.params;
-    console.log({ totalPrice });
     try {
         const found = yield quotesRespository.findOne({
             where: { id },
@@ -257,6 +256,7 @@ const giveDiscount = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         if (!found)
             return next(new errorHandler_1.errorHandler("Quote not found", 400));
         found.checkUser();
+        found.totalPrice = totalPrice;
         found.status = Quote_1.Status.DISCOUNTED;
         const saved = yield quotesRespository.save(found, { reload: true });
         if (!saved)
