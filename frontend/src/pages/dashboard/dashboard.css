@@ -1,7 +1,18 @@
 
 .dashboard h1{
     text-align: center;
-    margin-top: 30px;
-    font-size: 3.4rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 2.5rem;
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+}
+
+.dashboardButton{
+    background-color: #1D217C!important;
+
+}
+
+
+.dashboardButton:hover{
+    background-color: #1d7c3d!important;
+    color: black;
 }

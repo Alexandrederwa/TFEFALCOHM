@@ -23,8 +23,8 @@ const Dashboard = () => {
       >
         <Button
           variant="contained"
+          className="dashboardButton"
           sx={{ margin: "5px 20px", fontSize: "22px" }}
-          color="warning"
           component={Link}
           to="users"
         >
@@ -33,7 +33,7 @@ const Dashboard = () => {
         <Button
           sx={{ margin: "5px 20px", fontSize: "22px" }}
           variant="contained"
-          color="warning"
+          className="dashboardButton"
           component={Link}
           to={"products"}
         >
@@ -41,7 +41,7 @@ const Dashboard = () => {
         </Button>
         <Button
           variant="contained"
-          color="warning"
+          className="dashboardButton"
           sx={{ margin: "5px 20px", fontSize: "22px" }}
           component={Link}
           to={"quotes"}

@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 import { Product } from "./../entity/Product";
 import sgMail from "@sendgrid/mail";
 dotenv.config();
-const apiSendGrid =process.env.SENDGRID_API_KEY
-sgMail.setApiKey(apiSendGrid);
+const apiKey = process.env.SENDGRID_API_KEY;
+// sgMail.setApiKey(apiKey);
 
 import { NextFunction, Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";

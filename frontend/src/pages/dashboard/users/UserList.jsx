@@ -25,7 +25,7 @@ const UserList = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("auth/all");
+      const { data } = await axios.get("/api/auth/all");
 
       if (data?.users) {
         setUsers(data?.users);
@@ -46,7 +46,7 @@ const UserList = () => {
   const handleDeleteUser = async (id) => {
     try {
       console.log("Changing roles");
-      const { data } = await axios.delete(`/auth/${id}`);
+      const { data } = await axios.delete(`/api/auth/${id}`);
       if (data?.success) {
         fetchUsers();
       }
@@ -58,7 +58,7 @@ const UserList = () => {
     const role = userRole === "user" ? "admin" : "user";
     try {
       console.log("Changing roles");
-      const { data } = await axios.put(`/auth/change_role/${id}`, { role });
+      const { data } = await axios.put(`/api/auth/change_role/${id}`, { role });
       if (data?.user) {
         fetchUsers();
       }
