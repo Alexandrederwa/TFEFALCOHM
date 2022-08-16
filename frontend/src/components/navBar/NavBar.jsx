@@ -13,7 +13,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../store";
-import logoFont from "../../img/ecriture.png"
+
 
 const AppBarX = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -72,7 +72,7 @@ const AppBarX = () => {
             component="img"
               className="logoFont"
               alt="logoFont"
-              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/FALC_OHM_SYSTEM_typo_white_1_bvlsxv.png"
+              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
               />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -111,7 +111,7 @@ const AppBarX = () => {
                   onClick={handleCloseNavMenu}
                 
                 >
-                  Home
+                  Accueil
                 </Typography>
               </MenuItem>
               {user && (
@@ -122,7 +122,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                     
                   >
-                    Profile
+                    Profil
                   </Typography>
                 </MenuItem>
               )}
@@ -134,7 +134,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                   
                   >
-                    dashboard
+                    Administration
                   </Typography>
                 </MenuItem>
               ) : null}
@@ -146,7 +146,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                    
                   >
-                    Request-Qute
+                    Demander un devis
                   </Typography>
                 </MenuItem>
               ) : null}
@@ -158,7 +158,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                    
                   >
-                    Create-Quote
+                    Créer un devis
                   </Typography>
                 </MenuItem>
               ) : null}
@@ -170,7 +170,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                    
                   >
-                    Quote-History
+                    Mes devis
                   </Typography>
                 </MenuItem>
               ) : null}
@@ -182,7 +182,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                    
                   >
-                    Login
+                    Se connecter
                   </Typography>
                 </MenuItem>
               )}
@@ -194,7 +194,7 @@ const AppBarX = () => {
                     onClick={handleCloseNavMenu}
                    
                   >
-                    Register
+                    Créer un compte
                   </Typography>
                 </MenuItem>
               )}
@@ -204,107 +204,86 @@ const AppBarX = () => {
                     sx={{ textAlign: "center", color: "black" }}
                     onClick={logout}
                   >
-                    Logout
+                    Se déconnecter 
                   </Typography>
                 </MenuItem>
               )}
             </Menu>
           </Box>
           {/* Little screen title */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 800,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            MarketPlace
-
-            {/* Big screen navbar */}
-          </Typography>
+          {/* Big screen navbar */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: { md: "right" },
             }}
+            className = "navAllLinksBS"
           >
+          
             <Button
-              sx={{ my: 2, color: "black", display: "block" }}
+              sx={{ my: 2, color: "black", display: "block"}}
               onClick={handleCloseNavMenu}
               component={Link}
+              className = "navLinkBS"
               to={"/"}
             >
-              Home
+              Accueil
             </Button>
 
-            {user && (
-              <Button
-                sx={{ my: 2, color: "black", display: "block" }}
-                onClick={handleCloseNavMenu}
-                component={Link}
-                to={"/profile"}
-              >
-                Profile
-              </Button>
-            )}
             {user?.role === "admin" ? (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
+                className = "navLinkBS"
                 component={Link}
                 to={"/dashboard"}
               >
-                Dashboard
+                Administration
               </Button>
             ) : null}
             {user?.role === "admin" ? (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
+                className = "navLinkBS"
                 component={Link}
                 to={"/items_list"}
               >
-                Create-Quote
+                Créer un devis
               </Button>
             ) : null}
             {user?.role !== "admin" ? (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
+                className = "navLinkBS"
                 component={Link}
                 to={"/request_quote"}
               >
-                Request-Quote
+                Demander un devis
               </Button>
             ) : null}
             {user?.role === "user" ? (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
+                className = "navLinkBS"
                 component={Link}
                 to={"/my_quotes"}
               >
-                Request-History
+                Mes devis
               </Button>
             ) : null}
             {!user && (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
+                className = "navLinkBS"
                 component={Link}
                 to={"/login"}
               >
-                Login
+                Se connecter
               </Button>
             )}
             {!user && (
@@ -312,17 +291,30 @@ const AppBarX = () => {
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={handleCloseNavMenu}
                 component={Link}
+                className = "navLinkBS"
                 to={"/register"}
               >
-                Register
+                Créer un compte
+              </Button>
+            )}
+            {user && (
+              <Button
+                sx={{ my: 2, color: "black", display: "block" }}
+                onClick={handleCloseNavMenu}
+                component={Link}
+                className = "navLinkBS"
+                to={"/profile"}
+              >
+                Mon profil
               </Button>
             )}
             {user && (
               <Button
                 sx={{ my: 2, color: "black", display: "block" }}
                 onClick={logout}
+                className = "navLinkBS"
               >
-                logout
+                Se déconnecter
               </Button>
             )}
           </Box>

@@ -77,7 +77,7 @@ const Invoice = () => {
       const timer = setTimeout(() => (console.log('Initial timeout!')), 1000);
       const getQuote = async () => {
         try {
-            const { data } = await axios.get(`/quotes/${id}`);
+            const { data } = await axios.get(`/api/quotes/${id}`);
             setQuote(data);
 
         } catch (error) {
@@ -93,7 +93,6 @@ const Invoice = () => {
           <h1 style={{ marginTop: "30px", textAlign: "center" }}>LOADING...</h1>
         );
       }
-    console.log(quote)
     const priceCalculation = () => {
         const obj = quote.itemDetails;
         console.log(obj)
@@ -109,44 +108,45 @@ const Invoice = () => {
   return (
     <div class="invoice-box" id="divToPrint">
           <table>
-            <tr class="top">
-              <td>
-                <table className="tableOfInfo">
-                  <tr>
-                    <td class="title">
-                      <img src={logoInvoice} className ='invoiceLogo' />
-                    </td>
+            <div className="topItems">
+              <tr class="top">
+                <td>
+                  <table className="tableOfInfo">
+                    <tr>
+                      <td class="title">
+                        <img src={logoInvoice} className ='invoiceLogo' />
+                      </td>
 
-                    <td>
-                      Invoice #{quote.id}<br />
-                      Created: {quote.createdAt} <br />
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+                      <td className="idDate">
+                        Invoice #{quote.id}<br />
+                        Created: {quote.createdAt.substring(0, 10)} <br />
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
 
-            <tr class="information">
-              <td>
-                <table>
-                  <tr>
-                    <td>
-                      Fal'cohm System<br />
-                      Rue des croix du feu 4<br />
-                      1473 Glabais
-                      BE89 0359 2561 7285
-                    </td>
+              <tr class="information">
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        Fal'cohm System<br />
+                        Rue des croix du feu 4<br />
+                        1473 Glabais
+                        BE89 0359 2561 7285
+                      </td>
 
-                    <td>
-                        {quote.userEmail}<br />
-                        {quote.phone}<br />
-                      
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-
+                      <td className="idDate">
+                          {quote.userEmail}<br />
+                          {quote.phone}<br />
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </div>
             <tr class="heading">
               <td>Name</td>
               <td>Category</td>

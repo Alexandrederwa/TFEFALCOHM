@@ -40,7 +40,7 @@ export class ReqQuotes {
     onUpdate: "CASCADE",
   })// one to many relation is used because a quote contains mutiple itemDetails(products to be rented)
   itemDetails: ItemDetail[];
-
+  
 
   //Expose decorator is used to get total number of item reserved its not stored in the database but when caluculated whenever a quote is fetched
   @Expose()

@@ -19,6 +19,7 @@ const Product_1 = require("./../entity/Product");
 const mail_1 = __importDefault(require("@sendgrid/mail"));
 dotenv_1.default.config();
 const apiKey = process.env.SENDGRID_API_KEY;
+mail_1.default.setApiKey(apiKey);
 const express_1 = require("express");
 const data_source_1 = require("../data-source");
 const itemDetail_1 = require("../entity/itemDetail");

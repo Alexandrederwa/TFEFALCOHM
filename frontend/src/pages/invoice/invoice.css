@@ -96,3 +96,11 @@
 				text-align: left;
 			}
 
+			.topItems{
+				text-align: center;
+			}
+
+			.idDate{
+				position: absolute;
+    			right: 10rem;
+			}

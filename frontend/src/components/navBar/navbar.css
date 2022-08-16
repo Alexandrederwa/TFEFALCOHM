@@ -1,5 +1,25 @@
 .logoFont{
     max-width: 20rem;
     max-height: 20rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+}
+.navLinkBS{
+    font-size: 1.02rem !important;
+    background-color: #ffffff6b !important;
+
+    margin-right: 0rem !important;
+    border-radius: 1.2px !important;
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+    letter-spacing: 0.008rem !important;
+    text-transform: none !important;
+}
+
+.navLinkBS:hover{
+    color: #1D217C;
+}
+
+.navAllLinksBS{
+    /* background-color: #ffffff6b !important; */
+   
 }
