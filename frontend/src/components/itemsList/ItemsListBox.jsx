@@ -109,7 +109,7 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
         new Date(startDate) < new Date(date.start) &&
         new Date(endDate) > new Date(date.end)
       ) {
-        setError("Product in reserved between your selected dates");
+        setError("Product is reserved between your selected dates");
         setDateValid(false);
       }
     });

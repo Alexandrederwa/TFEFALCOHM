@@ -12,7 +12,7 @@ const QuoteBox = ({ quote }) => {
      
       <small>
         {" "}
-        <b>Quote Status : </b>
+        <b>Action en cours :  : </b>
         <i
           style={{
             color:
@@ -29,22 +29,22 @@ const QuoteBox = ({ quote }) => {
           {quote.status.toUpperCase()}
         </i>
       </small>
-      <small>
+      {/* <small>
         {" "}
         <b>Request By : </b> {quote.userEmail}
+      </small> */}
+      <small>
+        {" "}
+        <b>Nombre de produits : </b> {quote.itemDetails?.length}
       </small>
       <small>
         {" "}
-        <b>No of Products : </b> {quote.itemDetails?.length}
-      </small>
-      <small>
-        {" "}
-        <b>No of Items : </b> {quote.totalReserved}
+        <b>Nombre d'article : </b> {quote.totalReserved}
       </small>
       {quote.status !== "asked" ? (
         <small>
           {" "}
-          <b>Total Price: </b> ${quote.totalPrice}
+          <b>Prix total: </b> ${quote.totalPrice}
         </small>
       ) : null}
       {(quote.userDecision === "pending" ||
@@ -54,7 +54,7 @@ const QuoteBox = ({ quote }) => {
         : null}
       {(quote.userDecision === "accepted") &&
       quote.status !== "asked"
-        ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote/" + quote.id))}>Invoice</button>
+        ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote/" + quote.id))}>Facture</button>
         : null}
       </div> 
 
@@ -69,25 +69,25 @@ const QuoteBox = ({ quote }) => {
               height={60}
             />
             <small>
-              <b>Name : </b> {item.productName}
+              <b>Nom : </b> {item.productName}
             </small>
             <small>
-              <b>Price : </b> ${item.productPrice}
+              <b>Prix : </b> ${item.productPrice}
             </small>
             <small>
-              <b>Category : </b> {item.productCategory}
+              <b>Catégorie : </b> {item.productCategory}
             </small>
             <small>
-              <b>Units : </b> {item.units}
+              <b>Unités : </b> {item.units}
             </small>
             
             {quote.status !== "asked" && quote.status !== "rejected" ? (
               <>
                 <small>
-                  <b>StartDate : </b> {startDate}
+                  <b>Début de l'événement : </b> {startDate}
                 </small>
                 <small>
-                  <b>EndDate : </b> {endDate}
+                  <b>Fin de l'événement : </b> {endDate}
                 </small>
               </>
             ) : null}

@@ -43,7 +43,7 @@ const ItemListSection = () => {
 
     try {
       setSubmitLoading(true);
-      const { data } = await axios.put(`api/quotes/add_items/${id}`, {
+      const { data } = await axios.put(`/api/quotes/add_items/${id}`, {
         itemsList,
         totalPrice,
       });
@@ -67,7 +67,7 @@ const ItemListSection = () => {
   
     try {
       setSubmitLoading(true);
-      const { data } = await axios.post("api/quotes/request", {
+      const { data } = await axios.post("/api/quotes/request", {
         name,
         email,
         phone,
@@ -98,7 +98,7 @@ const ItemListSection = () => {
   const fetchQuotes = async () => {
     setLoading(true); 
     try {
-      const { data } = await axios.get("api/quotes/" + id);
+      const { data } = await axios.get("/api/quotes/" + id);
       if (data) {
         setQuote(data);
       }

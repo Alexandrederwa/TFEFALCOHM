@@ -3,9 +3,13 @@ import { Status, UserDecision } from "./../entity/Quote";
 import dotenv from "dotenv";
 import { Product } from "./../entity/Product";
 import sgMail from "@sendgrid/mail";
-dotenv.config();
-const apiKey = process.env.SENDGRID_API_KEY;
-sgMail.setApiKey(apiKey);
+require('dotenv').config();
+if (process.env.NODE_ENV !== 'production'){
+  var apiKey = process.env.SENDGRID_API_KEY;
+  console.log(apiKey)
+  console.log('xdlol')
+  sgMail.setApiKey(apiKey);
+} 
 
 import { NextFunction, Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";
@@ -238,7 +242,7 @@ const addReqQuoteItems = catchAsyncError(
       console.log("Email send is => ", string);
       return res.json(reqQuote);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       return res.json({ error: "Something went wrong" });
     }
   }
@@ -548,7 +552,16 @@ const requestQuote = catchAsyncError(
       html: `<a href=${string} style="color:red;">${string} </a>`,
     };
     console.log("1")
-    await sgMail.send(msg);
+    // await sgMail.send(msg);
+    sgMail
+        .send(msg)
+        .then(() => {
+          console.log('Email sent');
+        })
+        .catch((error) => {
+          console.log(error.response.body);
+          console.log('RECEIVED ERROR')
+        })
     console.log("2")
     console.log("Email send is => ", string);
     return res.status(200).json({ success: true });

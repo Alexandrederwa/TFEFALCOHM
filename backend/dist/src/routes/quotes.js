@@ -14,12 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const auth_1 = require("./../middlewares/auth");
 const Quote_1 = require("./../entity/Quote");
-const dotenv_1 = __importDefault(require("dotenv"));
 const Product_1 = require("./../entity/Product");
 const mail_1 = __importDefault(require("@sendgrid/mail"));
-dotenv_1.default.config();
-const apiKey = process.env.SENDGRID_API_KEY;
-mail_1.default.setApiKey(apiKey);
+require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+    var apiKey = process.env.SENDGRID_API_KEY;
+    console.log(apiKey);
+    console.log('xdlol');
+    mail_1.default.setApiKey(apiKey);
+}
 const express_1 = require("express");
 const data_source_1 = require("../data-source");
 const itemDetail_1 = require("../entity/itemDetail");
@@ -194,7 +197,7 @@ const addReqQuoteItems = (0, catchAsyncError_1.default)((req, res, next) => __aw
         return res.json(reqQuote);
     }
     catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.json({ error: "Something went wrong" });
     }
 }));
@@ -425,7 +428,15 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         html: `<a href=${string} style="color:red;">${string} </a>`,
     };
     console.log("1");
-    yield mail_1.default.send(msg);
+    mail_1.default
+        .send(msg)
+        .then(() => {
+        console.log('Email sent');
+    })
+        .catch((error) => {
+        console.log(error.response.body);
+        console.log('RECEIVED ERROR');
+    });
     console.log("2");
     console.log("Email send is => ", string);
     return res.status(200).json({ success: true });

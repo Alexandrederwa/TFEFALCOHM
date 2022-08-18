@@ -67,11 +67,11 @@ const MyQuotes = () => {
 
   return (
     <div className="myQuotesPage">
-      <h1 style={{ textAlign: "center", marginTop: "30px" }}>My Quotes</h1>
+      <h1 style={{ textAlign: "center", marginTop: "30px" }}>Mes devis</h1>
       <div className="filterBox">
         <label htmlFor="Filter">
           {" "}
-          <h4 style={{ marginBottom: "10px" }}>Status Filter</h4>
+          <h4 style={{ marginBottom: "10px" }}>Filtre</h4>
         </label>
 
         <Select
@@ -83,7 +83,7 @@ const MyQuotes = () => {
       </div>
       {allQuotes?.length
         ? allQuotes.map((quote) => <QuoteBox key={quote.id} quote={quote} />)
-        : !loading ? <h1 style={{textAlign:"center"}}>No Quotes Available </h1>:null}
+        : !loading ? <h1 style={{textAlign:"center"}}>Pas de devis disponible, veuillez faire une demande </h1>:null}
     </div>
   );
 };
