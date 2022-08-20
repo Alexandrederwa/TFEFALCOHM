@@ -35,7 +35,16 @@ app.use(bodyParser.json());
 
 //Content-Security-Policy
 
-app.use(helmet.contentSecurityPolicy()); // Compliant
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: false,
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://www.falcohmsystem.be/"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 
 //X-Content-Type-Options
 app.use(helmet.noSniff());
@@ -63,7 +72,7 @@ app.use(helmet.hidePoweredBy());
 //Strict-Transport-Security
 app.use(
   helmet.hsts({
-    maxAge: 63072000, //2ans
+    maxAge: 63072000, //2 YEARS
     includeSubDomains: true,
     preload: false
   })
