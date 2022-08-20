@@ -205,7 +205,7 @@ const changeRole = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(
     return res.status(200).json({ success: true, user: found });
 }));
 const router = (0, express_1.Router)();
-router.post("/register", auth_1.SetAuthUser, register);
+router.post("/register", register);
 router.post("/login", auth_1.SetAuthUser, login);
 router.put("/change_password", auth_1.SetAuthUser, auth_2.authMiddleware, changePassword);
 router.put("/change_email", auth_1.SetAuthUser, auth_2.authMiddleware, changeEmail);
