@@ -1,24 +1,20 @@
 import "reflect-metadata";
-
-// import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import ErrorMiddleware from "./middlewares/errors";
 import cors from "cors";
-
-
 const bodyParser = require('body-parser');
 dotenv.config();
 // API ROUTES
 import authRoutes from "./routes/auth";
 import productRoutes from "./routes/product";
 import requestQuotesRoutes from "./routes/quotes";
-
 import { AppDataSource } from "./data-source";
 const express = require("express");
 const path = require('path');
 const app = express();
+const helmet = require("helmet");
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.json())
@@ -31,6 +27,40 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
+//SECURE HEADERS 
+
+//X-Content-Type-Options
+app.use(helmet.noSniff());
+
+//X-Frame-Options
+ app.use(
+  helmet.frameguard({
+    action: "sameorigin",
+  })
+ );
+
+//X-XSS-Protection
+app.use(helmet.xssFilter());
+
+//Referrer-Policy
+app.use(
+  helmet.referrerPolicy({
+    policy: ["strict-origin-when-cross-origin"]
+  })
+ );
+
+//X-Powered-By
+app.use(helmet.hidePoweredBy());
+
+//Strict-Transport-Security
+app.use(
+  helmet.hsts({
+    maxAge: 63072000, //2ans
+    includeSubDomains: true,
+    preload: false
+  })
+);
 
 
 // MIDDLEWARES

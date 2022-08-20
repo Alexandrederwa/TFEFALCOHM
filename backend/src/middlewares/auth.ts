@@ -25,8 +25,6 @@ export const SetAuthUser = catchAsyncError(
     }
     // IF VERIFIED THEN FIND USER
     const user = await userRepository.findOneBy({ id: decoded.id });
-    console.log(user)
-    console.log("tg")
     // SETTING USER in RESPONSE
     res.locals.user = user;
 

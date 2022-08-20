@@ -60,10 +60,10 @@ const Home = () => {
     fetchProducts();
     // eslint-disable-next-line
   }, []);
-  if (loading && !products.length)
-    return (
-      <h1 style={{ margin: "30px auto", textAlign: "center" }}>LOADING</h1>
-    );
+  // if (loading && !products.length)
+  //   return (
+  //     <h1 style={{ margin: "30px auto", textAlign: "center" }}>LOADING</h1>
+  //   );
   return (
     <div className="homePage">
       {/* Big picture */}
@@ -76,14 +76,14 @@ const Home = () => {
               >
                 
       </Box>
-      <div className="centered">
+      <div className="centered"> 
          Falc'ohm System, la seule solution.
         </div>
 
       <div class="container aboutContainer">
         <div className="row">
           <div class="col-xl-6">
-            <h1 className="aboutTitle">A propos</h1>
+            <h1 className="aboutTitle" data-testid="textTitle">A propos</h1>
             <div className="aboutText">
               <p>Un projet est avant tout une idée qui germe dans un coin et qui mûrit lentement, grandissant et s'étirant au fil du temps. "Falcohm system", voici la nôtre. </p>
 
@@ -133,6 +133,7 @@ const Home = () => {
           </h1>
           <p className="secondTitle">Tout type d'événements</p>
           <Button
+            data-testid="buttonAsk"
             variant="contained"
             component={Link}
             disabled={loading}
@@ -233,9 +234,9 @@ const Home = () => {
             </div>
             <div className="col ">
               <div className="row linkFooter">
-                <div className="col ">
+                <div className="col " data-testid="footerText">
                 FAQ
-              </div><div className="col ">
+              </div><div className="col " >
                 Mentions légales
               </div>
               </div>

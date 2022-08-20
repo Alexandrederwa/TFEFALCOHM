@@ -29,8 +29,6 @@ exports.SetAuthUser = (0, catchAsyncError_1.default)((req, res, next) => __await
         return next();
     }
     const user = yield userRepository.findOneBy({ id: decoded.id });
-    console.log(user);
-    console.log("tg");
     res.locals.user = user;
     next();
 }));
