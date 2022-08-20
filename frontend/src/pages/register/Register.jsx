@@ -43,13 +43,13 @@ const Register = () => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    const FetchUser = async () => {
-      const { user } = useUser();
-      console.log(user)
-    };
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   const FetchUser = async () => {
+  //     const { user } = useUser();
+      // console.log(user)
+  //   };
+  //   // eslint-disable-next-line
+  // }, []);
   return (
     <div className="registerPage">
       <h1>Register</h1>

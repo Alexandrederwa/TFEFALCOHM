@@ -241,7 +241,7 @@ const changeRole = catchAsyncError(
 );
 const router = Router();
 // USER ROUTES
-router.post("/register", register);
+router.post("/register", SetAuthUser, register);
 router.post("/login", SetAuthUser, login);
 router.put("/change_password", SetAuthUser, authMiddleware, changePassword);
 router.put("/change_email", SetAuthUser, authMiddleware, changeEmail);
