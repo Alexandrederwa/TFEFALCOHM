@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import ErrorMiddleware from "./middlewares/errors";
 import cors from "cors";
+import * as helmet from "helmet";
 const bodyParser = require('body-parser');
 dotenv.config();
 // API ROUTES
@@ -15,7 +16,7 @@ import { NextFunction } from "express";
 const express = require("express");
 const path = require('path');
 const app = express();
-const helmet = require("helmet");
+// const helmet = require("helmet");
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.json())
