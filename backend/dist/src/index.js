@@ -63,7 +63,7 @@ app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", 'unsafe-inline', "https://www.falcohmsystem.be/"],
-        imgSrc: ["'self'", 'unsafe-inline'],
+        imgSrc: ["'self'", 'unsafe-inline', "https://res.cloudinary.com/"],
         upgradeInsecureRequests: [],
     },
 }));
