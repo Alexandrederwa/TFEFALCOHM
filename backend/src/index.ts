@@ -40,6 +40,7 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
+      imgSrc : ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
       upgradeInsecureRequests: [],
     },
   })
