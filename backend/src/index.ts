@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth";
 import productRoutes from "./routes/product";
 import requestQuotesRoutes from "./routes/quotes";
 import { AppDataSource } from "./data-source";
+import { NextFunction } from "express";
 const express = require("express");
 const path = require('path');
 const app = express();
@@ -29,6 +30,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //SECURE HEADERS 
+
+
+//Content-Security-Policy
+
+app.use(helmet.contentSecurityPolicy()); // Compliant
 
 //X-Content-Type-Options
 app.use(helmet.noSniff());

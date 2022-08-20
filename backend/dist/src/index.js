@@ -25,6 +25,7 @@ const data_source_1 = require("./data-source");
 const express = require("express");
 const path = require('path');
 const app = express();
+const helmet = require("helmet");
 app.use((0, cors_1.default)());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -35,6 +36,20 @@ app.use((0, cors_1.default)(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({
+    action: "sameorigin",
+}));
+app.use(helmet.xssFilter());
+app.use(helmet.referrerPolicy({
+    policy: ["strict-origin-when-cross-origin"]
+}));
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts({
+    maxAge: 63072000,
+    includeSubDomains: true,
+    preload: false
+}));
 app.use((0, cookie_parser_1.default)());
 app.use(express.static(__dirname + "../../../build/"));
 app.use(express.json());
