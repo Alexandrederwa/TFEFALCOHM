@@ -37,10 +37,9 @@ app.use(bodyParser.json());
 
 app.use(
   helmet.contentSecurityPolicy({
-    useDefaults: false,
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://www.falcohmsystem.be/"],
+      scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
       upgradeInsecureRequests: [],
     },
   })
