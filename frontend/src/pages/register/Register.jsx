@@ -3,7 +3,8 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./register.css";
+import "./register.css"
+import { useUser } from "../../store";
 const Register = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -13,6 +14,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(false);
+  const { user } = useUser();
 
   const handleChange = () => {
     setChecked(!checked);
