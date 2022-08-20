@@ -234,10 +234,12 @@ const Home = () => {
             </div>
             <div className="col ">
               <div className="row linkFooter">
-                <div className="col " data-testid="footerText">
+                <div className="col " data-testid="footerText" >
+                  
                 FAQ
-              </div><div className="col " >
-                Mentions légales
+              </div>
+              <div className="col " >
+              <Link to="/legal_mentions">Mentions Légales</Link>
               </div>
               </div>
             </div>

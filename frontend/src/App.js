@@ -24,6 +24,7 @@ import QuotesList from "./pages/dashboard/quotes/QuotesList";
 import ProductList from "./pages/dashboard/products/ProductList";
 import RequestQuote from "./pages/requestQuote/RequestQuote";
 import ItemListSection from "./components/itemsList/ItemsListSection";
+import LegalMention from "./pages/legalMention/LegalMention";
 const override = css`
   display: block;
   margin: 20% auto;
@@ -90,7 +91,7 @@ function App() {
 
         <Route exact path="/quote" element={<QuotePage />} />
         <Route exact path="/request_quote" element={<RequestQuote />} />
-		
+        <Route path="/legal_mentions" element={<LegalMention/>} />		
         {/* ADMIN DASHBOARD ROUTES */}
         <Route
           exact
