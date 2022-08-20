@@ -39,7 +39,7 @@ const LegalMention = () => {
                 <strong>Délégué à la protection des données</strong> : Derwa Alexandre – face.alex.d@gmail.com<br></br>
                 </p>
 
-                <div ng-bind-html="linkHTML"><p>Les mentions légales sont issues du modèle proposé par le  <a href="https://fr.orson.io/1371/generateur-mentions-legales" title="générateur gratuit de mentions légales pour un site internet">générateur gratuit de mentions légales pour un site internet</a></p></div>
+                
 
 
 
