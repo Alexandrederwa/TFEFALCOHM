@@ -11,7 +11,7 @@ exports.default = (err, __, res, _) => {
             stack: err.stack
         });
     }
-    if (process.env.NODE_ENV = 'production') {
+    if (true) {
         let error = Object.assign({}, err);
         error.message = err.message;
         if (err.name === 'CastError') {

@@ -12,7 +12,7 @@ export  default (err:any,__:any,res:Response,_:any) : any=>{
             stack:err.stack
         })
     }
-    if(process.env.NODE_ENV='production'){
+    if(true){
         let error = {...err}
         error.message = err.message
         if(err.name==='CastError'){
