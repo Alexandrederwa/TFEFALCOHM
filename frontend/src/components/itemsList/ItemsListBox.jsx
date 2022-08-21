@@ -122,15 +122,15 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
       <h3 className="itemname">{item.name}</h3>
 
       <h4>
-        <small>Unit Price :</small>${item.price}
+        <small>Prix unitaire :</small>${item.price}
       </h4>
       <h4>
-        <small>{units} Items Price :</small>${item.price * units}
+        <small> Prix total pour {units} unité:</small>${item.price * units}
       </h4>
 
       <div>
         <h4>
-          <small>Quantity :</small>
+          <small>Quantité :</small>
           <input
             type="number"
             className="qtyInput"
@@ -143,6 +143,7 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
         </h4>
       </div>
       <div>
+      <small>Date de reservation :</small>
         <h4>
           <DatePicker
             className="inputBox"
@@ -182,22 +183,22 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
           onClick={handleSave}
           style={{ margin: "10px", padding: "8px" }}
         >
-          {saved ? "Update" : "saved"}
+          {saved ? "Modifier" : "Ajouter"}
         </button>
         <button
           onClick={handleRemove}
           style={{ margin: "10px", padding: "8px" }}
         >
-          Remove
+          Retirer l'article
         </button>
       </div>
 
       <small style={{ color: "crimson" }}> {error}</small>
 
       {saved ? (
-        <small style={{ color: "green" }}> Added in list </small>
+        <small style={{ color: "green" }}> Ajouter au devis </small>
       ) : (
-        <small style={{ color: "red" }}>Not Added yet </small>
+        <small style={{ color: "red" }}>Pas encore ajouté </small>
       )}
     </div>
   );

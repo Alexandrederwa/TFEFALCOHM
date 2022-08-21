@@ -50,7 +50,7 @@ const QuoteBox = ({ quote }) => {
       {(quote.userDecision === "pending" ||
         quote.userDecision === "askDiscount") &&
       quote.status !== "asked"
-        ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote?quoteId="+quote.id))}>Action</button>
+        ? <button style={{padding:"6px",background:"crimson",color:"#fff",border:"none",cursor:"pointer"}} onClick={()=>navigate(("/quote?quoteId="+quote.id))}>Prendre une décision</button>
         : null}
       {(quote.userDecision === "accepted") &&
       quote.status !== "asked"

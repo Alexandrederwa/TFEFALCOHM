@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { alignProperty } from "@mui/material/styles/cssUtils";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {  useNavigate, useSearchParams } from "react-router-dom";
@@ -142,20 +143,20 @@ const ItemListSection = () => {
           sx={{ textAlign: "center", fontWeight: "bold" }}
           component="div"
         >
-          Details
+          Informations du client
         </Typography>
         <small style={{ margin: "10px", color: "crimson" }}> {error}</small>
         <p></p>
         {quote && id ? (
           <div>
             <p>
-              <b>Customer Mail :</b> {quote?.userEmail}
+              <b>E-mail du client :</b> {quote?.userEmail}
             </p>
             <p>
-              <b>Party :</b> {quote?.party}
+              <b>Description de l'événement :</b> {quote?.party}
             </p>
             <p>
-              <b>Phone :</b> {quote?.phone}
+              <b>Numéro de téléphone :</b> {quote?.phone}
             </p>
           </div>
         ) : (
@@ -175,7 +176,7 @@ const ItemListSection = () => {
                 value={name}
                 sx={{ margin: " 5px auto", padding: "4px" }}
                 onChange={(e) => setName(e.target.value)}
-                label="Name "
+                label="Nom "
               />
             </Box>
             
@@ -186,22 +187,23 @@ const ItemListSection = () => {
                 value={email}
                 sx={{ margin: " 5px auto", padding: "4px" }}
                 onChange={(e) => setEmail(e.target.value)}
-                label="Email"
+                label="Email "
               />
             </Box>
 
             <Box sx={{ textAlign: "center" }}>
               <TextField
+                required
                 inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                 value={phone}
                 sx={{ margin: " 5px auto", padding: "4px" }}
                 onChange={(e) => setPhone(e.target.value)}
-                label="Phone number"
+                label="Numéro de téléphone "
               />
             </Box>
           </Box>
         )}
-        <b>TotalPrice :</b> ${totalPrice}
+        <b>Prix total :</b> €{totalPrice}
         <br />
         <Button
           variant="contained"
@@ -210,30 +212,31 @@ const ItemListSection = () => {
           color="warning"
           disabled={!itemsList[0]?.endDate}
         >
-          {submitLoading ? "loading" : " Send Quote"}
+          {submitLoading ? "loading" : " Créer le devis"}
         </Button>
       </div>
       {itemsList?.length ? (
-        <small
+        <Button
           style={{
-            textAlign: "left",
-            color: "red",
-            marginRight: "auto",
-            marginLeft: "100px",
+            textAlign: "center",
+            color: "white",
+            marginRight: "40%",
+            marginLeft: "40%",
             marginTop: "20px",
             cursor: "pointer",
+            backgroundColor : "red"
           }}
           onClick={emptyCart}
         >
-          Empty Saved List
-        </small>
+          Vider la liste de matériel 
+        </Button>
       ) : null}
       <div className="searchContainer">
         <TextField
           id="outlined-basic"
           value={searchQ}
           onChange={(e) => setSearchQ(e.target.value)}
-          label="Search Products"
+          label="Chercher un article"
           variant="outlined"
         />
       </div>

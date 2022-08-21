@@ -72,7 +72,7 @@ const ChangeEmail = () => {
           color="warning"
           onClick={openModal} 
         >
-          Change Email
+          Changer d'adresse email
         </Button>
       </div>
       <Modal
@@ -92,7 +92,7 @@ const ChangeEmail = () => {
              
             }}
           >
-            Change Email
+           Changer d'adresse email
           </Typography>
 
         {error && (
@@ -104,7 +104,7 @@ const ChangeEmail = () => {
             value={oldEmail}
             onChange={(e) => setOldEmail(e.target.value)}
             sx={{ margin: " 5px auto",width:"100%", padding: "4px" }}
-            label="Old Email"
+            label="Ancienne adresse E-mail"
           />
           <br />
 
@@ -115,7 +115,7 @@ const ChangeEmail = () => {
 
            onChange={(e) => setNewEmail(e.target.value)}
             sx={{ margin: " 5px auto",width:"100%", padding: "4px" }}
-            label="New Email"
+            label="Nouvelle adresse E-mail"
           />
         </form>
         <Button
@@ -125,7 +125,7 @@ const ChangeEmail = () => {
           color="inherit"
           onClick={closeModal}
         >
-                   Cancel
+                   Annuler
 
         </Button>
 
@@ -136,7 +136,7 @@ const ChangeEmail = () => {
           color="primary"
           onClick={handleChangeEmail}
         >
-                   Proceed
+                   Confirmer
 
         </Button>
       </Modal>

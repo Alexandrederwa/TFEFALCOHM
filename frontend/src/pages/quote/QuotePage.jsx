@@ -39,11 +39,11 @@ const QuotePage = () => {
       <>
         {quote?.emailRegistered ? (
           <button className="actionBtn" onClick={goFurther}>
-            First Login to take an Action
+            Connecte-toi afin de donner ta réponse!
           </button>
         ) : (
           <button className="actionBtn" onClick={goFurther}>
-            First Register to take an Action
+            Enregistre toi afin de donner ta réponse!
           </button>
         )}
       </>
@@ -84,26 +84,22 @@ const QuotePage = () => {
 
   return (
     <div className="quoteSection">
-      <h1 className="heading">Quote</h1>
+      <h1 className="heading">Devis</h1>
       <ul style={{ listStyle: "none" }}>
         <li>
-          <b>Total Price : ${quote.totalPrice}</b>
+          <b>Prix total : {quote.totalPrice}€</b>
         </li>
         <li>
-          <b>Total Items : </b>
+          <b>Nombre d'articles : </b>
           {quote.totalReserved}
         </li>
         <li>
-          <b>No of Products : {quote.itemDetails.length}</b>
+          <b>Nombre de produits : {quote.itemDetails.length}</b>
         </li>
-        <li>
-          <b>Requested By : </b>
+        {/* <li>
+          <b>Demandé par : </b>
           {quote.userEmail}
-        </li>
-        <li>
-          <b>Email Registered : </b>
-          {JSON.stringify(quote.emailRegistered)}
-        </li>
+        </li> */}
       </ul>
       {quote?.itemDetails.map((item) => (
         <div className="itemBox" key={item.productId}>
@@ -115,25 +111,25 @@ const QuotePage = () => {
             height={60}
           />
           <small>
-            <b>Name : </b> {item.productName}
+            <b>Nom du matériel : </b> {item.productName}
           </small>
           <small>
-            <b>Price : </b> ${item.productPrice}
+            <b>Prix : </b> ${item.productPrice}
           </small>
           <small>
-              <b>Category : </b> {item.productCategory}
+              <b>Catégorie : </b> {item.productCategory}
             </small>
           <small>
-            <b>Units : </b> {item.units}
+            <b>Unités : </b> {item.units}
           </small>
           <br />
           {quote.status !== "asked" && quote.status !== "rejected" ? (
             <>
               <small>
-                <b>StartDate : </b> {startDate}
+                <b>Début de l'événement  : </b> {startDate}
               </small>
               <small>
-                <b>EndDate : </b> {endDate}
+                <b>Fin de l'événement  : </b> {endDate}
               </small>
             </>
           ) : null}
@@ -153,7 +149,7 @@ const QuotePage = () => {
               padding: "8px",
             }}
           >
-            Accept Quote
+            Accepter le devis
           </button>
           <button
             style={{
@@ -165,7 +161,7 @@ const QuotePage = () => {
             className="actionBtn"
             onClick={() => handleUserQuoteAction("rejected")}
           >
-            Reject Quote
+            Refuser le devis
           </button>
           {quote.userDecision !== "askDiscount" && (
             <button
@@ -177,7 +173,7 @@ const QuotePage = () => {
               className="actionBtn"
               onClick={() => handleUserQuoteAction("askDiscount")}
             >
-              Ask for Discount
+              Demander une réduction sur le devis
             </button>
           )}
         </div>

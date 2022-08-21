@@ -71,7 +71,7 @@ const MyQuotes = () => {
       <div className="filterBox">
         <label htmlFor="Filter">
           {" "}
-          <h4 style={{ marginBottom: "10px" }}>Filtre</h4>
+          <h4 style={{ marginBottom: "10px" }}>Filtrer mes devis</h4>
         </label>
 
         <Select

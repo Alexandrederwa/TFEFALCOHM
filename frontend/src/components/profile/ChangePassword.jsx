@@ -65,7 +65,7 @@ const ChangePassword = () => {
     <div className="changePassword">
       <div style={{ margin: "10px auto", width: "50%", padding: "5px" }}>
         <Button variant="contained" color="primary" onClick={openModal}>
-          Change Password
+          Changer de mot de passe 
         </Button>
       </div>
       <Modal
@@ -85,7 +85,7 @@ const ChangePassword = () => {
              
             }}
           >
-            Change Password
+            Changer de mot de passe 
           </Typography>
 
         {error && (
@@ -97,7 +97,7 @@ const ChangePassword = () => {
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
             sx={{ margin: " 5px auto",width:"100%", padding: "4px" }}
-            label="Old Password"
+            label="Ancien mot de passe"
           />
           <br />
 
@@ -108,7 +108,7 @@ const ChangePassword = () => {
 
            onChange={(e) => setNewPassword(e.target.value)}
             sx={{ margin: " 5px auto",width:"100%", padding: "4px" }}
-            label="New Password"
+            label="Nouveau mot de passe"
           />
         </form>
        
@@ -119,7 +119,7 @@ const ChangePassword = () => {
           color="inherit"
           onClick={closeModal}
         >
-                   Cancel
+                   Annuler
 
         </Button>
 
@@ -130,7 +130,7 @@ const ChangePassword = () => {
           color="primary"
           onClick={handleChangePassword}
         >
-                   Proceed
+                   Confirmer
 
         </Button>
       </Modal>
