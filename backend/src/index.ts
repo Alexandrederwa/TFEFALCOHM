@@ -40,7 +40,7 @@ app.use(
     directives: {
       defaultSrc: ["'self'","https://res.cloudinary.com/"],
       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
-      imgSrc : ["'self'", 'unsafe-inline', "https://res.cloudinary.com/"],
+      imgSrc:[ "'self'", "data:", "http://res.cloudinary.com"],
       upgradeInsecureRequests: [],
     },
   })
