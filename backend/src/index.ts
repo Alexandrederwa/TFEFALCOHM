@@ -41,7 +41,7 @@ app.use(
       defaultSrc: ["'self'","data:", "https://res.cloudinary.com"],
       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
       imgSrc:[ "'self'", "data:", "https://res.cloudinary.com"],
-      connectSrc : ["'self'","https://res.cloudinary.com"],
+      connectSrc : ["'self'","https://api.cloudinary.com"],
       upgradeInsecureRequests: [],
     },
   })
