@@ -61,7 +61,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'", "https://res.cloudinary.com/"],
+        defaultSrc: ["'self'", "data:", "http://res.cloudinary.com"],
         scriptSrc: ["'self'", 'unsafe-inline', "https://www.falcohmsystem.be/"],
         imgSrc: ["'self'", "data:", "http://res.cloudinary.com"],
         upgradeInsecureRequests: [],
