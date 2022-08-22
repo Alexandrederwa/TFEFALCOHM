@@ -2,7 +2,6 @@ import { render, screen, cleanup } from "@testing-library/react";
 // Importing the jest testing library
 import '@testing-library/jest-dom'
 import Home from "../pages/home/Home";
-import App from "../App";
 import {BrowserRouter as Router} from 'react-router-dom';
  
 // afterEach function runs after each test suite is executed

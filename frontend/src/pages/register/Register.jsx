@@ -60,6 +60,7 @@ const Register = () => {
           margin: "20px auto",
           width: { xs: "80%", md: "30%" },
         }}
+        data-testid="boxTest"
         onSubmit={handleRegister}
       >
         <Box>
@@ -79,6 +80,7 @@ const Register = () => {
         <TextField
           id="email"
           value={username}
+          data-testid="emailTest"
           onChange={(e) => setUsername(e.target.value)}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
           label="Username"
@@ -100,6 +102,7 @@ const Register = () => {
           <FormControlLabel
             control={
               <Checkbox
+                data-testid="checkBoxTest"
                 checked={checked}
                 onChange={handleChange}
                

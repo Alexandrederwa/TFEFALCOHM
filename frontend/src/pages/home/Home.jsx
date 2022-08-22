@@ -80,9 +80,9 @@ const Home = () => {
          Falc'ohm System, la seule solution.
         </div>
 
-      <div class="container aboutContainer">
+      <div className="container aboutContainer">
         <div className="row">
-          <div class="col-xl-6">
+          <div className="col-xl-6">
             <h1 className="aboutTitle" data-testid="textTitle">A propos</h1>
             <div className="aboutText">
               <p>Un projet est avant tout une idée qui germe dans un coin et qui mûrit lentement, grandissant et s'étirant au fil du temps. "Falcohm system", voici la nôtre. </p>
@@ -97,7 +97,7 @@ const Home = () => {
             </div>
 
           </div>
-          <div class="col-xl-6">
+          <div className="col-xl-6">
           <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"></img>
           </div>
         </div>

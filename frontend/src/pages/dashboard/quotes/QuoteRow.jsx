@@ -16,7 +16,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
   return (
     <>
       <TableRow
-        style={{ backgroundColor: showProducts ? "#97d0e5" : "#74dd6e" }}
+        style={{ backgroundColor: showProducts ? "#97d0e5" : "#d0ebff" }}
         data-testid="details"
         key={quote.id}
       >
@@ -52,7 +52,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
           {quote?.totalPrice ? (
             "$" + quote?.totalPrice
           ) : (
-            <small>Yet to give a quote </small>
+            <div style={{color : "red"}}> En attente de création du devis </div>
           )}
         </TableCell>
         <TableCell style={{ textAlign: "center" }}>
@@ -76,7 +76,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
             sx={{ padding: "6px", marginLeft: "4px" }}
             onClick={() => handleDeleteQuote(quote.id)}
           >
-            Delete{" "}
+            Supprimer{" "}
           </Button>
           
           {quote.itemDetails?.length ? (
@@ -89,7 +89,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
               sx={{ padding: "6px", marginLeft: "4px" }}
               onClick={() => setShowProducts((val) => !val)}
             >
-              {showProducts ? "Hide " : "Show "} Products
+              {showProducts ? "Cacher " : "Montrer "} les produits
             </Button>
           ) : null}
 
@@ -103,9 +103,9 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
             component={Link}
             disabled={loading}
             to={"/quote/" + quote.id}
-            sx={{ padding: "4px", marginLeft: "4px" }}
+            sx={{ padding: "4px", marginLeft: "4px", color :'white' }}
             >
-              Invoice
+              Facture
             </Button>
           ) : null}
           {quote.status === "asked" &&
@@ -121,7 +121,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
               to={"/items_list?id=" + quote.id}
               sx={{ padding: "4px", marginLeft: "4px" }}
             >
-              Create Quote
+              Créer un devis
             </Button>
           ) : // </Link>
           quote.userDecision === "askDiscount" &&
@@ -133,22 +133,22 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
       {showProducts && (
         <TableRow
           style={{
-            backgroundColor: "#eadd4d",
+            backgroundColor: "#e7f5ff",
             color: "#fff",
             padding: "10px",
           }}
         >
           <TableCell style={{ textAlign: "center" }}>Image</TableCell>
-          <TableCell style={{ textAlign: "center" }}>Name</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Nom</TableCell>
 
-          <TableCell style={{ textAlign: "center" }}>Price</TableCell>
-          <TableCell style={{ textAlign: "center" }}>Units</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Prix</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Unités</TableCell>
 
-          <TableCell style={{ textAlign: "center" }}>Category</TableCell>
-          <TableCell style={{ textAlign: "center" }}>Rent Start</TableCell>
-          <TableCell style={{ textAlign: "center" }}>Rent Deliver</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Catégorie</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Date de réservation</TableCell>
+          <TableCell style={{ textAlign: "center" }}>Date de réservation</TableCell>
           {quote.userDecision !== "rejected" && quote.status !== "rejected" ? (
-            <TableCell style={{ textAlign: "center" }}>Actions</TableCell>
+            <TableCell style={{ textAlign: "center" }}>Action</TableCell>
           ) : null}
         </TableRow>
       )}

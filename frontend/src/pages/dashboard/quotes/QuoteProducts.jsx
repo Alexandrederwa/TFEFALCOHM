@@ -112,7 +112,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
             onClick={handleUpdateProduct}
             disabled={units === item.units || editLoading}
           >
-            {editLoading ? "Updating..." : "Update"}
+            {editLoading ? "Updating..." : "Mettre à jour"}
           </Button>
           <Button
             variant="contained"
@@ -121,7 +121,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
             onClick={handleRemoveProduct}
             disabled={removeLoading}
           >
-            {removeLoading ? "Removing..." : "Remove"}
+            {removeLoading ? "Removing..." : "Supprimer l'article"}
           </Button>
         </TableCell>
       ) : null}

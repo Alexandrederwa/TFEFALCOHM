@@ -208,8 +208,7 @@ const ItemListSection = () => {
         <Button
           variant="contained"
           onClick={quote && id  ? handleSubmit : handleAdminAddQuote}
-          sx={{ margin: "8px" }}
-          color="warning"
+          sx={{ margin: "8px" , backgroundColor : "#1D217C"}}
           disabled={!itemsList[0]?.endDate}
         >
           {submitLoading ? "loading" : " Créer le devis"}

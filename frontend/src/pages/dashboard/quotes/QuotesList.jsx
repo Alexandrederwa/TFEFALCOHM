@@ -79,30 +79,30 @@ const QuotesList = () => {
               <TableHead sty>
                 <TableRow
                   style={{
-                    backgroundColor: "#ef6464",
+                    backgroundColor: "#339af0",
                     color: "#ffffff",
                   }}
                 >
                   <TableCell style={{ textAlign: "center" }}>
-                    Customer Email
+                    Email du client
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    User Registered
-                  </TableCell>
-
-                  <TableCell style={{ textAlign: "center" }}>
-                    Customer Decision
+                    Utilisateur inscrit
                   </TableCell>
 
-                  <TableCell style={{ textAlign: "center" }}>Status</TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Total Price
+                    Décision du client
+                  </TableCell>
+
+                  <TableCell style={{ textAlign: "center" }}>Statut</TableCell>
+                  <TableCell style={{ textAlign: "center" }}>
+                    Prix total
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Total Items
+                    Nombre d'article 
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Requested
+                    Date de création
                   </TableCell>
 
                   <TableCell style={{ textAlign: "center" }}>Actions</TableCell>
