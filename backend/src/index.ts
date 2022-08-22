@@ -38,9 +38,10 @@ app.use(bodyParser.json());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'","data:", "http://res.cloudinary.com"],
+      defaultSrc: ["'self'","data:", "https://res.cloudinary.com"],
       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
-      imgSrc:[ "'self'", "data:", "http://res.cloudinary.com"],
+      imgSrc:[ "'self'", "data:", "https://res.cloudinary.com"],
+      connectSrc : ["https://res.cloudinary.com"],
       upgradeInsecureRequests: [],
     },
   })
