@@ -31,6 +31,8 @@ const checkBox = screen.getByTestId('checkBoxTest');
 test("CheckBox not have wrong class MUI", () => {
 expect(checkBox).not.toHaveClass("Mui-required");
 })
+
+//fin
     
  
 

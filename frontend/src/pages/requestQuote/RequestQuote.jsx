@@ -115,10 +115,10 @@ const RequestQuote = () => {
         <Button
           variant="contained"
           onClick={handleRequestQuote}
-          color="warning"
+          sx={{backgroundColor:"#1D217C"}}
           endIcon={<SendIcon />}
         >
-          {loading ? "Loading" : " Request Quote"}
+          {loading ? "Loading" : " Envoyer"}
         </Button>
       </Box>
     </Box>

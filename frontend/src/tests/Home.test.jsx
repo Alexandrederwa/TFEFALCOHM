@@ -6,7 +6,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
  
 // afterEach function runs after each test suite is executed
 afterEach(() => {
-    cleanup(); // Resets the DOM after each test suite
+    cleanup(); 
 })
   
 describe("Button Component" ,() => {
