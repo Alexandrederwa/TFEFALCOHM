@@ -68,12 +68,20 @@ const AppBarX = () => {
           >
             MarketPlacezeza
           </Typography> */}
-          <Box
-            component="img"
+          {/* <Box
+              component="img"
               className="logoFont"
               alt="logoFont"
+              href="/"
               src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
-              />
+              /> */}
+            <a href="/" rel="noreferrer">
+                        <img
+                          src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
+                          alt="logoNavBar"
+                          className="logoFont"
+                        />
+                      </a>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

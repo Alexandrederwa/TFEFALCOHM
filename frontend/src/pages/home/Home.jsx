@@ -12,6 +12,8 @@ import { color } from "@mui/system";
 import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
+
 const Home = () => {
   const { setProducts, products } = useProducts();
   const { user } = useUser();
@@ -24,6 +26,8 @@ const Home = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchQ, setSearchQ] = useState("");
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
+  const isLittleScreen = useMediaQuery({ query: '(max-width: 1224px)' })
   const handleRequestQuote = async (e) => {
     e.preventDefault();
 
@@ -103,6 +107,17 @@ const Home = () => {
 
               <p>Nous défendons, avec ce projet, les valeurs de la musique en tant qu'art essentiel et encré dans la société à tout point de vue. La vision de notre ASBL reflète la liberté dont doit bénéficier cette culture.</p>
               <p>Nous sommes heureux de pouvoir vous la partager par le biais de ce site qui on l'espère répondra à vos attentes.</p>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                component={Link}
+                disabled={loading}
+                to={"/request_quote"}
+                className="buttonAbout"
+                >
+                En savoir plus
+              </Button>
             </div>
 
           </div>

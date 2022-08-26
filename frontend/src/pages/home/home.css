@@ -111,6 +111,14 @@ z-index: -1;
     margin-top: 53rem;
 }
 
+.buttonAbout{
+    padding: 4px;
+    margin-left: 1rem !important;
+    margin-top: 1rem !important;
+    background-color : #1D217C !important; 
+    text-align: center;
+}
+
 .quoteLink{
     margin-top: 7rem;
     text-align: center;
@@ -308,6 +316,9 @@ z-index: -1;
     .aboutContainer{
         margin-top: 28rem;
     }
+    .buttonAbout{
+        margin-left: 17rem !important;
+    }
     .aboutTitle{
         font-size: 2.8rem;
         text-align: center;
@@ -347,7 +358,17 @@ z-index: -1;
 }
 
 /* Big phone, little tablet >600px */
-@media only screen and (max-width : 768px){}
+@media only screen and (max-width : 768px){
+    .centered{
+        font-size: 1.5rem;
+        top: 23%;
+    }
+    .buttonAbout{
+        margin-left: 11.5rem !important;
+    }
+
+
+}
 
 
 
