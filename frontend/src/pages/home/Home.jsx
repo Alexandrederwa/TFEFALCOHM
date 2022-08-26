@@ -209,7 +209,7 @@ const Home = () => {
       <Box sx={{ textAlign: "center" }}>
         <Button
           variant="contained"
-          onClick={handleRequestQuote}
+          onClick={() => handleRequestQuote}
           className="buttonTakeInfo"
           endIcon={<SendIcon />}
         >

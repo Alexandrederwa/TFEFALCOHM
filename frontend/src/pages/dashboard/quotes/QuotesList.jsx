@@ -24,17 +24,17 @@ const override = css`
 `;
 const QuotesList = () => {
   const id = useId()
-
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
-  const [limit, setLimit] = useState(10);
-  const handlePagination = (_, page) => {
+  const [limit, setLimit] = useState(100000);
+  const handlePagination = (event, page) => {
     setCurrentPage(page);
   };
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
+    setCurrentPage(0);
   };
   const fetchQuotes = async () => {
     setLoading(true);
@@ -117,15 +117,15 @@ const QuotesList = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
+          {/* <TablePagination
             component="div"
             count={quotes.length}
             onPageChange={handlePagination}
             onRowsPerPageChange={handleLimitChange}
             page={currentPage}
             rowsPerPage={limit}
-            rowsPerPageOptions={[5, 10, 25]}
-          />
+            rowsPerPageOptions={[10, 25 ,1000]}
+          /> */}
         </div>
       ) : // </Container>
       loading ? (

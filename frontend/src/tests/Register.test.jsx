@@ -8,7 +8,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 afterEach(() => {
     cleanup(); // Resets the DOM after each test suite
 })
-  
+//Unit test suite 1 
 describe("Button Component" ,() => {
     render(<Router>
         <Register />,
@@ -31,8 +31,6 @@ const checkBox = screen.getByTestId('checkBoxTest');
 test("CheckBox not have wrong class MUI", () => {
 expect(checkBox).not.toHaveClass("Mui-required");
 })
-
-//fin
     
  
 

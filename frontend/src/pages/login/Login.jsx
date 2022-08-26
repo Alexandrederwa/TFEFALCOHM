@@ -37,7 +37,7 @@ const Login = () => {
   };
   return (
     <div className="loginPage">
-      <h1>Login</h1>
+      <h1>Se connecter</h1>
       <Box
         component="form"
         sx={{
@@ -57,7 +57,7 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
-          label="Email"
+          label="Adresse Email"
           required
 
           variant="outlined"
@@ -69,19 +69,18 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassowrd(e.target.value)}
           sx={{ padding: "10px", width: "80%" }}
-          label="Password"
+          label="Mot de passe"
           required
           variant="outlined"
         />
         <Button
           size="large"
-          sx={{ margin: "30px" }}
+          sx={{ margin: "30px", backgroundColor : "#1D217C" }}
         
           type="submit"
           variant="contained"
-          color="warning"
         >
-          {loading ? "Loading..." : "Login"}
+          {loading ? "Loading..." : "Se connecter"}
         </Button>
       </Box>
     </div>

@@ -52,7 +52,7 @@ const Register = () => {
   // }, []);
   return (
     <div className="registerPage">
-      <h1>Register</h1>
+      <h1>Créer ton compte</h1>
       <Box
         component="form"
         sx={{
@@ -73,7 +73,7 @@ const Register = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
-          label="Email"
+          label="Adresse Email"
           required
           variant="outlined"
         />
@@ -83,7 +83,7 @@ const Register = () => {
           data-testid="emailTest"
           onChange={(e) => setUsername(e.target.value)}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
-          label="Username"
+          label="Nom"
           required
           variant="outlined"
         />
@@ -93,7 +93,8 @@ const Register = () => {
           required
             onChange={(e) => setPassowrd(e.target.value)}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
-          label="Password"
+          label="Mot de passe"
+          type="password"
           variant="outlined"
         />
       
@@ -108,17 +109,17 @@ const Register = () => {
                
               />
             }
-            label="Subscribe for Notifications"
+            label="S'inscrire à la newsletter"
           />
         </div>
 
         <Button
           size="large"
-          sx={{ margin: "30px" }}
+          sx={{ margin: "30px", backgroundColor : "#1D217C"}}
           required
           variant="contained"
-          color="warning" type="submit">
-          {loading ? "Loading..." : "Register"}
+          type="submit">
+          {loading ? "Loading..." : "S'inscrire"}
         </Button>
       </Box>
     </div>

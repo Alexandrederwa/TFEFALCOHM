@@ -47,3 +47,16 @@
 .productBox .cartBtn:hover {
   background-color: rgb(247, 214, 30);
 }
+
+
+.buttonMore{
+  padding: 4px;
+  margin-left: 4px ;
+  background-color : #1D217C !important; 
+}
+
+.buttonMore:hover {
+  background-color:#0f6116 !important;
+  transition: 0.5s;
+  color: white;
+}

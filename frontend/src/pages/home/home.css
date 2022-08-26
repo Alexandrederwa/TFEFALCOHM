@@ -42,7 +42,7 @@ z-index: -1;
     left: 50%;
     /* width: 70%; */
     transform: translate(-50%, -50%);
-    font-size: 4rem;
+    font-size: 3.3rem;
     font-weight: bold;
     text-align: center;
     color:  #1a1a1a;
@@ -97,7 +97,8 @@ z-index: -1;
 .rightPicture{
     max-height: 100%;
     max-width: 100%;
-    margin-left: 10%;
+    margin-left: 1rem;
+    margin-top: 5rem;
     border-radius: 25px;
 }
 
@@ -105,11 +106,12 @@ z-index: -1;
     margin-left: 5%;
     font-weight: bold;
     color:#1D217C;
+    font-size: 3rem;
 }
 
 .aboutText{
     margin-top: 7%;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .aboutContainer{
