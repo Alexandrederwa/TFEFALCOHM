@@ -83,6 +83,7 @@ const AppBarX = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
               style={{color: "black"}}
+              className="openNavbarButton"
             >
               <MenuIcon />
             </IconButton>

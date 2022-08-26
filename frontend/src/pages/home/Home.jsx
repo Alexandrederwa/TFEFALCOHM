@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const { setProducts, products } = useProducts();
   const { user } = useUser();
+  const [show, setShow] = useState(false);
   const [name, setName] = useState(user?.name || "");
   const [email, setEmail] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");
@@ -46,6 +47,14 @@ const Home = () => {
       console.log(error?.response.data.message);
     }
   };
+  useEffect(() => {
+    // setTimeout(() => {
+    //   setCount((count) => count + 1);
+    // }, 1000);
+    if (products.length >= 10){
+      setShow(true)
+    }
+  }, [products]); // <- add empty brackets here
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -82,7 +91,7 @@ const Home = () => {
 
       <div className="container aboutContainer">
         <div className="row">
-          <div className="col-xl-6">
+          <div className="col-xl-6 col-lg-6">
             <h1 className="aboutTitle" data-testid="textTitle">A propos</h1>
             <div className="aboutText">
               <p>Un projet est avant tout une idée qui germe dans un coin et qui mûrit lentement, grandissant et s'étirant au fil du temps. "Falcohm system", voici la nôtre. </p>
@@ -97,7 +106,7 @@ const Home = () => {
             </div>
 
           </div>
-          <div className="col-xl-6">
+          <div className="col-xl-6 col-lg-6">
           <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"></img>
           </div>
         </div>
@@ -110,9 +119,9 @@ const Home = () => {
           variant="h3"
           sx={{ textAlign: "center", fontWeight: "bold", color : "#1D217C"}}
           component="div"
-          className=""
+          className="titleProduct"
         >
-          Nos produits
+          Découvrez notre matériel
         </Typography>
         <div className="searchContainer">
           <TextField
@@ -120,15 +129,25 @@ const Home = () => {
             value={searchQ}
             sx={{width:{md:"50%",lg:"35%",xs:"80%"}}}
             onChange={(e) => setSearchQ(e.target.value)}
-            label="Search Products"
+            label="Chercher du matériel"
             variant="outlined"
           />
         </div>
         <ProductSection searchQ={searchQ} />
+        <div className="buttonMoreDiv">
+        {show === true && 
+          <Button
+          variant="contained"
+          className="buttonMore"
+          >
+            Voir plus
+          </Button>
+        }
+        </div>
       </div>
       {/* Lien vers create quote */}
       <div className="quoteLink container">
-          <h1 className='col-xl-12'>
+          <h1 className='col-xl-12 helpTitle'>
               Besoin d'un devis pour un événement ?
           </h1>
           <p className="secondTitle">Tout type d'événements</p>
@@ -149,7 +168,7 @@ const Home = () => {
       component="form"
       sx={{
         m: 1,
-        width: { md: "40%", xs: "70%" },
+        width: { md: "50%", xs: "60%" },
         margin: "auto",
       }}
       noValidate
@@ -220,7 +239,7 @@ const Home = () => {
       </div>
       <div className="container footerContainer">
         <div className="row">
-            <div className="col logoDiv">
+          <div className="col logoDiv">
             <Box 
               component="img"
               src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660062946/Falc_ohm_n_et_b_txt_circulaire_i5oy9p.png"
@@ -234,49 +253,44 @@ const Home = () => {
             </div>
             <div className="col ">
               <div className="row linkFooter">
-                <div className="col " data-testid="footerText" >
+                {/* <div className="col " data-testid="footerText" >
                   
                 FAQ
-              </div>
-              <div className="col " >
-              <Link to="/legal_mentions">Mentions Légales</Link>
+              </div> */}
+              <div className="col linkDiv">
+              <Link to="/legal_mentions" className="legalMention" >Mentions légales</Link>
               </div>
               </div>
             </div>
-            <div className="col ">
+            <div className="col socialsDiv">
               <div className="row">
                   <div className="col">
-                  <Box 
-                      component="img"
-                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Instagram_zhzxba.png"
-                      className="logoFooter"
-                      alt="logoFooter"
-                      
-                      >
-                        
-                    </Box>
+                      <a href="https://www.instagram.com/falcohm6tm/" target="_blank" rel="noreferrer">
+                        <img
+                          src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Instagram_zhzxba.png"
+                          alt="instaLink"
+                          className="logoInsta"
+                        />
+                      </a>
                   </div>
+                  {/* <div className="col">
+                    <a href="https://www.instagram.com/falcohm6tm/" target="_blank" rel="noreferrer">
+                        <img
+                          src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_ioag3a.png"
+                          alt="YTlink"
+                          className="logoYT"
+                        />
+                      </a>
+                  </div> */}
                   <div className="col">
-                  <Box 
-                      component="img"
-                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_ioag3a.png"
-                      className="logoFooter"
-                      alt="logoFooter"
+                    <a href="https://www.facebook.com/Falcohm6TM" target="_blank" rel="noreferrer">
+                        <img
+                           src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_1_tcpv1s.png"
+                           className="logoFb"
+                          alt="logoFb"
                       
-                      >
-                        
-                    </Box>
-                  </div>
-                  <div className="col">
-                  <Box 
-                      component="img"
-                      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660064625/Vector_1_tcpv1s.png"
-                      className="logoFooter"
-                      alt="logoFooter"
-                      
-                      >
-                        
-                    </Box>
+                        />
+                      </a>
                   </div>
               </div>
             </div>
