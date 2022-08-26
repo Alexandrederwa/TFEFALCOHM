@@ -13,6 +13,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
 
 const Home = () => {
   const { setProducts, products } = useProducts();
@@ -26,8 +27,10 @@ const Home = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchQ, setSearchQ] = useState("");
-  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-  const isLittleScreen = useMediaQuery({ query: '(max-width: 1224px)' })
+  const isBigScreen = useMediaQuery({ query: '(min-width: 769px)' })
+  const isLittleScreen = useMediaQuery({ query: '(max-width: 768px)' })
+  console.log(isBigScreen)
+  console.log(isLittleScreen)
   const handleRequestQuote = async (e) => {
     e.preventDefault();
 
@@ -80,6 +83,7 @@ const Home = () => {
   return (
     <div className="homePage">
       {/* Big picture */}
+      {isBigScreen ?  
       <Box 
               component="img"
               src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660060391/sound_htbfif.webp"
@@ -88,7 +92,29 @@ const Home = () => {
               
               >
                 
-      </Box>
+      </Box> :
+      <Box 
+      component="img"
+      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"
+      className="homePicture"
+      alt="homePicture"
+      
+      >
+        
+        </Box>
+      
+      }
+      {/* {isLittleScreen === true &&  
+      <Box 
+      component="img"
+      src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660060391/sound_htbfif.webp"
+      className="homePicture"
+      alt="homePicture"
+      
+      >
+        
+        </Box>
+      } */}
       <div className="centered"> 
          Falc'ohm System, la seule solution.
         </div>
