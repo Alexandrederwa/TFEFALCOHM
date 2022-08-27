@@ -30,8 +30,10 @@ const Login = () => {
         }
       }
     } catch (error) {
-      setError(error?.response.data.message);
+      // setError(error?.response.data.message);
+      console.log(error);
       console.log(error.message);
+      
     }
     setLoading(false);
   };
