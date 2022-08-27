@@ -103,7 +103,7 @@ app.use(express.static(__dirname + "../../../build/"));
   
 
 app.get('*', ( res: any) => {
-  return res.sendFile(path
+  return res.sendfile(path
     .join(__dirname + '../../../build/', 'index.html'))
 });
 // LISTENING TO THE PORT

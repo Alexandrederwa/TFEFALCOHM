@@ -95,7 +95,7 @@ app.use("/api/products", product_1.default);
 app.use("/api/quotes", quotes_1.default);
 app.use(express.static(__dirname + "../../../build/"));
 app.get('*', (res) => {
-    return res.sendFile(path
+    return res.sendfile(path
         .join(__dirname + '../../../build/', 'index.html'));
 });
 const PORT = 4000;

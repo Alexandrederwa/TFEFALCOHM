@@ -18,7 +18,7 @@ const Product_1 = require("./../entity/Product");
 const mail_1 = __importDefault(require("@sendgrid/mail"));
 require('dotenv').config();
 if (process.env.NODE_ENV !== 'production') {
-    var apiKey = process.env.SENDGRID_API_KEY;
+    const apiKey = process.env.SENDGRID_API_KEY;
     console.log(apiKey);
     console.log('xdlol');
     mail_1.default.setApiKey(apiKey);

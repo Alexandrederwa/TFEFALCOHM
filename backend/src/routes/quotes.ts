@@ -5,7 +5,7 @@ import { Product } from "./../entity/Product";
 import sgMail from "@sendgrid/mail";
 require('dotenv').config();
 if (process.env.NODE_ENV !== 'production'){
-  var apiKey = process.env.SENDGRID_API_KEY;
+  const apiKey = process.env.SENDGRID_API_KEY;
   console.log(apiKey)
   console.log('xdlol')
   sgMail.setApiKey(apiKey);
