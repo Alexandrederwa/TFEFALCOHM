@@ -59,15 +59,6 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'", "data:", "https://res.cloudinary.com"],
-        scriptSrc: ["'self'", 'unsafe-inline', "https://www.falcohmsystem.be/"],
-        imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
-        connectSrc: ["'self'", "https://api.cloudinary.com"],
-        upgradeInsecureRequests: [],
-    },
-}));
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({
     action: "sameorigin",

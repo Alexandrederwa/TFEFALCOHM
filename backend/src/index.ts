@@ -34,17 +34,17 @@ app.use(bodyParser.json());
 
 //Content-Security-Policy
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'","data:", "https://res.cloudinary.com"],
-      scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
-      imgSrc:[ "'self'", "data:", "https://res.cloudinary.com"],
-      connectSrc : ["'self'","https://api.cloudinary.com"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'","data:", "https://res.cloudinary.com"],
+//       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
+//       imgSrc:[ "'self'", "data:", "https://res.cloudinary.com"],
+//       connectSrc : ["'self'","https://api.cloudinary.com"],
+//       upgradeInsecureRequests: [],
+//     },
+//   })
+// );
 
 //X-Content-Type-Options
 app.use(helmet.noSniff());
