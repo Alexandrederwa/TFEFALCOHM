@@ -17,13 +17,13 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 // const helmet = require("helmet");
+app.use(cors);
 app.use(bodyParser.json())
 app.use(express.json())
-var corsOptions = {
-  origin: "http://localhost:8081",
-  credentials: true
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: "http://localhost:8081",
+// };
+// app.use(cors(corsOptions));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:false}));
