@@ -102,8 +102,8 @@ app.use("/api/quotes", requestQuotesRoutes);
 app.use(express.static(__dirname + "../../../build/"));
   
 
-app.get('/', ( res: any) => {
-  return res.sendfile(path
+app.get('/', ( req : any,res: any) => {
+  return res.sendFile(path
     .join(__dirname + '../../../build/', 'index.html'))
 });
 // LISTENING TO THE PORT

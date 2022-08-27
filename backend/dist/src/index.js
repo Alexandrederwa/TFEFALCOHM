@@ -94,8 +94,8 @@ app.use("/api/auth", auth_1.default);
 app.use("/api/products", product_1.default);
 app.use("/api/quotes", quotes_1.default);
 app.use(express.static(__dirname + "../../../build/"));
-app.get('/', (res) => {
-    return res.sendfile(path
+app.get('/', (req, res) => {
+    return res.sendFile(path
         .join(__dirname + '../../../build/', 'index.html'));
 });
 const PORT = 4000;

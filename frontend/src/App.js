@@ -6,6 +6,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 // import Nav from "./components/navbar/Nav";
 import NavBar from "./components/navBar/NavBar"
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -55,7 +56,7 @@ function App() {
       <ClockLoader color={"red"} loading={loading} css={override} size={100} />
     );
   return ( 
-    <Router>
+    <HashRouter>
    
       <NavBar/>
       <Routes>
@@ -68,7 +69,8 @@ function App() {
         <Route
           exact
           path="/register"
-          element={user ? <Navigate to="/" /> : <Register />}
+          // element={user ? <Navigate to="/" /> : <Register />}
+          element={<Register />}
         />
         <Route
           exact
@@ -131,7 +133,7 @@ function App() {
           {/* <Invoice /> */}
         </Route>
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
