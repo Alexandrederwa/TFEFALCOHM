@@ -7,7 +7,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Seting axios to send requrest to the backend Api
-axios.defaults.baseURL="http://localhost:4000"
+// axios.defaults.baseURL="http://localhost:4000"
 axios.defaults.withCredentials=true // setting withCredentials to true because we want to send the cookies
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
