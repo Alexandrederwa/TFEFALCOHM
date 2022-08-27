@@ -102,7 +102,7 @@ app.use("/api/quotes", requestQuotesRoutes);
 app.use(express.static(__dirname + "../../../build/"));
   
 
-app.get('*', ( res: any) => {
+app.get('/', ( res: any) => {
   return res.sendfile(path
     .join(__dirname + '../../../build/', 'index.html'))
 });
