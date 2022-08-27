@@ -60,3 +60,48 @@
         
 
 }
+
+@media only screen and (max-width : 768px){
+    .logoFont{
+        max-width: 12.5rem;
+        max-height: 12.5rem;
+        margin-top: 1rem;
+    }
+    .openNavbarButton{
+        left: 90%;
+        /* color: white !important;
+        background-color: rgba(0, 0, 0, 0.753) !important; */
+        background-color: white !important;
+        margin-top: 0.5rem !important;
+    }
+}
+
+@media only screen and (max-width : 599px){
+    .openNavbarButton{
+        left: 70%;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-top: 1rem !important;
+    }
+    .logoFont{
+        max-width: 9rem;
+        max-height: 9rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media only screen and (min-width :  400px) and (max-width : 599px){
+    .openNavbarButton{
+        left: 80%;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-top: 1rem !important;
+    }
+    .logoFont{
+        max-width: 10rem;
+        max-height: 10rem;
+        margin-top: 1rem;
+    }
+}
+

@@ -10,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { useMediaQuery } from 'react-responsive'
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../store";
@@ -19,6 +20,7 @@ const AppBarX = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { setUser, user } = useUser();
   const navigate = useNavigate();
+  const isBigScreen = useMediaQuery({ query: '(min-width: 769px)' })
   const logout = async () => {
     navigate(`/`);
     await axios.post("/api/auth/logout");
@@ -75,13 +77,22 @@ const AppBarX = () => {
               href="/"
               src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
               /> */}
-            <a href="/" rel="noreferrer">
-                        <img
-                          src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
-                          alt="logoNavBar"
-                          className="logoFont"
-                        />
-                      </a>
+            {isBigScreen ?  
+                  <a href="/" rel="noreferrer">
+                      <img
+                        src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
+                        alt="logoNavBar"
+                        className="logoFont"
+                      />
+                  </a> : 
+                  <a href="/" rel="noreferrer">
+                  <img
+                    src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_white_vdrtbl.png"
+                    alt="logoNavBar"
+                    className="logoFont"
+                  />
+                  </a> 
+            }
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

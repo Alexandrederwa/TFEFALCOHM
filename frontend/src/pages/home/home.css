@@ -317,7 +317,10 @@ z-index: -1;
         margin-top: 28rem;
     }
     .buttonAbout{
-        margin-left: 17rem !important;
+        /* margin-left: 17rem !important; */
+    }
+    .buttonAboutDiv{
+        text-align: center;
     }
     .aboutTitle{
         font-size: 2.8rem;
@@ -332,9 +335,12 @@ z-index: -1;
         margin-top: 3rem;
         max-height: 90%;
         max-width: 90%;
-        margin-left: 4rem !important;
-        margin-right: 3rem !important;
+        /* margin-left: 4rem !important;
+        margin-right: 3rem !important; */
         
+    }
+    .rightpictureDiv{
+        text-align: center;
     }
     .linkDiv{
         margin-top: 3.3rem !important;
@@ -353,21 +359,210 @@ z-index: -1;
         width: 60%;
         margin: 20px auto;
     }
+
     
 
 }
 
 /* Big phone, little tablet >600px */
 @media only screen and (max-width : 768px){
+    .homePictureMobile{
+    position: absolute; 
+      top: 0; 
+      left: 0; 
+    z-index: -1;
+      /* Preserve aspet ratio */
+      min-width: 100%;
+      min-height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+    }
     .centered{
-        font-size: 1.5rem;
-        top: 23%;
+        font-size: 1.7rem;
+        top: 45%;
     }
     .buttonAbout{
-        margin-left: 11.5rem !important;
+        /* margin-left: 11.5rem !important; */
+    }
+    .buttonAboutDiv{
+        text-align: center;
+    }
+    .rightPicture{
+        /* margin-left: 2.5rem !important;
+        margin-right: 0rem !important; */
+    }
+    .rightpictureDiv{
+        text-align: center;
+    }
+    .aboutContainer{
+        margin-top: 50rem;
+    }
+    .linkDiv{
+        margin-top: 2.8rem !important;
+        text-align: center;
+    }
+    .legalMention{
+        font-size: 0.8rem;
+        
+    }
+    .socialsDiv{
+        margin-top: 2.3rem !important;
+    }
+    .logoFooter{
+        margin-top: 2rem;
+        margin-right: 3rem;
     }
 
 
+}
+@media only screen and (min-width : 329px) and (max-width : 359px){
+    .aboutContainer{
+        margin-top: 26rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 360px) and (max-width : 399px){
+    .aboutContainer{
+        margin-top: 29rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 400px) and (max-width : 439px){
+    .aboutContainer{
+        margin-top: 33rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 440px) and (max-width : 479px){
+    .aboutContainer{
+        margin-top: 36rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 480px) and (max-width : 525px){
+    .aboutContainer{
+        margin-top: 40rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 526px) and (max-width : 560px){
+    .aboutContainer{
+        margin-top: 43rem !important;
+        
+                
+    }
+}
+@media only screen and (min-width : 561px) and (max-width : 599px){
+    .aboutContainer{
+        margin-top: 46rem !important;
+        
+                
+    }
+}
+/* //phone >320px*/
+@media only screen and (max-width : 599px){
+    .homePictureMobile{
+        position: absolute; 
+          top: 0; 
+          left: 0; 
+        z-index: -1;
+          /* Preserve aspet ratio */
+          min-width: 80%;
+          min-height: 50%;
+          max-width: 100%;
+          max-height: 100%;
+        }
+    .centered{
+        font-size: 0.9rem;
+        top: 30%;
+        border-radius: 5px;
+    }
+    .aboutContainer{
+        margin-top: 24rem;
+        
+                
+    }
+    .aboutTitle{
+        font-size: 2rem;
+    }
+    .aboutText{
+        font-size: 0.7rem;
+    }
+    .rightpictureDiv{
+        text-align: center;
+    }
+    .rightPicture{
+        margin-left: 0rem !important;
+        margin-right: 0rem !important;
+    }
+    .buttonAbout{
+        margin-left: 0rem !important;
+        font-size: 0.6rem !important;
+    }
+    .buttonAboutDiv{
+        text-align: center;
+    }
+    .titleProduct{
+        font-size: 1.3rem !important;
+    }
+    .buttonMore{
+        font-size: 0.6rem !important;
+    }
+    .helpTitle{
+        font-size: 1.3rem;
+    }
+    .secondTitle{
+        font-size: 0.8rem;
+    }
+    .buttonQuote{
+        font-size: 0.6rem !important;
+    }
+    .contactForm{
+        margin-top: 3rem;
+    }
+    .titleForm{
+        font-size: 1.4rem !important;
+    }
+    .buttonTakeInfo{
+        font-size: 0.6rem !important;
+    }
+    .logoInsta,.logoYT,.logoFb{
+        height: 1.3rem;
+        
+    }
+    .legalMention{
+        font-size: 0.6rem;
+    }
+    .linkDiv{
+        margin-top: 1.2rem !important;
+    }
+    .logoFooter{
+        margin-top: 1.2rem;
+        margin-right: 3rem;
+    }
+    .socialsDiv{
+        margin-top: 1.2rem !important;
+    }
+}
+
+@media only screen and (min-width :  400px) and (max-width : 500px){
+    .centered{
+        font-size: 1.2rem;
+        top: 35%;
+        border-radius: 5px;
+    }
+}
+@media only screen and (min-width :  501px) and (max-width : 599px){
+    .centered{
+        font-size: 1.4rem;
+        top: 40%;
+        border-radius: 5px;
+    }
 }
 
 

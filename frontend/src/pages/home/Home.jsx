@@ -13,7 +13,6 @@ import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
-import MediaQuery from 'react-responsive'
 
 const Home = () => {
   const { setProducts, products } = useProducts();
@@ -28,9 +27,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [searchQ, setSearchQ] = useState("");
   const isBigScreen = useMediaQuery({ query: '(min-width: 769px)' })
-  const isLittleScreen = useMediaQuery({ query: '(max-width: 768px)' })
-  console.log(isBigScreen)
-  console.log(isLittleScreen)
   const handleRequestQuote = async (e) => {
     e.preventDefault();
 
@@ -96,8 +92,8 @@ const Home = () => {
       <Box 
       component="img"
       src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"
-      className="homePicture"
-      alt="homePicture"
+      className="homePictureMobile"
+      alt="homePictureMobile"
       
       >
         
@@ -116,7 +112,7 @@ const Home = () => {
         </Box>
       } */}
       <div className="centered"> 
-         Falc'ohm System, la seule solution.
+         Falc'ohm System, la solution idéale.
         </div>
 
       <div className="container aboutContainer">
@@ -134,7 +130,7 @@ const Home = () => {
               <p>Nous défendons, avec ce projet, les valeurs de la musique en tant qu'art essentiel et encré dans la société à tout point de vue. La vision de notre ASBL reflète la liberté dont doit bénéficier cette culture.</p>
               <p>Nous sommes heureux de pouvoir vous la partager par le biais de ce site qui on l'espère répondra à vos attentes.</p>
             </div>
-            <div>
+            <div className="buttonAboutDiv">
               <Button
                 variant="contained"
                 component={Link}
@@ -147,7 +143,7 @@ const Home = () => {
             </div>
 
           </div>
-          <div className="col-xl-6 col-lg-6">
+          <div className="col-xl-6 col-lg-6 rightpictureDiv">
           <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"></img>
           </div>
         </div>
@@ -189,9 +185,9 @@ const Home = () => {
       {/* Lien vers create quote */}
       <div className="quoteLink container">
           <h1 className='col-xl-12 helpTitle'>
-              Besoin d'un devis pour un événement ?
+              Besoin d'un devis pour un évènement ?
           </h1>
-          <p className="secondTitle">Tout type d'événements</p>
+          <p className="secondTitle">Tout type d'évènements</p>
           <Button
             data-testid="buttonAsk"
             variant="contained"
