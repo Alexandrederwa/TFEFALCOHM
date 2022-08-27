@@ -3,7 +3,6 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import ErrorMiddleware from "./middlewares/errors";
-import cors from "cors";
 import * as helmet from "helmet";
 const bodyParser = require('body-parser');
 dotenv.config();
@@ -16,7 +15,7 @@ import { NextFunction } from "express";
 const express = require("express");
 const path = require('path');
 const app = express();
-var cors = require('cors');
+const cors = require('cors');
 // const helmet = require("helmet");
 app.use(bodyParser.json())
 app.use(express.json())

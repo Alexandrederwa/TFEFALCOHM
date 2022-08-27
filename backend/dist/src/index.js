@@ -48,7 +48,7 @@ const data_source_1 = require("./data-source");
 const express = require("express");
 const path = require('path');
 const app = express();
-var cors = require('cors');
+const cors = require('cors');
 app.use(bodyParser.json());
 app.use(express.json());
 var corsOptions = {
