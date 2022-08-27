@@ -419,14 +419,15 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     if (!saved) {
         return next(new errorHandler_1.errorHandler("Failed to save the quote", 400));
     }
-    const string = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
+    const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     const msg = {
         to: `${quote.userEmail}`,
         from: "falcohm6tm@outlook.com",
         templateId: 'd-5478f37ff73344a3b941d8bf2b6a1df0',
         dynamicTemplateData: {
             subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
-            name: `${quote.nameClient}`
+            name: `${quote.nameClient}`,
+            linkToQuote: linkQuote
         }
     };
     console.log("1");
