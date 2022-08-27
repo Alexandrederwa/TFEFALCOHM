@@ -542,14 +542,16 @@ const requestQuote = catchAsyncError(
       return next(new errorHandler("Failed to save the quote", 400));
     }
 
-    const string = `https://www.falcohmsystem.be/item_list?id=${saved.id}`;
+    const string = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
     const msg = {
       to: `${quote.userEmail}`,
       from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-      subject: "Your Quote is Ready",
-      text: "Hey,A new quote has been requested, go check it out.",
-      html: `<a href=${string} style="color:red;">${string} </a>`,
+      templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+      dynamicTemplateData: {
+        subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
+        name : `${quote.nameClient}`
+      }
     };
     console.log("1")
     // await sgMail.send(msg);
