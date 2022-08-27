@@ -38,7 +38,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-const cors_1 = __importDefault(require("cors"));
 const helmet = __importStar(require("helmet"));
 const bodyParser = require('body-parser');
 dotenv_1.default.config();
@@ -49,13 +48,14 @@ const data_source_1 = require("./data-source");
 const express = require("express");
 const path = require('path');
 const app = express();
-app.use((0, cors_1.default)());
+var cors = require('cors');
 app.use(bodyParser.json());
 app.use(express.json());
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:8081",
+    credentials: true
 };
-app.use((0, cors_1.default)(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
