@@ -563,6 +563,7 @@ const requestQuote = catchAsyncError(
         })
         .catch((error) => {
           console.log(error.response.body);
+          console.log(error)
           console.log('RECEIVED ERROR')
         })
     console.log("2")
