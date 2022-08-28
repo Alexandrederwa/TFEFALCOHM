@@ -569,7 +569,7 @@ const requestQuote = catchAsyncError(
           console.log('RECEIVED ERROR')
         })
         const msgAdmin = {
-          to: "falcohm6tm@outlook.com",
+          to: "face.alex.d@gmail.com",
           from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
           templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
           dynamicTemplateData: {
