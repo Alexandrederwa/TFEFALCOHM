@@ -230,15 +230,19 @@ const addReqQuoteItems = catchAsyncError(
       // MAILING TO THE CUSTOMER THAT YOUR QUOTE IS READY
       const string = `${process.env.ORIGIN}/quote?quoteId=${reqQuote.id}`;
 
-      const msg = {
-        to: reqQuote.userEmail,
+      const msgResponse = {
+        to: `${reqQuote.userEmail}`,
         from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-        subject: "Your Quote is Ready",
-        text: "Go to fontend/quote to see it ",
-        html: `<a href=${string} style="color:red;">${string} </a>`,
-      };
-
-      await sgMail.send(msg);
+        templateId : 'd-86b20709d9dc423d84e62484db4aba4a',
+        dynamicTemplateData: {
+          subject : "Votre devis est prêt !",
+          name : `${reqQuote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+          
+        
+      }
+    }
+      await sgMail.send(msgResponse);
       console.log("Email send is => ", string);
       return res.json(reqQuote);
     } catch (error) {
