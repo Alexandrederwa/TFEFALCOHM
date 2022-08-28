@@ -570,7 +570,7 @@ const requestQuote = catchAsyncError(
         })
         const msgAdmin = {
           to: "falcohm6tm@outlook.com",
-          from: "noreply@falcohmsystem.com", // Use the email address or domain you verified above
+          from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
           templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
           dynamicTemplateData: {
             subject : "Un client à réalisé une nouvelle demande de devis !",
