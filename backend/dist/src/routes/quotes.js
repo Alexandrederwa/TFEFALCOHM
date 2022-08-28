@@ -427,7 +427,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         dynamicTemplateData: {
             subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
             name: `${quote.nameClient}`,
-            linkToQuote: linkQuote
+            linkToQuote: `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
         }
     };
     console.log("1");
@@ -441,7 +441,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         console.log('RECEIVED ERROR');
     });
     console.log("2");
-    console.log("Email send is => ", string);
+    console.log("Email send is => ", linkQuote);
     return res.status(200).json({ success: true });
 }));
 const router = (0, express_1.Router)();

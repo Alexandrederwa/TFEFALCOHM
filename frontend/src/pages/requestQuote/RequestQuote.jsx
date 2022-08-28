@@ -39,6 +39,7 @@ const RequestQuote = () => {
       navigate(`/register`);
       setError(error?.response.data.message);
       setLoading(false);
+      console.log(error);
       console.log(error?.response.data.message);
     }
   };
