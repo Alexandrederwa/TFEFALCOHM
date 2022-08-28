@@ -427,12 +427,33 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         dynamicTemplateData: {
             subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
             name: `${quote.nameClient}`,
-            linkToQuote: `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
+            linkToQuote: `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
         }
     };
     console.log("1");
     mail_1.default
         .send(msg)
+        .then(() => {
+        console.log('Email sent');
+    })
+        .catch((error) => {
+        console.log(error.response.body);
+        console.log(error);
+        console.log('RECEIVED ERROR');
+    });
+    const msgAdmin = {
+        to: "falcohm6tm@outlook.com",
+        from: "falcohm6tm@outlook.com",
+        templateId: 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+        dynamicTemplateData: {
+            subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
+            name: `${quote.nameClient}`,
+            linkToQuote: `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+        }
+    };
+    console.log("1");
+    mail_1.default
+        .send(msgAdmin)
         .then(() => {
         console.log('Email sent');
     })

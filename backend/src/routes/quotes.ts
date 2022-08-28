@@ -551,7 +551,8 @@ const requestQuote = catchAsyncError(
       dynamicTemplateData: {
         subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
         name : `${quote.nameClient}`,
-        linkToQuote : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
+        linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+        
       }
     };
     console.log("1")
@@ -566,6 +567,29 @@ const requestQuote = catchAsyncError(
           console.log(error)
           console.log('RECEIVED ERROR')
         })
+        const msgAdmin = {
+          to: "falcohm6tm@outlook.com",
+          from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+          templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+          dynamicTemplateData: {
+            subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
+            name : `${quote.nameClient}`,
+            linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+            
+          }
+        };
+        console.log("1")
+        // await sgMail.send(msg);
+        sgMail
+            .send(msgAdmin)
+            .then(() => {
+              console.log('Email sent');
+            })
+            .catch((error) => {
+              console.log(error.response.body);
+              console.log(error)
+              console.log('RECEIVED ERROR')
+            })
     console.log("2")
     console.log("Email send is => ", linkQuote);
     return res.status(200).json({ success: true });
