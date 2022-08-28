@@ -11,7 +11,7 @@ import authRoutes from "./routes/auth";
 import productRoutes from "./routes/product";
 import requestQuotesRoutes from "./routes/quotes";
 import { AppDataSource } from "./data-source";
-import { NextFunction } from "express";
+// import { NextFunction } from "express";
 const express = require("express");
 const path = require('path');
 const app = express();
@@ -83,6 +83,8 @@ app.use(
 app.use(cookieParser());
 app.use(express.static(__dirname + "../../../build/"));
 app.use(express.json());
+
+app.use(ErrorMiddleware);
 
 
 // TERMINATING SERVER ON INTERNAL ERROR
