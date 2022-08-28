@@ -427,7 +427,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         dynamicTemplateData: {
             subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
             name: `${quote.nameClient}`,
-            linkToQuote: `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+            linkToQuote: `https://www.falcohmsystem.be/#/my_quotes`
         }
     };
     console.log("1");
@@ -443,12 +443,14 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     });
     const msgAdmin = {
         to: "falcohm6tm@outlook.com",
-        from: "falcohm6tm@outlook.com",
-        templateId: 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+        from: "noreply@falcohmsystem.com",
+        templateId: ' d-fd081f3da5a84e2392a582fd195db92b',
         dynamicTemplateData: {
-            subject: "Falc'ohm System - Nous avons bien reçu votre demande !",
+            subject: "Un client à réalisé une nouvelle demande de devis !",
             name: `${quote.nameClient}`,
-            linkToQuote: `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+            phoneNumber: `${quote.phone}`,
+            information: `${quote.party}`,
+            linkToQuote: `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
         }
     };
     console.log("1");

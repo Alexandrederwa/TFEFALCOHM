@@ -541,7 +541,8 @@ const requestQuote = catchAsyncError(
     if (!saved) {
       return next(new errorHandler("Failed to save the quote", 400));
     }
-
+    // link to the quote after admin create devis : 
+    // https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}
     const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
     const msg = {
@@ -551,7 +552,7 @@ const requestQuote = catchAsyncError(
       dynamicTemplateData: {
         subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
         name : `${quote.nameClient}`,
-        linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+        linkToQuote : `https://www.falcohmsystem.be/#/my_quotes`
         
       }
     };
@@ -569,13 +570,14 @@ const requestQuote = catchAsyncError(
         })
         const msgAdmin = {
           to: "falcohm6tm@outlook.com",
-          from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-          templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+          from: "noreply@falcohmsystem.com", // Use the email address or domain you verified above
+          templateId : ' d-fd081f3da5a84e2392a582fd195db92b',
           dynamicTemplateData: {
-            subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
+            subject : "Un client à réalisé une nouvelle demande de devis !",
             name : `${quote.nameClient}`,
-            linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
-            
+            phoneNumber : `${quote.phone}`,
+            information : `${quote.party}`,
+            linkToQuote : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
           }
         };
         console.log("1")
