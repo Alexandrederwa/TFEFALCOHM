@@ -444,7 +444,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
     const msgAdmin = {
         to: "falcohm6tm@outlook.com",
         from: "noreply@falcohmsystem.com",
-        templateId: ' d-fd081f3da5a84e2392a582fd195db92b',
+        templateId: 'd-fd081f3da5a84e2392a582fd195db92b',
         dynamicTemplateData: {
             subject: "Un client à réalisé une nouvelle demande de devis !",
             name: `${quote.nameClient}`,
