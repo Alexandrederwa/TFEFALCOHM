@@ -17,7 +17,7 @@ const path = require('path');
 const app = express();
 const cors = require('cors');
 // const helmet = require("helmet");
-app.use(cors);
+// app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json())
 var corsOptions = {
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'","data:", "https://res.cloudinary.com"],
+      defaultSrc: ["'self'"],
       scriptSrc: ["'self'", 'unsafe-inline' ,"https://www.falcohmsystem.be/"],
       imgSrc:[ "'self'", "data:", "https://res.cloudinary.com"],
       connectSrc : ["'self'","https://api.cloudinary.com"],

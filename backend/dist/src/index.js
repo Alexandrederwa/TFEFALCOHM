@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const errors_1 = __importDefault(require("./middlewares/errors"));
 const helmet = __importStar(require("helmet"));
 const bodyParser = require('body-parser');
 dotenv_1.default.config();
@@ -49,7 +50,6 @@ const express = require("express");
 const path = require('path');
 const app = express();
 const cors = require('cors');
-app.use(cors);
 app.use(bodyParser.json());
 app.use(express.json());
 var corsOptions = {
@@ -61,7 +61,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'", "data:", "https://res.cloudinary.com"],
+        defaultSrc: ["'self'"],
         scriptSrc: ["'self'", 'unsafe-inline', "https://www.falcohmsystem.be/"],
         imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
         connectSrc: ["'self'", "https://api.cloudinary.com"],
@@ -85,6 +85,7 @@ app.use(helmet.hsts({
 app.use((0, cookie_parser_1.default)());
 app.use(express.static(__dirname + "../../../build/"));
 app.use(express.json());
+app.use(errors_1.default);
 process.on("uncaughtException", (err) => {
     console.log(`Error = ${err.message}`);
     console.log("Shutting down server due to uncaughtException Error");
