@@ -545,7 +545,8 @@ const requestQuote = catchAsyncError(
     // https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}
     const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
-    const msg = {
+    const msg = [
+      {
       to: `${quote.userEmail}`,
       from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
       templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
@@ -555,46 +556,33 @@ const requestQuote = catchAsyncError(
         linkToQuote : `https://www.falcohmsystem.be/#/my_quotes`
         
       }
-    };
+    },
+     {
+      to: "face.alex.d@gmail.com",
+      from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+      templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
+      dynamicTemplateData: {
+        subject : "Un client à réalisé une nouvelle demande de devis !",
+        name : `${quote.nameClient}`,
+        phoneNumber : `${quote.phone}`,
+        information : `${quote.party}`,
+        linkToQuoteA : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
+      }
+    }];
     console.log("1")
     // await sgMail.send(msg);
     sgMail
         .send(msg)
         .then(() => {
-          console.log('Email sent');
+          console.log('Emails sent');
         })
         .catch((error) => {
           console.log(error.response.body);
           console.log(error)
           console.log('RECEIVED ERROR')
         })
-        const msgAdmin = {
-          to: "face.alex.d@gmail.com",
-          from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-          templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
-          dynamicTemplateData: {
-            subject : "Un client à réalisé une nouvelle demande de devis !",
-            name : `${quote.nameClient}`,
-            phoneNumber : `${quote.phone}`,
-            information : `${quote.party}`,
-            linkToQuote : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
-          }
-        };
-        console.log("1")
-        // await sgMail.send(msg);
-        sgMail
-            .send(msgAdmin)
-            .then(() => {
-              console.log('Email sent');
-            })
-            .catch((error) => {
-              console.log(error.response.body);
-              console.log(error)
-              console.log('RECEIVED ERROR')
-            })
-    console.log("2")
-    console.log("Email send is => ", linkQuote);
-    return res.status(200).json({ success: true });
+
+        
   }
 );
 const router = Router();
