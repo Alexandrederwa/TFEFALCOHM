@@ -25,7 +25,7 @@ const register = catchAsyncError(
     try {
       const { email, password, name,subscribed } = req.body;
       console.log({ email, password, name,subscribed });
-
+      
       if (!email || !password || !name ) {
         return next(new errorHandler("Please enter Email & Password", 400));
       }

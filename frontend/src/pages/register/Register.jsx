@@ -71,7 +71,7 @@ const Register = () => {
         <TextField
           id="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.toLowerCase())}
           sx={{ padding: "10px", width: "80%", margin: "20px 0" }}
           label="Adresse Email"
           required
