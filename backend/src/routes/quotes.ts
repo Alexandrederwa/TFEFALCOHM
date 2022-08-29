@@ -548,7 +548,7 @@ const requestQuote = catchAsyncError(
     }
     // link to the quote after admin create devis : 
     // https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}
-    const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
+    // const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
 
     if (totalPrice){

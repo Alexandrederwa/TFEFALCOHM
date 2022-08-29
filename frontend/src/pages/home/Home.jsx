@@ -26,6 +26,7 @@ const Home = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [searchQ, setSearchQ] = useState("");
+  const [isPage, setIsPage] = useState(false);
   const isBigScreen = useMediaQuery({ query: '(min-width: 769px)' })
   const handleRequestQuote = async (e) => {
     e.preventDefault();
@@ -170,12 +171,15 @@ const Home = () => {
             variant="outlined"
           />
         </div>
-        <ProductSection searchQ={searchQ} />
+        <ProductSection searchQ={searchQ} isPage={isPage} />
         <div className="buttonMoreDiv">
-        {show === true && 
+        {show && 
           <Button
           variant="contained"
           className="buttonMore"
+          component={Link}
+          disabled={loading}
+          to={"/the_products"}
           >
             Voir plus
           </Button>

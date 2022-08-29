@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-// import Select from "react-select";
+import Resizer from "react-image-file-resizer";
 
 const categories = [
   { value: "music", label: "Musics" },
@@ -35,15 +35,23 @@ const AddProduct = ({
 
   const [image, setImage] = useState();
   const [imageLoading, setImageLoading] = useState(false);
+  const resizeFile = (file) => new Promise(resolve => {
+    console.log(file)
+    Resizer.imageFileResizer(file, 1024, 768, 'PNG', 100, 0,
+    uri => {
+      resolve(uri);
+    }, 'base64' );
+    console.log("resize done")
+    console.log(file)
+});
   const uploadImage = async () => {
     try {
       setImageLoading(true);
       if (!previewImage) return alert("Failed");
       const { data } = await axios.post(
-        "https://api.cloudinary.com/v1_1/ds4zbyupc/image/upload",
+        "https://api.cloudinary.com/v1_1/pyxdsn2t/image/upload",
         {
-          upload_preset: "rent-app-images",
-          file: previewImage,
+          file: previewImage
         },
         { withCredentials: false }
       );
@@ -53,6 +61,7 @@ const AddProduct = ({
         setImageLoading(false);
       }
     } catch (error) {
+      console.log(error)
       setImageLoading(false);
       alert("Failed to upload the Image");
     }
@@ -62,6 +71,7 @@ const AddProduct = ({
       const reader = new FileReader();
       reader.onload = async () => {
         if (reader.readyState === 2) {
+          // const resizedIMG = await resizeFile(e.target.files[0])
           setPreviewImage(reader.result);
         }
       };
@@ -168,7 +178,7 @@ const AddProduct = ({
           fullWidth
           onChange={(e) => setName(e.target.value)}
           sx={{ margin: " 10px auto", padding: "4px" }}
-          label="Product Name"
+          label="Nom du produit"
         />
       </Box>
 
@@ -179,7 +189,7 @@ const AddProduct = ({
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           sx={{ margin: " 10px auto", padding: "4px" }}
-          label="Product Price "
+          label="Prix unitaire "
         />
       </Box>
 
@@ -192,18 +202,18 @@ const AddProduct = ({
             if (e.target.value > 0) return setStock(e.target.value);
           }}
           sx={{ margin: " 10px auto", padding: "4px" }}
-          label="Product Stock "
+          label="Stock disponible "
         />
       </Box>
       <Box sx={{ textAlign: "center", minWidth: { xs: "80%", md: "120px" } }}>
         <FormControl fullWidth>
-          <InputLabel id="Category">Category</InputLabel>
+          <InputLabel id="Category">Type</InputLabel>
           <Select
             labelId="Category"
             id="Category"
             value={category}
             defaultValue={categories[0].value}
-            label="Category"
+            label="Catégorie"
             onChange={(e) => setCategory(e.target.value)}
           >
             {categories.map((category) => (
