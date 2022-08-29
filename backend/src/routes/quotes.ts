@@ -588,7 +588,7 @@ const requestQuote = catchAsyncError(
         }
       },
        {
-        to: "face.alex.d@gmail.com",
+        to: "falcohm6tm@outlook.com",
         from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
         templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
         dynamicTemplateData: {

@@ -74,8 +74,8 @@ let ReqQuotes = class ReqQuotes {
     }
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
-    __metadata("design:type", Number)
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
+    __metadata("design:type", String)
 ], ReqQuotes.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => itemDetail_1.ItemDetail, (itemDetail) => itemDetail.reqQuote, {
