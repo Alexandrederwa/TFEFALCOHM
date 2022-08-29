@@ -53,9 +53,8 @@ const QuotesList = () => {
     try {
       console.log("Deleting Quote");
       const { data } = await axios.delete(`/api/quotes/${id}`);
-      if (data?.success) {
-        fetchQuotes();
-      }
+      fetchQuotes();
+      window.location.reload();
     } catch (error) {
       alert(error?.response.data.message);
     }

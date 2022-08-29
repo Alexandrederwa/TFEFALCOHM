@@ -305,18 +305,15 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
             return next(new errorHandler_1.errorHandler("Failed to remove the Item", 400));
         if (quote.status !== Quote_1.Status.ASKED &&
             quote.userDecision !== Quote_1.UserDecision.PENDING) {
-            console.log("Yess1");
             let reservedList = JSON.parse(product.reserved);
             if (reservedList.length) {
                 reservedList = reservedList.filter((list) => list.quoteId !== quoteId);
-                console.log("Yes 3");
                 product.reserved = JSON.stringify(reservedList);
                 console.log({ reservedList, productReserved: product.reserved });
                 const saved = yield productRepository.save(product);
                 if (!saved) {
                     return next(new errorHandler_1.errorHandler("An error occured while updated item quantity", 400));
                 }
-                console.log("Yes 4");
                 return res.status(200).json({ success: true });
             }
             else {
@@ -324,7 +321,6 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
             }
         }
         else {
-            console.log("Yess No change in product entity");
             return res.status(200).json({ success: true });
         }
     }
@@ -332,16 +328,26 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
         return next(new errorHandler_1.errorHandler("Please change units price", 400));
     }
     else if (units) {
+        const date1 = new Date(data.rentDate).getTime();
+        const date2 = new Date(data.deliverDate).getTime();
+        const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+        console.log(diffinDays);
+        console.log(data.units);
+        console.log(units);
+        console.log(Number(units));
+        const newUnits = data.units + Number(units);
+        const total = data.productPrice * Number(units) * diffinDays;
         data.units = Number(units);
+        quote.totalPrice = total;
         let reservedList = JSON.parse(product === null || product === void 0 ? void 0 : product.reserved);
         if (quote.status !== Quote_1.Status.ASKED &&
             quote.userDecision !== Quote_1.UserDecision.PENDING) {
-            console.log("update 1");
+            console.log("yessai 4");
             if (reservedList.length) {
-                console.log("update 2");
                 const found = reservedList.find((list) => list.quoteId === quoteId);
                 if (found) {
-                    console.log("update 3");
+                    console.log(found);
+                    console.log("yessai 2");
                     found.reservedUnits = Number(units);
                     reservedList = reservedList.filter((list) => list.quoteId !== quoteId);
                     product.reserved = JSON.stringify([...reservedList, found]);
@@ -349,12 +355,14 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
                     if (!saved) {
                         return next(new errorHandler_1.errorHandler("An error occured while updated item quantity", 400));
                     }
-                    console.log("update 4");
                     const updatedItem = yield itemDetailRepository.save(data);
                     if (!updatedItem) {
                         return next(new errorHandler_1.errorHandler("An error occured while updated item quantity", 400));
                     }
-                    console.log("update 5");
+                    const updatedQuote = yield quotesRespository.save(quote);
+                    if (!updatedQuote) {
+                        return next(new errorHandler_1.errorHandler("An error occured while updated total price quote", 400));
+                    }
                     return res.status(200).json({ success: true });
                 }
             }
@@ -363,14 +371,21 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
                 if (!updatedItem) {
                     return next(new errorHandler_1.errorHandler("An error occured while updated item quantity", 400));
                 }
+                const updatedQuote = yield quotesRespository.save(quote);
+                if (!updatedQuote) {
+                    return next(new errorHandler_1.errorHandler("An error occured while updated total price quote", 400));
+                }
                 return res.status(200).json({ success: true });
             }
         }
         else {
-            console.log("update 6");
             const updatedItem = yield itemDetailRepository.save(data);
             if (!updatedItem) {
                 return next(new errorHandler_1.errorHandler("An error occured while updated item quantity", 400));
+            }
+            const updatedQuote = yield quotesRespository.save(quote);
+            if (!updatedQuote) {
+                return next(new errorHandler_1.errorHandler("An error occured while updated total price quote", 400));
             }
             return res.status(200).json({ success: true });
         }

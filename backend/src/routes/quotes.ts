@@ -357,10 +357,9 @@ const editOrRemoveItems = catchAsyncError(
     if (!quoteId) return next(new errorHandler("Failed to process", 400));
     const quote = await quotesRespository.findOne({ where: { id: quoteId } });
     if (!quote) return next(new errorHandler("Failed to process", 400));
-
     const data = await itemDetailRepository.findOne({ where: { id } });
     if (!data) return next(new errorHandler("Cannot find the item.", 400));
-
+    
     const product = await productRepository.findOne({
       where: { id: data.productId },
     });
@@ -374,14 +373,14 @@ const editOrRemoveItems = catchAsyncError(
         quote.status !== Status.ASKED &&
         quote.userDecision !== UserDecision.PENDING
       ) {
-        console.log("Yess1");
+        
 
         let reservedList = JSON.parse(product.reserved);
         if (reservedList.length) {
           reservedList = reservedList.filter(
             (list: any) => list.quoteId !== quoteId
           );
-          console.log("Yes 3");
+          
 
           product.reserved = JSON.stringify(reservedList);
 
@@ -396,14 +395,14 @@ const editOrRemoveItems = catchAsyncError(
               )
             );
           }
-          console.log("Yes 4");
+          
 
           return res.status(200).json({ success: true });
         } else {
           return res.status(200).json({ success: true });
         }
       } else {
-        console.log("Yess No change in product entity");
+        
 
         return res.status(200).json({ success: true });
       }
@@ -412,25 +411,43 @@ const editOrRemoveItems = catchAsyncError(
     if (units && Number(units) === data.units) {
       return next(new errorHandler("Please change units price", 400));
     } else if (units) {
+      //CALC DIFF IN DAYS BETWEEN DATE TO GET NUMBER OF LOCATION DAYS
+      const date1 = new Date(data.rentDate).getTime()
+      const date2 = new Date(data.deliverDate).getTime()
+      const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+      console.log(diffinDays)
+      // console.log(data.rentDate - data.deliverDate)
+      //CALC NEW TOTAL PRICE
+      console.log(data.units)
+      console.log(units)
+      console.log(Number(units))
+      const newUnits = data.units + Number(units)
+      const total = data.productPrice * Number(units) * diffinDays;
+      //ADJUST NUMBER IN ITEM 
       data.units = Number(units);
+      //ADJUST TOTAL PRICE IN QUOTE
+      quote.totalPrice = total;
+
       let reservedList = JSON.parse(product?.reserved);
 
       if (
+        
         quote.status !== Status.ASKED &&
         quote.userDecision !== UserDecision.PENDING
       ) {
-        console.log("update 1");
-
+        
+        console.log("yessai 4")
         if (reservedList.length) {
-          console.log("update 2");
+         
 
           const found = reservedList.find(
             (list: any) => list.quoteId === quoteId
           );
           if (found) {
-            console.log("update 3");
-
+            console.log(found)
+            console.log("yessai 2")
             found.reservedUnits = Number(units);
+            
             reservedList = reservedList.filter(
               (list: any) => list.quoteId !== quoteId
             );
@@ -445,7 +462,7 @@ const editOrRemoveItems = catchAsyncError(
                 )
               );
             }
-            console.log("update 4");
+            
 
             const updatedItem = await itemDetailRepository.save(data);
             if (!updatedItem) {
@@ -456,7 +473,16 @@ const editOrRemoveItems = catchAsyncError(
                 )
               );
             }
-            console.log("update 5");
+            const updatedQuote = await quotesRespository.save(quote);
+            if (!updatedQuote) {
+              return next(
+                new errorHandler(
+                  "An error occured while updated total price quote",
+                  400
+                )
+              );
+            }
+          
 
             return res.status(200).json({ success: true });
           }
@@ -470,11 +496,20 @@ const editOrRemoveItems = catchAsyncError(
               )
             );
           }
+          const updatedQuote = await quotesRespository.save(quote);
+            if (!updatedQuote) {
+              return next(
+                new errorHandler(
+                  "An error occured while updated total price quote",
+                  400
+                )
+              );
+            }
   
           return res.status(200).json({ success: true });
         }
       } else {
-        console.log("update 6");
+        
 
         const updatedItem = await itemDetailRepository.save(data);
         if (!updatedItem) {
@@ -485,6 +520,15 @@ const editOrRemoveItems = catchAsyncError(
             )
           );
         }
+        const updatedQuote = await quotesRespository.save(quote);
+            if (!updatedQuote) {
+              return next(
+                new errorHandler(
+                  "An error occured while updated total price quote",
+                  400
+                )
+              );
+            }
 
         return res.status(200).json({ success: true });
       }

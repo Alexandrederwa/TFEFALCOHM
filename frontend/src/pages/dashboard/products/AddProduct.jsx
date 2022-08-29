@@ -49,8 +49,9 @@ const AddProduct = ({
       setImageLoading(true);
       if (!previewImage) return alert("Failed");
       const { data } = await axios.post(
-        "https://api.cloudinary.com/v1_1/pyxdsn2t/image/upload",
+        "https://api.cloudinary.com/v1_1/dutkkgjm5/image/upload",
         {
+          upload_preset: "falcohm_image",
           file: previewImage
         },
         { withCredentials: false }

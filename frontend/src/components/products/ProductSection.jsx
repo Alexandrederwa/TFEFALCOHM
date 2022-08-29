@@ -9,7 +9,6 @@ const ProductSection = ({ searchQ , isPage}) => {
   const { products } = useProducts();
   const [show, setShow] = useState(false);
   const [sliced, setSliced] = useState(products);
-  console.log(isPage)
   useEffect(() =>{
     if (isPage === false){
       if (products.length < 9) {
