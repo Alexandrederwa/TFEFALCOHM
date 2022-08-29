@@ -32,8 +32,8 @@ export enum UserDecision {
 
 @Entity("quotes") // quotes will be the name of the table in database
 export class ReqQuotes {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 	
   @OneToMany(() => ItemDetail, (itemDetail) => itemDetail.reqQuote, {
     onDelete: "CASCADE",
