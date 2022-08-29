@@ -114,7 +114,7 @@ const QuotePage = () => {
             <b>Nom du matériel : </b> {item.productName}
           </small>
           <small>
-            <b>Prix : </b> ${item.productPrice}
+            <b>Prix : </b> {item.productPrice}€
           </small>
           <small>
               <b>Catégorie : </b> {item.productCategory}

@@ -72,7 +72,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
       </TableCell>
       <TableCell style={{ textAlign: "center" }}>{item.productName}</TableCell>
       <TableCell style={{ textAlign: "center" }}>
-        ${item.productPrice}
+        {item.productPrice} €
       </TableCell>
       <TableCell style={{ textAlign: "center" }}>
         {quote.userDecision !== "rejected" && quote.status !== "rejected" ? (

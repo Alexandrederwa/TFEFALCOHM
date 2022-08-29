@@ -44,7 +44,7 @@ const QuoteBox = ({ quote }) => {
       {quote.status !== "asked" ? (
         <small>
           {" "}
-          <b>Prix total: </b> ${quote.totalPrice}
+          <b>Prix total: </b> {quote.totalPrice}€
         </small>
       ) : null}
       {(quote.userDecision === "pending" ||
@@ -72,7 +72,7 @@ const QuoteBox = ({ quote }) => {
               <b>Nom : </b> {item.productName}
             </small>
             <small>
-              <b>Prix : </b> ${item.productPrice}
+              <b>Prix : </b> {item.productPrice}€
             </small>
             <small>
               <b>Catégorie : </b> {item.productCategory}

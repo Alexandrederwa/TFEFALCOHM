@@ -50,7 +50,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
         </TableCell>
         <TableCell style={{ textAlign: "center" }}>
           {quote?.totalPrice ? (
-            "$" + quote?.totalPrice
+             quote?.totalPrice + "€" 
           ) : (
             <div style={{color : "red"}}> En attente de création du devis </div>
           )}

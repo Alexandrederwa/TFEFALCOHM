@@ -8,10 +8,12 @@ import moment from "moment"
 function addDays(date, days) {
   var result = new Date(date);
   result.setDate(result.getDate() + days);
+  
 
   return new Date(result);
 }
 const ItemsListBox = ({ item ,setTotalPrice}) => {
+  
   const { updateItem, removeItem, itemsList, addItem } = useItemsList();
   const [units, setUnits] = useState(1);
   const [saved, setSaved] = useState(false);
@@ -24,8 +26,8 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
   const [totalReserved, settotalReserved] = useState(0);
   const [reservedDates, setReserverDates] = useState(
     JSON.parse(item.reserved)?.map((item) => ({
-      start: new Date(item.start),
-      end: new Date(item.end),
+      start: new Date(item.start).toLocaleDateString(),
+      end: new Date(item.end).toLocaleDateString(),
     }))
   );
 
@@ -35,6 +37,9 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
     }
     if (!dateValid) {
       return alert("Product in reserved between your selected dates");
+    }
+    if (startDate > endDate){
+      return alert("Selected date are not valid, please verify");
     }
     if (!saved) {
       addItem({ ...item, startDate, endDate, units: units });
@@ -122,10 +127,10 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
       <h3 className="itemname">{item.name}</h3>
 
       <h4>
-        <small>Prix unitaire :</small>${item.price}
+        <small>Prix unitaire :</small>{item.price}€
       </h4>
       <h4>
-        <small> Prix total pour {units} unité:</small>${item.price * units}
+        <small> Prix total pour {units} unité:</small>{item.price * units}€
       </h4>
 
       <div>
@@ -196,9 +201,9 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
       <small style={{ color: "crimson" }}> {error}</small>
 
       {saved ? (
-        <small style={{ color: "green" }}> Ajouter au devis </small>
+        <small style={{ color: "green" }}> Article ajouté </small>
       ) : (
-        <small style={{ color: "red" }}>Pas encore ajouté </small>
+        <small style={{ color: "red" }}>Article pas ajouté </small>
       )}
     </div>
   );

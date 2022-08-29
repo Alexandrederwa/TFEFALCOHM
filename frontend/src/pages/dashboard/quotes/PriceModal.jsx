@@ -103,7 +103,7 @@ const PriceModal = ({ quote, fetchQuotes }) => {
           <br />
         </form>
 
-        <h3 style={{ margin: "10px" }}>Total Price : ${totalPrice}</h3>
+        <h3 style={{ margin: "10px" }}>Total Price : {totalPrice} €</h3>
 
         <button
           style={{ padding: "5px", marginTop: "50px", marginLeft: "12px" }}
