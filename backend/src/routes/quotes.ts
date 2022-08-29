@@ -550,42 +550,69 @@ const requestQuote = catchAsyncError(
     // https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}
     const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
-    const msg = [
-      {
-      to: `${quote.userEmail}`,
-      from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-      templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
-      dynamicTemplateData: {
-        subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
-        name : `${quote.nameClient}`,
-        linkToQuote : `https://www.falcohmsystem.be/#/my_quotes`
+
+    if (totalPrice){
+      const msgResponse = {
+        to: `${quote.userEmail}`,
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-86b20709d9dc423d84e62484db4aba4a',
+        dynamicTemplateData: {
+          subject : "Votre devis est prêt !",
+          name : `${quote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
+          
         
       }
-    },
-     {
-      to: "face.alex.d@gmail.com",
-      from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-      templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
-      dynamicTemplateData: {
-        subject : "Un client à réalisé une nouvelle demande de devis !",
-        name : `${quote.nameClient}`,
-        phoneNumber : `${quote.phone}`,
-        information : `${quote.party}`,
-        linkToQuoteA : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
-      }
-    }];
-    console.log("1")
-    // await sgMail.send(msg);
+    }
     sgMail
-        .send(msg)
-        .then(() => {
-          console.log('Emails sent');
-        })
-        .catch((error) => {
-          console.log(error.response.body);
-          console.log(error)
-          console.log('RECEIVED ERROR')
-        })
+    .send(msgResponse)
+    .then(() => {
+      console.log('Emails sent');
+    })
+    .catch((error) => {
+      console.log(error.response.body);
+      console.log(error)
+      console.log('RECEIVED ERROR')
+    })
+    }else {
+      const msg = [
+        {
+        to: `${quote.userEmail}`,
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
+        dynamicTemplateData: {
+          subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
+          name : `${quote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/my_quotes`
+          
+        }
+      },
+       {
+        to: "face.alex.d@gmail.com",
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
+        dynamicTemplateData: {
+          subject : "Un client à réalisé une nouvelle demande de devis !",
+          name : `${quote.nameClient}`,
+          phoneNumber : `${quote.phone}`,
+          information : `${quote.party}`,
+          linkToQuoteA : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
+        }
+      }];
+      console.log("1")
+      // await sgMail.send(msg);
+      sgMail
+          .send(msg)
+          .then(() => {
+            console.log('Emails sent');
+          })
+          .catch((error) => {
+            console.log(error.response.body);
+            console.log(error)
+            console.log('RECEIVED ERROR')
+          })
+    }
+    
 
         
   }
