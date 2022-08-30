@@ -13,6 +13,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
+import Typed from "react-typed"
 
 const Home = () => {
   const { setProducts, products } = useProducts();
@@ -22,6 +23,7 @@ const Home = () => {
   const [email, setEmail] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");
   const [detail, setDetail] = useState("");
+  const [count, setCount] = useState(1);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -73,6 +75,11 @@ const Home = () => {
     fetchProducts();
     // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    // document.title = `You clicked ${count} times`;
+    console.log("Count: " + count);
+    setCount(1);
+  }, [count]);
   // if (loading && !products.length)
   //   return (
   //     <h1 style={{ margin: "30px auto", textAlign: "center" }}>LOADING</h1>
@@ -113,7 +120,17 @@ const Home = () => {
         </Box>
       } */}
       <div className="centered"> 
-         Falc'ohm System, la solution idéale.
+         Falc'ohm System,
+         <Typed
+        strings={[
+            "votre partenaire audiovisuel",
+            "la solution idéale",
+            "l'expertise audiovisuel",
+          ]}
+          typeSpeed={50}
+          backSpeed={50}
+          loop
+        />
         </div>
 
       <div className="container aboutContainer">

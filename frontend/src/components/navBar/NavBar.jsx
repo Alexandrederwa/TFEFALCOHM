@@ -51,8 +51,6 @@ const AppBarX = () => {
     <AppBar position="static " style={{ background: 'transparent', boxShadow: 'none'}} className="navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          
-              {/* Changing poicture for mobile using */}
             {/* {isBigScreen ?   */}
                   <a href="/" rel="noreferrer">
                       <img
@@ -61,7 +59,7 @@ const AppBarX = () => {
                         className="logoFont"
                       />
                   </a> 
-                  {/* :  */}
+                  {/* // :  */}
                   {/* <a href="/" rel="noreferrer">
                   <img
                     src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_white_vdrtbl.png"
@@ -69,7 +67,7 @@ const AppBarX = () => {
                     className="logoFont"
                   />
                   </a>  */}
-            {/* } */}
+            {/* // } */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
