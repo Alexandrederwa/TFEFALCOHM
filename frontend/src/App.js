@@ -20,7 +20,7 @@ import QuotePage from "./pages/quote/QuotePage";
 import Register from "./pages/register/Register";
 import Invoice from "./pages/invoice/Invoice";
 import { useUser } from "./store";
-import { ClockLoader } from "react-spinners";
+import { ClockLoader , HashLoader} from "react-spinners";
 import QuotesList from "./pages/dashboard/quotes/QuotesList";
 import ProductList from "./pages/dashboard/products/ProductList";
 import RequestQuote from "./pages/requestQuote/RequestQuote";
@@ -54,7 +54,7 @@ function App() {
   }, []);
   if (loading)
     return (
-      <ClockLoader color={"red"} loading={loading} css={override} size={100} />
+      <HashLoader color={"red"} loading={loading} css={override} size={100} />
     );
   return ( 
     <HashRouter>
