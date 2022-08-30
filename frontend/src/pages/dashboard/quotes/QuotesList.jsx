@@ -31,7 +31,8 @@ const QuotesList = () => {
   const handlePagination = (event, page) => {
     setCurrentPage(page);
   };
-
+  console.log("quotelist")
+  console.log(quotes)
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
     setCurrentPage(0);

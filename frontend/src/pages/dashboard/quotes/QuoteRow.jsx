@@ -12,6 +12,8 @@ dayjs.extend(relativeTime);
 const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
   const [showProducts, setShowProducts] = useState(false);
   const id = useId();
+  console.log("quoterow")
+  console.log(quote)
   
   return (
     <>
@@ -93,7 +95,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
             </Button>
           ) : null}
 
-          {quote.itemDetails?.length && 
+          {quote.itemDetails?.length >= 1 && 
           quote.status === "accepted" ? (
             //button adaptable for download pdf when quote is accepted 
             
