@@ -12,8 +12,6 @@ dayjs.extend(relativeTime);
 const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
   const [showProducts, setShowProducts] = useState(false);
   const id = useId();
-  console.log("quoterow")
-  console.log(quote)
   
   return (
     <>

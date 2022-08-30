@@ -51,48 +51,25 @@ const AppBarX = () => {
     <AppBar position="static " style={{ background: 'transparent', boxShadow: 'none'}} className="navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 800,
-              fontSize: "30px",
-              margin: { md: " 0 30px" },
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            MarketPlacezeza
-          </Typography> */}
-          {/* <Box
-              component="img"
-              className="logoFont"
-              alt="logoFont"
-              href="/"
-              src= "https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
-              /> */}
-            {isBigScreen ?  
+          
+              {/* Changing poicture for mobile using */}
+            {/* {isBigScreen ?   */}
                   <a href="/" rel="noreferrer">
                       <img
                         src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_black_j97kpy.png"
                         alt="logoNavBar"
                         className="logoFont"
                       />
-                  </a> : 
-                  <a href="/" rel="noreferrer">
+                  </a> 
+                  {/* :  */}
+                  {/* <a href="/" rel="noreferrer">
                   <img
                     src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1660661664/FALCOHM_SYSTEM_typo_white_vdrtbl.png"
                     alt="logoNavBar"
                     className="logoFont"
                   />
-                  </a> 
-            }
+                  </a>  */}
+            {/* } */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

@@ -33,7 +33,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
     if (units > stock - JSON.parse(reserved).length) {
       setEditLoading(false);
 
-      return alert("Units limit reached");
+      return alert("Il n'y a pas assez de stock disponible");
     }
     try {
       if (units === item.units) {
@@ -56,7 +56,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
       }
     } catch (error) {
       console.log(error.message);
-      alert(error?.response.data.message);
+      alert('Veuillez choisir un nombre valable et au dessus du nombre déjà réservé')
       return setEditLoading(false);
     }
   };
@@ -112,7 +112,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
             onClick={handleUpdateProduct}
             disabled={units === item.units || editLoading}
           >
-            {editLoading ? "Updating..." : "Mettre à jour"}
+            {editLoading ? "Mise à jour..." : "Mettre à jour"}
           </Button>
           <Button
             variant="contained"
@@ -121,7 +121,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
             onClick={handleRemoveProduct}
             disabled={removeLoading}
           >
-            {removeLoading ? "Removing..." : "Supprimer l'article"}
+            {removeLoading ? "suppression..." : "Supprimer l'article"}
           </Button>
         </TableCell>
       ) : null}
