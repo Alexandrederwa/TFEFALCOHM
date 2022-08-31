@@ -54,7 +54,7 @@ function App() {
   }, []);
   if (loading)
     return (
-      <HashLoader color={"red"} loading={loading} css={override} size={100} />
+      <HashLoader color={"#1D217C"} loading={loading} css={override} size={100} />
     );
   return ( 
     <HashRouter>

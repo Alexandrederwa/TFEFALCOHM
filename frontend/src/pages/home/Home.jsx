@@ -13,7 +13,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useUser } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
-import Typed from "react-typed"
+import Typewriter from "typewriter-effect";
 
 const Home = () => {
   const { setProducts, products } = useProducts();
@@ -121,15 +121,18 @@ const Home = () => {
       } */}
       <div className="centered"> 
          Falc'ohm System,
-         <Typed
-        strings={[
-            "votre partenaire audiovisuel",
-            "la solution idéale",
-            "l'expertise audiovisuel",
-          ]}
-          typeSpeed={50}
-          backSpeed={50}
-          loop
+        <Typewriter 
+            options={{
+              strings: [
+                "votre partenaire audiovisuel",
+                "la solution idéale",
+                "l'expertise audiovisuel",
+              ],
+              autoStart: true,
+              loop: true,
+              delay: 50
+            }}
+        
         />
         </div>
 
