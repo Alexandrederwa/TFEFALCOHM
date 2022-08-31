@@ -143,6 +143,7 @@ const ItemListSection = () => {
           variant="h4"
           sx={{ textAlign: "center", fontWeight: "bold" }}
           component="div"
+          className="pageTitle"
         >
           Informations du client
         </Typography>

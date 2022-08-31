@@ -16,21 +16,22 @@ const MyProfile = () => {
   return (
     <div className="profilePage">
       <Typography
-            variant="h3"
-           
+            variant="h2"
+            className="pageTitleProfil"
             sx={{
               mr: 2,
               fontWeight:"bold",
              textAlign:"center"
              
             }}
+            
           >
             Mon profil
           </Typography>
       <div className="details">
         <h3>Nom : {user.name}</h3>
         <h3>Email : {user.email}</h3>
-        <h4>Member depuis : {dayjs().from(user.createdAt, true)}</h4>
+        <h3>Member depuis : {dayjs().from(user.createdAt, true)}</h3>
       </div>
       <ChangeEmail/>
       <ChangePassword/>

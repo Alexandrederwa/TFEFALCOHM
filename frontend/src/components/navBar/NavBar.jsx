@@ -145,7 +145,7 @@ const AppBarX = () => {
                   </Typography>
                 </MenuItem>
               ) : null}
-              {user?.role !== "admin" ? (
+              {user?.role === "admin" ? (
                 <MenuItem  component={Link}
                 to={"/items_list"} onClick={handleCloseNavMenu}>
                   <Typography

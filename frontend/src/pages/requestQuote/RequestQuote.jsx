@@ -57,7 +57,7 @@ const RequestQuote = () => {
       <Typography
         gutterBottom
         variant="h4"
-        sx={{ textAlign: "center", fontWeight: "bold", marginTop: "20px" }}
+        sx={{ textAlign: "center", fontWeight: "400", marginTop: "20px" }}
         component="div"
       >
         Demande de devis
