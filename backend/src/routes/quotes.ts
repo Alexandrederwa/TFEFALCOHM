@@ -360,15 +360,36 @@ const editOrRemoveItems = catchAsyncError(
     const data = await itemDetailRepository.findOne({ where: { id } });
     if (!data) return next(new errorHandler("Cannot find the item.", 400));
     
+
+    const date1 = new Date(data.rentDate).getTime()
+      const date2 = new Date(data.deliverDate).getTime()
+      const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
     const product = await productRepository.findOne({
       where: { id: data.productId },
     });
     if (!product) return next(new errorHandler("An Error occured", 400));
     // IF delete the quote Item
     if (remove && quoteId) {
+      console.log(quote);
+      console.log(data)
+      console.log(data.units)
+      console.log(units)
+      console.log(Number(units))
+      console.log(quote.totalPrice)
+      console.log(quote.totalPrice)
+      console.log("prix sans")
+      const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice
+      console.log(newPriceWithoutOldItem)
+      console.log("prix avec nouvelle quantité")
+      console.log(newPriceWithoutOldItem)
+      quote.totalPrice = newPriceWithoutOldItem;
+      console.log(quote);
       const done = await itemDetailRepository.remove(data);
       if (!done)
         return next(new errorHandler("Failed to remove the Item", 400));
+      const updatedQuote = await quotesRespository.save(quote);
+      if (!updatedQuote)
+        return next(new errorHandler("Failed to update price when remove", 400));
       if (
         quote.status !== Status.ASKED &&
         quote.userDecision !== UserDecision.PENDING
@@ -409,12 +430,9 @@ const editOrRemoveItems = catchAsyncError(
     }
 
     if (units && Number(units) === data.units) {
-      return next(new errorHandler("Please change units price", 400));
+      return next(new errorHandler("Please change units ", 400));
     } else if (units) {
       //CALC DIFF IN DAYS BETWEEN DATE TO GET NUMBER OF LOCATION DAYS
-      const date1 = new Date(data.rentDate).getTime()
-      const date2 = new Date(data.deliverDate).getTime()
-      const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
       console.log(diffinDays)
       // console.log(data.rentDate - data.deliverDate)
       //CALC NEW TOTAL PRICE
@@ -427,7 +445,6 @@ const editOrRemoveItems = catchAsyncError(
       const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice
       console.log(newPriceWithoutOldItem)
       console.log("prix avec nouvelle quantité")
-      const newUnits = data.units + Number(units)
       const total = (data.productPrice * Number(units) * diffinDays) + newPriceWithoutOldItem;
       console.log(total)
       //ADJUST NUMBER IN ITEM 

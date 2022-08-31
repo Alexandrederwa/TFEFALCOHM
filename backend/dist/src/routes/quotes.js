@@ -294,15 +294,35 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
     const data = yield itemDetailRepository.findOne({ where: { id } });
     if (!data)
         return next(new errorHandler_1.errorHandler("Cannot find the item.", 400));
+    const date1 = new Date(data.rentDate).getTime();
+    const date2 = new Date(data.deliverDate).getTime();
+    const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
     const product = yield productRepository.findOne({
         where: { id: data.productId },
     });
     if (!product)
         return next(new errorHandler_1.errorHandler("An Error occured", 400));
     if (remove && quoteId) {
+        console.log(quote);
+        console.log(data);
+        console.log(data.units);
+        console.log(units);
+        console.log(Number(units));
+        console.log(quote.totalPrice);
+        console.log(quote.totalPrice);
+        console.log("prix sans");
+        const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice;
+        console.log(newPriceWithoutOldItem);
+        console.log("prix avec nouvelle quantité");
+        console.log(newPriceWithoutOldItem);
+        quote.totalPrice = newPriceWithoutOldItem;
+        console.log(quote);
         const done = yield itemDetailRepository.remove(data);
         if (!done)
             return next(new errorHandler_1.errorHandler("Failed to remove the Item", 400));
+        const updatedQuote = yield quotesRespository.save(quote);
+        if (!updatedQuote)
+            return next(new errorHandler_1.errorHandler("Failed to update price when remove", 400));
         if (quote.status !== Quote_1.Status.ASKED &&
             quote.userDecision !== Quote_1.UserDecision.PENDING) {
             let reservedList = JSON.parse(product.reserved);
@@ -325,12 +345,9 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
         }
     }
     if (units && Number(units) === data.units) {
-        return next(new errorHandler_1.errorHandler("Please change units price", 400));
+        return next(new errorHandler_1.errorHandler("Please change units ", 400));
     }
     else if (units) {
-        const date1 = new Date(data.rentDate).getTime();
-        const date2 = new Date(data.deliverDate).getTime();
-        const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
         console.log(diffinDays);
         console.log(data);
         console.log(data.units);
@@ -341,7 +358,6 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
         const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice;
         console.log(newPriceWithoutOldItem);
         console.log("prix avec nouvelle quantité");
-        const newUnits = data.units + Number(units);
         const total = (data.productPrice * Number(units) * diffinDays) + newPriceWithoutOldItem;
         console.log(total);
         data.units = Number(units);

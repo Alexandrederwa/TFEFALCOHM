@@ -12,6 +12,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
       const { data } = await axios.put(`/api/quotes/item/${item.id}`, {
         remove: true,
         quoteId: quote.id,
+        units,
       });
       if (data.success) {
         setShowProducts(false);
@@ -121,7 +122,7 @@ const QuoteProducts = ({ item, quote, fetchQuotes, setShowProducts }) => {
             onClick={handleRemoveProduct}
             disabled={removeLoading}
           >
-            {removeLoading ? "suppression..." : "Supprimer l'article"}
+            {removeLoading ? "Suppression..." : "Supprimer l'article"}
           </Button>
         </TableCell>
       ) : null}
