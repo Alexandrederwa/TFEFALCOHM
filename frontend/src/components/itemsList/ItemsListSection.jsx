@@ -93,6 +93,7 @@ const ItemListSection = () => {
     setError("");
     emptyItemsList();
     setTotalPrice(0);
+    window.location.reload(false);
   };
 
 

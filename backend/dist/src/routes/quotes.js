@@ -332,22 +332,26 @@ const editOrRemoveItems = (0, catchAsyncError_1.default)((req, res, next) => __a
         const date2 = new Date(data.deliverDate).getTime();
         const diffinDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
         console.log(diffinDays);
+        console.log(data);
         console.log(data.units);
         console.log(units);
         console.log(Number(units));
+        console.log(quote.totalPrice);
+        console.log("prix sans");
+        const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice;
+        console.log(newPriceWithoutOldItem);
+        console.log("prix avec nouvelle quantité");
         const newUnits = data.units + Number(units);
-        const total = data.productPrice * Number(units) * diffinDays;
+        const total = (data.productPrice * Number(units) * diffinDays) + newPriceWithoutOldItem;
+        console.log(total);
         data.units = Number(units);
         quote.totalPrice = total;
         let reservedList = JSON.parse(product === null || product === void 0 ? void 0 : product.reserved);
         if (quote.status !== Quote_1.Status.ASKED &&
             quote.userDecision !== Quote_1.UserDecision.PENDING) {
-            console.log("yessai 4");
             if (reservedList.length) {
                 const found = reservedList.find((list) => list.quoteId === quoteId);
                 if (found) {
-                    console.log(found);
-                    console.log("yessai 2");
                     found.reservedUnits = Number(units);
                     reservedList = reservedList.filter((list) => list.quoteId !== quoteId);
                     product.reserved = JSON.stringify([...reservedList, found]);

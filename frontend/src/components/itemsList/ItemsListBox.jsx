@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -17,7 +17,7 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
   const { updateItem, removeItem, itemsList, addItem } = useItemsList();
   const [units, setUnits] = useState(1);
   const [saved, setSaved] = useState(false);
-
+  const buttonRef = useRef("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   
@@ -41,14 +41,27 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
     if (startDate > endDate){
       return alert("Selected date are not valid, please verify");
     }
-    if (!saved) {
-      addItem({ ...item, startDate, endDate, units: units });
-    } else {
-    
-
-      updateItem(item.id, startDate, endDate, units);
+    console.log(item.stock)
+    if (units <= item.stock){
+      if (!saved) {
+        addItem({ ...item, startDate, endDate, units: units });
+      } else {
+      
+  
+        updateItem(item.id, startDate, endDate, units);
+      }
+      console.log(saved)
+      console.log(buttonRef.current.innerText);
+      if (buttonRef.current.innerText === "Ajouter"){
+        setSaved(true);
+      }else{
+        setSaved(false);
+       
+      };
+    }else {
+      alert(`Vous avez dépasser le nombre diponible en stock pour cette date, veuillez choisir un nombre maximum de ${item.stock}`)
     }
-    setSaved(true);
+    
   };
   const handleRemove = () => {
     removeItem(item.id);
@@ -86,7 +99,9 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
       setUnits(found.units);
       setSaved(true);
     }
-    if (itemsList?.length) {
+    console.log(itemsList.length)
+    if (itemsList.length != 0) {
+      console.log("tg")
       let calculatedPrice = 0;
       itemsList.forEach(({ startDate, endDate, units, price }) => {
         const start = moment(new Date(startDate));
@@ -184,6 +199,7 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
       </div>
       <div className="buttonGroup">
         <button
+          ref={buttonRef}
           disabled={!startDate || !endDate || !units || error}
           onClick={handleSave}
           style={{ margin: "10px", padding: "8px" }}

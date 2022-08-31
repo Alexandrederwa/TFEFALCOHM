@@ -41,8 +41,8 @@
     cursor: pointer;
     border: none;
     border-radius: 3px;
-
 }
+
 .quoteSection .actionBtn:hover{
     background-color: rgb(243, 232, 232);
 }
@@ -53,4 +53,25 @@
 .quoteSection .buttonGroup{
     display: flex;
     justify-content: center;
+}
+
+
+@media only screen and (max-width: 450px){
+    .actionBtn{
+        padding: 8px 13px;
+        font-size: 0.6rem !important;
+        cursor: pointer;
+        border: none;
+        border-radius: 3px;
+    }
+}
+
+@media only screen and (min-width : 450px) and (max-width: 600px){
+    .actionBtn{
+        padding: 8px 13px;
+        font-size: 0.85rem !important;
+        cursor: pointer;
+        border: none;
+        border-radius: 3px;
+    }
 }

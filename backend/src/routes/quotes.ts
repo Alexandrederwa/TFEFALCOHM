@@ -418,11 +418,18 @@ const editOrRemoveItems = catchAsyncError(
       console.log(diffinDays)
       // console.log(data.rentDate - data.deliverDate)
       //CALC NEW TOTAL PRICE
+      console.log(data)
       console.log(data.units)
       console.log(units)
       console.log(Number(units))
+      console.log(quote.totalPrice)
+      console.log("prix sans")
+      const newPriceWithoutOldItem = quote.totalPrice - data.units * diffinDays * data.productPrice
+      console.log(newPriceWithoutOldItem)
+      console.log("prix avec nouvelle quantité")
       const newUnits = data.units + Number(units)
-      const total = data.productPrice * Number(units) * diffinDays;
+      const total = (data.productPrice * Number(units) * diffinDays) + newPriceWithoutOldItem;
+      console.log(total)
       //ADJUST NUMBER IN ITEM 
       data.units = Number(units);
       //ADJUST TOTAL PRICE IN QUOTE
@@ -436,7 +443,7 @@ const editOrRemoveItems = catchAsyncError(
         quote.userDecision !== UserDecision.PENDING
       ) {
         
-        console.log("yessai 4")
+       
         if (reservedList.length) {
          
 
@@ -444,8 +451,6 @@ const editOrRemoveItems = catchAsyncError(
             (list: any) => list.quoteId === quoteId
           );
           if (found) {
-            console.log(found)
-            console.log("yessai 2")
             found.reservedUnits = Number(units);
             
             reservedList = reservedList.filter(

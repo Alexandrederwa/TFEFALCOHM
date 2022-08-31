@@ -59,7 +59,7 @@ const QuoteRow = ({ quote, handleDeleteQuote, fetchQuotes, loading }) => {
           {quote?.totalReserved}
         </TableCell>
         <TableCell style={{ textAlign: "center" }}>
-          {dayjs().from(quote.createdAt, true)} ago
+          {quote.createdAt.slice(0,10)} 
         </TableCell>
         <TableCell
           style={{
