@@ -150,7 +150,7 @@ const Home = () => {
         <Typewriter 
             options={{
               strings: [
-                "votre partenaire événementiel !",
+                "votre partenaire évènementiel !",
                 "la solution idéale !",
                 "l'expertise audiovisuel !",
               ],

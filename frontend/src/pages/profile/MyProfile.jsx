@@ -21,7 +21,6 @@ const MyProfile = () => {
             variant="h3"
             className="pageTitleProfil"
             sx={{
-              mr: 2,
               fontWeight:"bold",
              textAlign:"center"
              

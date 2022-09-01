@@ -16,6 +16,7 @@
 
 .profilePage{
     text-align: center;
+    padding-top: 3rem;
 }
 
 
@@ -24,8 +25,11 @@
       font-size: 2rem !important;
     }
     .profilePage h4{
-        font-size: 0.2rem !important;
+        font-size: 1.3rem !important;
     
     
+    }
+    .details{
+        width: 95% !important;
     }
   }

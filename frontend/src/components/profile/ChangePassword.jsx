@@ -9,7 +9,7 @@ const customStyles = {
     top: "50%",
     left: "50%",
     right: "auto",
-    width: "30%",
+    width: "80%",
     minHeight: "30vw",
     bottom: "auto",
     marginRight: "-50%",
@@ -63,7 +63,7 @@ const ChangePassword = () => {
   };
   return (
     <div className="changePassword">
-      <div style={{ margin: "10px auto", width: "50%", padding: "5px" }}>
+      <div style={{ margin: "10px auto", width: "70%", padding: "5px" }}>
         <Button variant="contained" color="primary" onClick={openModal}>
           Changer de mot de passe 
         </Button>

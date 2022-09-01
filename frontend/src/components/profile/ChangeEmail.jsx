@@ -9,7 +9,7 @@ const customStyles = {
     top: "50%",
     left: "50%",
     right: "auto",
-    width: "30%",
+    width: "80%",
     minHeight: "30vw",
     bottom: "auto",
     marginRight: "-50%",
@@ -17,8 +17,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+//Verif check
 Modal.setAppElement("#root");
 
 const ChangeEmail = () => {
@@ -45,7 +44,7 @@ const ChangeEmail = () => {
   const handleChangeEmail = async () => {
     setError("");
     if (oldEmail === newEmail) {
-      return setError("old and new Emails cannot be same");
+      return setError("La nouvelle adresse email ne peut pas être la même que l'ancienne");
     }
     try {
       const { data } = await axios.put("/api/auth/change_email", {
@@ -63,7 +62,7 @@ const ChangeEmail = () => {
   };
   return (
     <div className="changeEmail">
-      <div style={{ margin: "10px auto", width: "50%", padding: "5px" }}>
+      <div style={{ margin: "10px auto", width: "70%", padding: "5px" }}>
         
         <Button
           variant="contained"
@@ -88,8 +87,8 @@ const ChangeEmail = () => {
             sx={{
               m: 2,
               fontWeight:"bold",
-             textAlign:"center"
-             
+             textAlign:"center",
+             width : "90%"
             }}
           >
            Changer d'adresse email
