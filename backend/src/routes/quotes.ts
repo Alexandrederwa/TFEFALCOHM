@@ -164,7 +164,7 @@ const userDecisionQuote = catchAsyncError(
     if (quote.userDecision == UserDecision.ACCEPTED){
       const msgAccept = {
         to: "falcohmsystem@gmail.com",
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-4a5e020c33554ffeab9cab06d798b337',
         dynamicTemplateData: {
           subject : "Un client à accepter un devis! !",
@@ -183,7 +183,7 @@ const userDecisionQuote = catchAsyncError(
     }else if (quote.userDecision == UserDecision.REJECTED){
       const msgReject = {
         to: "falcohmsystem@gmail.com",
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-7a742199462042c9b4230a48cd880ca9',
         dynamicTemplateData: {
           subject : "Un client à refusé un devis !",
@@ -202,7 +202,7 @@ const userDecisionQuote = catchAsyncError(
     }else if (quote.userDecision == UserDecision.ASKDISCOUNT){
       const msgDiscount = {
         to: "falcohmsystem@gmail.com",
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-8799fe923b254cb78e4cfa10303c4384',
         dynamicTemplateData: {
           subject : "Un client à demander une réduction !",
@@ -285,7 +285,7 @@ const addReqQuoteItems = catchAsyncError(
 
       const msgResponse = {
         to: `${reqQuote.userEmail}`,
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-86b20709d9dc423d84e62484db4aba4a',
         dynamicTemplateData: {
           subject : "Votre devis est prêt !",
@@ -342,18 +342,18 @@ const removeQuotes = catchAsyncError(
       }
       await quotesRespository.remove(found);
       // ENDING MAIL TO USER AFTER DELETE HIS QUOTE
-      const msg = {
-        to: found.userEmail,
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-        subject: "Quote Status",
-        text: "Hey, You quote was Rejected... ",
-        html: `<h3 style="margin:20px;color:crimson;">
-        Sadly your Requested Quote has been deleted.</h3>`,
-      };
+      // const msg = {
+      //   to: found.userEmail,
+      //   from: "falcohm6tm@outlook.com",   
+      //   subject: "Quote Status",
+      //   text: "Hey, You quote was Rejected... ",
+      //   html: `<h3 style="margin:20px;color:crimson;">
+      //   Sadly your Requested Quote has been deleted.</h3>`,
+      // };
 
-      await sgMail.send(msg);
+      // await sgMail.send(msg);
       
-      console.log("Email send is => ", msg["html"]);
+      // console.log("Email send is => ", msg["html"]);
       
       return res.json({ success: true });
     } catch (error) {
@@ -385,16 +385,16 @@ const giveDiscount = catchAsyncError(
       if (!saved)
         return next(new errorHandler("Failed to give the discount", 400));
       // SENDING NOTIFICATION TO CUSTOMER THAT HE HAS BEEN GIVEN A DISCOUNT
-      const msg = {
-        to: found.userEmail,
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
-        subject: "Quote Status",
-        text: "Hey, You got a Discount ",
-        html: `<h3 style="margin:20px;color:green;">
-        Hey you have been given a discount</h3>`,
-      };
+      // const msg = {
+      //   to: found.userEmail,
+      //   from: "falcohm6tm@outlook.com",   
+      //   subject: "Quote Status",
+      //   text: "Hey, You got a Discount ",
+      //   html: `<h3 style="margin:20px;color:green;">
+      //   Hey you have been given a discount</h3>`,
+      // };
 
-      await sgMail.send(msg);
+      // await sgMail.send(msg);
       return res.json({ success: true });
     } catch (error) {
       console.log(error);
@@ -664,15 +664,12 @@ const requestQuote = catchAsyncError(
     if (!saved) {
       return next(new errorHandler("Failed to save the quote", 400));
     }
-    // link to the quote after admin create devis : 
-    // https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}
-    // const linkQuote = `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`;
     // SENDING MAIL TO ADMIN THAT A QUOTE HAS BEN REGISTERED
 
     if (totalPrice){
       const msgResponse = {
         to: `${quote.userEmail}`,
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-86b20709d9dc423d84e62484db4aba4a',
         dynamicTemplateData: {
           subject : "Votre devis est prêt !",
@@ -697,7 +694,7 @@ const requestQuote = catchAsyncError(
       const msg = [
         {
         to: `${quote.userEmail}`,
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-5478f37ff73344a3b941d8bf2b6a1df0',
         dynamicTemplateData: {
           subject : "Falc'ohm System - Nous avons bien reçu votre demande !",
@@ -708,7 +705,7 @@ const requestQuote = catchAsyncError(
       },
        {
         to: "falcohmsystem@gmail.com",
-        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        from: "falcohm6tm@outlook.com",   
         templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
         dynamicTemplateData: {
           subject : "Un client à réalisé une nouvelle demande de devis !",
@@ -758,7 +755,7 @@ const requestContact = catchAsyncError(
     //MESSAGE TO 
     const msgResponse = {
       to: "falcohmsystem@gmail.com",
-      from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+      from: "falcohm6tm@outlook.com",   
       templateId : 'd-07c08fcd163b4fa1b029c1bfffa73355',
       dynamicTemplateData: {
         subject : "Un nouveau mail prise de contact d'un client !",

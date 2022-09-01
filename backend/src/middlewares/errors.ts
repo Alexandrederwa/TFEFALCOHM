@@ -4,15 +4,7 @@ import { errorHandler } from "../utils/errorHandler"
 // ERROR HANDLER MIDDLEWARE TO SEND Different RESPONSE DEPENDING UPON THE DEVELOPMENT MODE
 export  default (err:any,__:any,res:Response,_:any) : any=>{
     err.statusCode = err.statusCode || 500
-    if(process.env.NODE_ENV === 'development'){
-        return res.status(err.statusCode).json({
-            success:false,
-            error:err,
-            message :err.message,
-            stack:err.stack
-        })
-    }
-    if(process.env.NODE_ENV='production'){
+    if(process.env.NODE_ENV==='production'){
         let error = {...err}
         error.message = err.message
         if(err.name==='CastError'){
