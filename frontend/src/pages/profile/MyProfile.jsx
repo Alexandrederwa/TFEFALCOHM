@@ -16,7 +16,7 @@ const MyProfile = () => {
   return (
     <div className="profilePage">
       <Typography
-            variant="h2"
+            variant="h3"
             className="pageTitleProfil"
             sx={{
               mr: 2,
@@ -29,9 +29,9 @@ const MyProfile = () => {
             Mon profil
           </Typography>
       <div className="details">
-        <h3>Nom : {user.name}</h3>
-        <h3>Email : {user.email}</h3>
-        <h3>Member depuis : {dayjs().from(user.createdAt, true)}</h3>
+        <h4>Nom : {user.name}</h4>
+        <h4>Email : {user.email}</h4>
+        <h4>Member depuis : {dayjs().from(user.createdAt, true)}</h4>
       </div>
       <ChangeEmail/>
       <ChangePassword/>

@@ -1,19 +1,34 @@
-            .invoiceLogo{
+		.invoicePage{
+			text-align: center;
+			font-size: 2rem;
+			margin-bottom: 2rem;
+			margin-top: 2rem;
+		}
+		.fontInvoice{
+			font-family: 'Barlow', sans-serif !important;
+		}
+		.mobileVersionInvoice{
+			text-align: center;
+			font-size: 14px;
+			padding: 1rem;
+		}
+		.invoiceLogo{
                 width: 20%;
 				height: 20%;
             }
 			.invoice-box {
 				/* max-width: 800px; */
-				width: 80%;
-				height: 90%;
+				width: 596px;
+				height: 842px;
 				margin: auto;
-				padding: 30px;
+				padding: 10px;
 				border: 1px solid #eee;
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-				font-size: 16px;
+				font-size: 12px;
 				line-height: 24px;
 				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 				color: #555;
+				margin-bottom: 2rem;
 			}
 			
 			.invoice-box table {
@@ -25,6 +40,9 @@
 			.invoice-box table td {
 				padding: 5px;
 				vertical-align: top;
+			}
+			.topItems{
+				width: 570px;
 			}
 
 			.invoice-box table tr td:nth-child(2) {
@@ -42,13 +60,27 @@
 			}
 
 			.invoice-box table tr.information table td {
-				padding-bottom: 40px;
+				padding-bottom: 20px;
 			}
 
-			.invoice-box table tr.heading td {
+			.invoice-box table tr.headingInvoice td {
 				background: #eee;
 				border-bottom: 1px solid #ddd;
 				font-weight: bold;
+				padding: 5px;
+				
+			}
+			.headingDiv{
+				max-width: 100% ;
+				
+				border-style: groove;
+				font-size: 13px;
+				
+					}
+			
+			.leftStyle{
+				padding-right: 12.65rem !important;
+				
 			}
 
 			.invoice-box table tr.details td {
@@ -57,15 +89,23 @@
 
 			.invoice-box table tr.item td {
 				border-bottom: 1px solid #eee;
+				text-align: center;
 			}
 
 			.invoice-box table tr.item.last td {
 				border-bottom: none;
 			}
 
-			.invoice-box table tr.total td:nth-child(2) {
+			.invoice-box table tr.total td {
 				border-top: 2px solid #eee;
 				font-weight: bold;
+				background-color: rgb(235, 235, 235);
+			}
+
+			.endQuote{
+				margin-top: 1rem;
+				padding: 1rem;
+				font-size: 12px !important;
 			}
 
 			@media only screen and (max-width: 600px) {
@@ -101,6 +141,9 @@
 			}
 
 			.idDate{
+				/* text-align: right;
 				position: absolute;
-    			right: 10rem;
+    			right: 27rem; */
+				margin-right: 20rem;
+				width: 10rem;
 			}
