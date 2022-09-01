@@ -164,7 +164,7 @@ const userDecisionQuote = catchAsyncError(
     console.log("Saved =>", { quote: JSON.stringify(quote) });
     //MAILING
     if (quote.userDecision == UserDecision.ACCEPTED){
-      try {const msgAccept = {
+      const msgAccept = {
         to: "falcohmsystem@gmail.com",
         from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
         templateId : 'd-4a5e020c33554ffeab9cab06d798b337',
@@ -177,18 +177,17 @@ const userDecisionQuote = catchAsyncError(
           idQuote : `${quote.id}`,
           dateCrea :  `${quote.createdAt}`,
           emailClient : `${quote.userEmail}`,
-        
+        }
       }
-    }
       sgMail.send(msgAccept);
       console.log("Email is send");
       return res.status(200).json({ success: true, quote });
-    } catch (error) {
-      console.log(error.message);
-      return res.json({ error: "Something went wrong" });
+    }else if (quote.userDecision == UserDecision.REJECTED){
+      console.log("")
+    }else if (quote.userDecision == UserDecision.ASKDISCOUNT){
+      console.log("")
     }
     }
-  }
 );
 
 interface reqBody {
