@@ -27,6 +27,7 @@ const QuotePage = () => {
         decision,
       });
       if (data.success) {
+        alert(`Merci d'avoir ${decision} le devis`)
         navigate("/");
       }
     } catch (error) {

@@ -16,3 +16,17 @@
     background-color: #1d7c3d!important;
     color: black;
 }
+
+@media only screen and (max-width : 900px){
+
+    .dashboard h1{
+        text-align: center;
+        margin-top: 2.5rem;
+        font-size: 1.5rem !important;
+        margin-bottom: 2rem;
+    }
+    .dashboardButton{
+        background-color: #1D217C!important;
+        font-size: 17px !important;
+    }
+}
