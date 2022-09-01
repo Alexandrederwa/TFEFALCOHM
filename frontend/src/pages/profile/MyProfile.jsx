@@ -8,6 +8,8 @@ import ChangePassword from "../../components/profile/ChangePassword";
 import { Typography } from "@mui/material";
 
 
+require('dayjs/locale/fr')
+dayjs.locale("fr")
 dayjs.extend(relativeTime);
 
 const MyProfile = () => {

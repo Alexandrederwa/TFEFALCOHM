@@ -21,7 +21,7 @@ const UserList = () => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(10000);
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -98,11 +98,11 @@ const UserList = () => {
                     textAlign: "center",
                   }}
                 >
-                  <TableCell style={{ textAlign: "center" }}>Name</TableCell>
+                  <TableCell style={{ textAlign: "center" }}>Nom</TableCell>
                   <TableCell style={{ textAlign: "center" }}>Email</TableCell>
                   <TableCell style={{ textAlign: "center" }}>Role</TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Joined On
+                    Mmebre depuis
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>Actions</TableCell>
                 </TableRow>
@@ -120,7 +120,7 @@ const UserList = () => {
                       {user?.role.toUpperCase()}
                     </TableCell>
                     <TableCell style={{ textAlign: "center" }}>
-                      {dayjs().from(user.createdAt, true)} ago
+                      {dayjs().from(user.createdAt, true)} 
                     </TableCell>
                     <TableCell
                       style={{
@@ -138,7 +138,7 @@ const UserList = () => {
                         disabled={loading}
                         sx={{ padding: "6px", marginLeft: "4px" }}
                       >
-                        Delete{" "}
+                        Supprimer{" "}
                       </Button>
                       <Button
                         variant="contained"
@@ -156,7 +156,7 @@ const UserList = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
+          {/* <TablePagination
             component="div"
             count={users.length}
             onPageChange={handlePagination}
@@ -164,7 +164,7 @@ const UserList = () => {
             page={currentPage}
             rowsPerPage={limit}
             rowsPerPageOptions={[5, 10, 25]}
-          />
+          /> */}
         </Container>
       ) : loading ? (
         <h1>Loading</h1>

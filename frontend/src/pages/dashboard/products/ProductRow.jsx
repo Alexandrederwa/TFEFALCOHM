@@ -16,10 +16,10 @@ const ProductRow = ({
       <TableCell style={{ textAlign: "center" }}>€{product?.price}</TableCell>
       <TableCell style={{ textAlign: "center" }}>{product?.stock}</TableCell>
       <TableCell style={{ textAlign: "center" }}>
-        {dayjs().from(product.createdAt, true)} ago
+        {dayjs().from(product.createdAt, true)} 
       </TableCell>
       <TableCell style={{ textAlign: "center" }}>
-        {dayjs().from(product.updatedAt, true)} ago
+        {dayjs().from(product.updatedAt, true)} 
       </TableCell>
       <TableCell
         style={{

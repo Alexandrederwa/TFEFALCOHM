@@ -48,7 +48,7 @@ const AppBarX = () => {
   };
 
   return (
-    <AppBar position="static " style={{ background: 'transparent', boxShadow: 'none'}} className="navbar">
+    <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} className="navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
             {/* {isBigScreen ?   */}

@@ -32,7 +32,7 @@ const ProductList = () => {
   const [edit, setEdit] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
   const [isPending, startTransition] = useTransition();
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(1000);
   const handlePagination = (_, page) => {
     setCurrentPage(page);
   };
@@ -100,18 +100,18 @@ const ProductList = () => {
                     textAlign: "center",
                   }}
                 >
-                  <TableCell style={{ textAlign: "center" }}>Name</TableCell>
+                  <TableCell style={{ textAlign: "center" }}>Nom</TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Category
+                    Catégorie
                   </TableCell>
-                  <TableCell style={{ textAlign: "center" }}>Price</TableCell>
+                  <TableCell style={{ textAlign: "center" }}>Prix</TableCell>
                   <TableCell style={{ textAlign: "center" }}>Stock</TableCell>
 
                   <TableCell style={{ textAlign: "center" }}>
-                    Created At
+                    Créé il y a 
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>
-                    Updated At
+                    Mise à jour il y a 
                   </TableCell>
                   <TableCell style={{ textAlign: "center" }}>Actions</TableCell>
                 </TableRow>
@@ -129,7 +129,7 @@ const ProductList = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
+          {/* <TablePagination
             component="div"
             count={products.length}
             onPageChange={handlePagination}
@@ -137,7 +137,7 @@ const ProductList = () => {
             page={currentPage}
             rowsPerPage={limit}
             rowsPerPageOptions={[5, 10, 25]}
-          />
+          /> */}
         </Container>
       ) : loading ? (
         <h1>Loading</h1>
