@@ -67,8 +67,7 @@ const ChangeEmail = () => {
         <Button
           variant="contained"
         
-          sx={{ margin: "8px" }}
-          color="warning"
+          sx={{ margin: "8px", backgroundColor :"#1D217C" }}
           onClick={openModal} 
         >
           Changer d'adresse email

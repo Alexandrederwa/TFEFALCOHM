@@ -12,7 +12,7 @@ const ProductsPage = () => {
         <Typography
           gutterBottom
           variant="h3"
-          sx={{ textAlign: "center", fontWeight: "bold", color : "#1D217C", marginTop : "1.5rem"}}
+          sx={{ textAlign: "center", fontWeight: "bold", color : "black", marginTop : "1.5rem"}}
           component="div"
           className="titleProduct"
         >
