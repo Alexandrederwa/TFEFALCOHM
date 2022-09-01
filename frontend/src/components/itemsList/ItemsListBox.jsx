@@ -137,7 +137,7 @@ const ItemsListBox = ({ item ,setTotalPrice}) => {
   }, [startDate, endDate]);
   return (
     <div className="itemsBox">
-      <img src={item?.image} alt={item.name} width="180" height={"110"} />
+      <img src={item?.image} alt={item.name} width="170" height={"250"} />
 
       <h3 className="itemname">{item.name}</h3>
 

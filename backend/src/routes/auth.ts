@@ -138,7 +138,7 @@ const logout = catchAsyncError((_: Request, res: Response) => {
 const getUser = catchAsyncError((_: Request, res: Response) => {
   return res.status(200).json(res?.locals.user);
 });
-// ADMIN RUOUTE TO GET ALL USERS
+// ADMIN ROUTE TO GET ALL USERS
 const getAllUsers = catchAsyncError(
   async (_: Request, res: Response, next: NextFunction) => {
     const users = await userRepository.find();

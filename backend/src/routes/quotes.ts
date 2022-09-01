@@ -6,7 +6,6 @@ import sgMail from "@sendgrid/mail";
 require('dotenv').config();
 if (process.env.NODE_ENV !== 'production'){
   const apiKey = process.env.SENDGRID_API_KEY;
-  console.log(apiKey)
   sgMail.setApiKey(apiKey);
 } 
 
@@ -163,8 +162,32 @@ const userDecisionQuote = catchAsyncError(
     }
     await quotesRespository.save(quote);
     console.log("Saved =>", { quote: JSON.stringify(quote) });
-
-    return res.status(200).json({ success: true, quote });
+    //MAILING
+    if (quote.userDecision == UserDecision.ACCEPTED){
+      try {const msgAccept = {
+        to: "falcohmsystem@gmail.com",
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-4a5e020c33554ffeab9cab06d798b337',
+        dynamicTemplateData: {
+          subject : "Un client à accepter un devis! !",
+          name : `${quote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/dashboard/quotes`,
+          phoneNumber : `${quote.phone}`,
+          price : `${quote.totalPrice}`,
+          idQuote : `${quote.id}`,
+          dateCrea :  `${quote.createdAt}`,
+          emailClient : `${quote.userEmail}`,
+        
+      }
+    }
+      sgMail.send(msgAccept);
+      console.log("Email is send");
+      return res.status(200).json({ success: true, quote });
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: "Something went wrong" });
+    }
+    }
   }
 );
 
