@@ -4,10 +4,8 @@ import dotenv from "dotenv";
 import { Product } from "./../entity/Product";
 import sgMail from "@sendgrid/mail";
 require('dotenv').config();
-if (process.env.NODE_ENV !== 'production'){
-  const apiKey = process.env.SENDGRID_API_KEY;
-  sgMail.setApiKey(apiKey);
-} 
+const apiKey = process.env.SENDGRID_API_KEY;
+sgMail.setApiKey(apiKey);
 
 import { NextFunction, Request, Response, Router } from "express";
 import { AppDataSource } from "../data-source";
@@ -183,9 +181,42 @@ const userDecisionQuote = catchAsyncError(
       console.log("Email is send");
       return res.status(200).json({ success: true, quote });
     }else if (quote.userDecision == UserDecision.REJECTED){
-      console.log("")
+      const msgReject = {
+        to: "falcohmsystem@gmail.com",
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-7a742199462042c9b4230a48cd880ca9',
+        dynamicTemplateData: {
+          subject : "Un client à refusé un devis !",
+          name : `${quote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/dashboard/quotes`,
+          phoneNumber : `${quote.phone}`,
+          price : `${quote.totalPrice}`,
+          idQuote : `${quote.id}`,
+          dateCrea :  `${quote.createdAt}`,
+          emailClient : `${quote.userEmail}`,
+        }
+      }
+      sgMail.send(msgReject);
+      console.log("Email is send");
+      return res.status(200).json({ success: true, quote });
     }else if (quote.userDecision == UserDecision.ASKDISCOUNT){
-      console.log("")
+      const msgDiscount = {
+        to: "falcohmsystem@gmail.com",
+        from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+        templateId : 'd-8799fe923b254cb78e4cfa10303c4384',
+        dynamicTemplateData: {
+          subject : "Un client à demander une réduction !",
+          name : `${quote.nameClient}`,
+          linkToQuote : `https://www.falcohmsystem.be/#/dashboard/quotes`,
+          phoneNumber : `${quote.phone}`,
+          price : `${quote.totalPrice}`,
+          idQuote : `${quote.id}`,
+          dateCrea :  `${quote.createdAt}`,
+          emailClient : `${quote.userEmail}`,
+        }
+      }
+      sgMail.send(msgDiscount);
+      console.log("Email is send");
     }
     }
 );
