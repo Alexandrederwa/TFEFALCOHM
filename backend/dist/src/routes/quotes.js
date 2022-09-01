@@ -194,7 +194,7 @@ const addReqQuoteItems = (0, catchAsyncError_1.default)((req, res, next) => __aw
                 linkToQuote: `https://www.falcohmsystem.be/#/quote?quoteId=${saved.id}`
             }
         };
-        yield mail_1.default.send(msgResponse);
+        mail_1.default.send(msgResponse);
         console.log("Email send is => ", string);
         return res.json(reqQuote);
     }
@@ -471,6 +471,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
             .send(msgResponse)
             .then(() => {
             console.log('Emails sent');
+            return res.status(200).json({ success: true });
         })
             .catch((error) => {
             console.log(error.response.body);
@@ -503,11 +504,11 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
                 }
             }
         ];
-        console.log("1");
         mail_1.default
             .send(msg)
             .then(() => {
             console.log('Emails sent');
+            return res.status(200).json({ success: true });
         })
             .catch((error) => {
             console.log(error.response.body);
@@ -546,7 +547,7 @@ const requestContact = (0, catchAsyncError_1.default)((req, res, next) => __awai
         .send(msgResponse)
         .then(() => {
         console.log('Emails sent');
-        return res.status(200).json();
+        return res.status(200).json({ success: true });
     })
         .catch((error) => {
         console.log(error.response.body);

@@ -35,7 +35,7 @@ const ItemListSection = () => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   const [error, setError] = useState("");
-  // ADMIN SEND QUOTE
+  // ADMIN SEND QUOTE FROM DASHBOARD
   const handleSubmit = async () => {
     setError("");
     if (!itemsList[0]?.endDate) {
@@ -62,33 +62,38 @@ const ItemListSection = () => {
       setSubmitLoading(false);
     }
   };
-  // ADMIN Create QUOTE
+  // ADMIN Create QUOTE FROM NAVBAR
   const handleAdminAddQuote = async (e) => {
-    e.preventDefault();
-  
-    try {
-      setSubmitLoading(true);
-      const { data } = await axios.post("/api/quotes/request", {
-        name,
-        email,
-        phone,
-        itemsList,
-        totalPrice
-      });
-      if (data) {
 
-        setError("");
-        emptyItemsList();
+    if (isValidEmail(email)){
+      try {
+        setSubmitLoading(true);
+        const { data } = await axios.post("/api/quotes/request", {
+          name,
+          email,
+          phone,
+          itemsList,
+          totalPrice
+        });
+        if (data) {
+  
+          setError("");
+          emptyItemsList();
+          setSubmitLoading(false);
+          navigate(`/`);
+        }
+      } catch (error) {
+        alert(error?.message);
+        setError(error?.response.data.message);
         setSubmitLoading(false);
-        navigate(`/`);
+        console.log(error?.response.data.message);
       }
-    } catch (error) {
-      alert(error?.message);
-      setError(error?.response.data.message);
-      setSubmitLoading(false);
-      console.log(error?.response.data.message);
-    }
-  };
+    }else{
+      alert("Veuillez entrer une adresse email valide pour créer le devis")
+    };
+  }
+  
+    
   const emptyCart = () => {
     setError("");
     emptyItemsList();
@@ -123,6 +128,11 @@ const ItemListSection = () => {
       setLoading(false);
     }
   };
+
+   //form input verification 
+   const isValidEmail = (emailInput) =>{
+    return /\S+@\S+\.\S+/.test(email);
+  }
   useEffect(() => {
     fetchProducts();
     if(id) {

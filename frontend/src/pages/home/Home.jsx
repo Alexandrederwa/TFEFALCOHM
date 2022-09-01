@@ -58,7 +58,7 @@ const Home = () => {
         alert("Please entry a valid phone number")
       }
     }else{
-      alert("Please entry a valid email")
+      alert("Veuillez entrer une adresse email valable")
     }
   };
   //form input verification 

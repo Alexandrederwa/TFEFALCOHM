@@ -242,7 +242,7 @@ const addReqQuoteItems = catchAsyncError(
         
       }
     }
-      await sgMail.send(msgResponse);
+      sgMail.send(msgResponse);
       console.log("Email send is => ", string);
       return res.json(reqQuote);
     } catch (error) {
@@ -633,6 +633,7 @@ const requestQuote = catchAsyncError(
     .send(msgResponse)
     .then(() => {
       console.log('Emails sent');
+      return res.status(200).json({ success: true });
     })
     .catch((error) => {
       console.log(error.response.body);
@@ -664,12 +665,12 @@ const requestQuote = catchAsyncError(
           linkToQuoteA : `https://www.falcohmsystem.be/#/item_list?id=${saved.id}`
         }
       }];
-      console.log("1")
       // await sgMail.send(msg);
       sgMail
           .send(msg)
           .then(() => {
             console.log('Emails sent');
+            return res.status(200).json({ success: true });
           })
           .catch((error) => {
             console.log(error.response.body);
@@ -720,7 +721,7 @@ const requestContact = catchAsyncError(
     .send(msgResponse)
     .then(() => {
       console.log('Emails sent');
-      return res.status(200).json();
+      return res.status(200).json({ success: true });
     })
     .catch((error) => {
       console.log(error.response.body);
