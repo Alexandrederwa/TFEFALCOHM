@@ -7,7 +7,6 @@ require('dotenv').config();
 if (process.env.NODE_ENV !== 'production'){
   const apiKey = process.env.SENDGRID_API_KEY;
   console.log(apiKey)
-  console.log('xdlol')
   sgMail.setApiKey(apiKey);
 } 
 
@@ -654,7 +653,7 @@ const requestQuote = catchAsyncError(
         }
       },
        {
-        to: "falcohm6tm@outlook.com",
+        to: "falcohmsystem@gmail.com",
         from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
         templateId : 'd-fd081f3da5a84e2392a582fd195db92b',
         dynamicTemplateData: {
@@ -683,6 +682,56 @@ const requestQuote = catchAsyncError(
         
   }
 );
+
+//CONTACT FORM ROUTE
+const requestContact = catchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { name, email, phone, detail } = req.body;
+    if (!name)
+      return next(new errorHandler("Form is empty", 400));
+      // CHECK IF QUOTE CONTAINS PRODUCTS TO RENT
+    if (!email)
+      return next(new errorHandler("Form is empty", 400));
+    if (!phone)
+      return next(new errorHandler("Form is empty", 400));
+    if (!detail)
+      return next(new errorHandler("Form is empty", 400));
+    console.log(name)
+    console.log(email)
+    console.log(phone)
+    console.log(detail)
+
+    //MESSAGE TO 
+    const msgResponse = {
+      to: "falcohmsystem@gmail.com",
+      from: "falcohm6tm@outlook.com", // Use the email address or domain you verified above
+      templateId : 'd-07c08fcd163b4fa1b029c1bfffa73355',
+      dynamicTemplateData: {
+        subject : "Un nouveau mail prise de contact d'un client !",
+        name : `${name}`,
+        details :`${detail}`,
+        phoneNumber : `${phone}`,
+        emailClient : `${email}`
+      }
+    }
+
+          
+    sgMail
+    .send(msgResponse)
+    .then(() => {
+      console.log('Emails sent');
+      return res.status(200).json();
+    })
+    .catch((error) => {
+      console.log(error.response.body);
+      console.log(error)
+      console.log('RECEIVED ERROR')
+    })
+        
+  }
+);
+
+
 const router = Router();
 
 // OPEN ROUTES
@@ -691,12 +740,12 @@ router.get(
   "/all",
   SetAuthUser,
   authMiddleware,
-
   getQuotes
 );
 router.get("/my_quotes", SetAuthUser, authMiddleware, getUserQuotes);
 router.put("/user_quote/:id", SetAuthUser, authMiddleware, userDecisionQuote);
 router.get("/:id", SetAuthUser, getQuote);
+router.post("/contact", SetAuthUser, requestContact);
 
 // Procted ROUTES
 router.put(

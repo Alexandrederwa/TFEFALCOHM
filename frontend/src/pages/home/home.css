@@ -140,7 +140,7 @@ z-index: -1;
 .buttonQuote:hover {
     background-color:#0f6116 !important;
     transition: 0.5s;
-    color: white;
+    color: white !important;
 }
 
 .contactForm{
@@ -157,9 +157,9 @@ z-index: -1;
     background-color: #1D217C !important;
 }
 
-.buttonTakeInfo:hover{
+/* .buttonTakeInfo:hover{
     background-color:#0f6116 !important;
-}
+} */
 
 .titleForm{
     text-align: center;

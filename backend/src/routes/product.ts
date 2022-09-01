@@ -23,6 +23,8 @@ const getProducts = catchAsyncError(
     }
   }
 );
+
+
 // ADMIN ADD PPODUCTS ROUTE
 const addProduct = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {

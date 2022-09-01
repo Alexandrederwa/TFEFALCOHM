@@ -20,7 +20,6 @@ require('dotenv').config();
 if (process.env.NODE_ENV !== 'production') {
     const apiKey = process.env.SENDGRID_API_KEY;
     console.log(apiKey);
-    console.log('xdlol');
     mail_1.default.setApiKey(apiKey);
 }
 const express_1 = require("express");
@@ -492,7 +491,7 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
                 }
             },
             {
-                to: "falcohm6tm@outlook.com",
+                to: "falcohmsystem@gmail.com",
                 from: "falcohm6tm@outlook.com",
                 templateId: 'd-fd081f3da5a84e2392a582fd195db92b',
                 dynamicTemplateData: {
@@ -517,12 +516,51 @@ const requestQuote = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         });
     }
 }));
+const requestContact = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { name, email, phone, detail } = req.body;
+    if (!name)
+        return next(new errorHandler_1.errorHandler("Form is empty", 400));
+    if (!email)
+        return next(new errorHandler_1.errorHandler("Form is empty", 400));
+    if (!phone)
+        return next(new errorHandler_1.errorHandler("Form is empty", 400));
+    if (!detail)
+        return next(new errorHandler_1.errorHandler("Form is empty", 400));
+    console.log(name);
+    console.log(email);
+    console.log(phone);
+    console.log(detail);
+    const msgResponse = {
+        to: "falcohmsystem@gmail.com",
+        from: "falcohm6tm@outlook.com",
+        templateId: 'd-07c08fcd163b4fa1b029c1bfffa73355',
+        dynamicTemplateData: {
+            subject: "Un nouveau mail prise de contact d'un client !",
+            name: `${name}`,
+            details: `${detail}`,
+            phoneNumber: `${phone}`,
+            emailClient: `${email}`
+        }
+    };
+    mail_1.default
+        .send(msgResponse)
+        .then(() => {
+        console.log('Emails sent');
+        return res.status(200).json();
+    })
+        .catch((error) => {
+        console.log(error.response.body);
+        console.log(error);
+        console.log('RECEIVED ERROR');
+    });
+}));
 const router = (0, express_1.Router)();
 router.post("/request", auth_1.SetAuthUser, requestQuote);
 router.get("/all", auth_1.SetAuthUser, auth_2.authMiddleware, getQuotes);
 router.get("/my_quotes", auth_1.SetAuthUser, auth_2.authMiddleware, getUserQuotes);
 router.put("/user_quote/:id", auth_1.SetAuthUser, auth_2.authMiddleware, userDecisionQuote);
 router.get("/:id", auth_1.SetAuthUser, getQuote);
+router.post("/contact", auth_1.SetAuthUser, requestContact);
 router.put("/add_items/:id", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), addReqQuoteItems);
 router.put("/discount/:id", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), giveDiscount);
 router.put("/item/:id", auth_1.SetAuthUser, auth_2.authMiddleware, (0, auth_2.authorizeRoles)("admin"), editOrRemoveItems);

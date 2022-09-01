@@ -30,29 +30,55 @@ const Home = () => {
   const [searchQ, setSearchQ] = useState("");
   const [isPage, setIsPage] = useState(false);
   const isBigScreen = useMediaQuery({ query: '(min-width: 769px)' })
-  const handleRequestQuote = async (e) => {
-    e.preventDefault();
-
-    try {
-      setLoading(true);
-      const { data } = await axios.post("quotes/request", {
-        name,
-        email,
-        detail,
-        phone,
-      });
-      if (data) {
-        navigate(`/`);
+  const handleSendMessage = async (e) => {
+    if(isValidEmail(email)){
+      if (isValidNumber(phone)){
+        try {
+          setLoading(true);
+          const { data } = await axios.post("api/quotes/contact", {
+            name,
+            email,
+            phone,
+            detail,
+          });
+          alert("Merci de nous avoir envoyé un message, un expert de chez falc'ohm system reviendra vers vous au plus vite!")
+          setLoading(false);
+          setName("");
+          setEmail("");
+          setPhone("");
+          setDetail("");
+    
+        } catch (error) {
+          alert("Veuillez remplir le formulaire au complet");
+          setError(error?.response.data.message);
+          setLoading(false);
+          console.log(error?.response.data.message);
+        }
+      }else{
+        alert("Please entry a valid phone number")
       }
-      setLoading(false);
-
-    } catch (error) {
-      alert(error?.message);
-      setError(error?.response.data.message);
-      setLoading(false);
-      console.log(error?.response.data.message);
+    }else{
+      alert("Please entry a valid email")
     }
   };
+  //form input verification 
+  const isValidEmail = (emailInput) =>{
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  const isValidNumber = (numberInput) =>{
+    if (numberInput === ""){
+      return true
+    }else{
+      try {
+        parseInt(numberInput);
+        return true
+      } catch (error) {
+        alert("Veuillez écrire un numéro de téléphone valide")
+      }
+    }
+
+    
+  }
   useEffect(() => {
     // setTimeout(() => {
     //   setCount((count) => count + 1);
@@ -289,7 +315,7 @@ const Home = () => {
       <Box sx={{ textAlign: "center" }}>
         <Button
           variant="contained"
-          onClick={() => handleRequestQuote}
+          onClick={handleSendMessage}
           className="buttonTakeInfo"
           endIcon={<SendIcon />}
         >
