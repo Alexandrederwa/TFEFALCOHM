@@ -33,17 +33,8 @@ const AddProduct = ({
   const [error, setError] = useState("");
   const [previewImage, setPreviewImage] = useState(editProduct?.image);
 
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
   const [imageLoading, setImageLoading] = useState(false);
-  const resizeFile = (file) => new Promise(resolve => {
-    console.log(file)
-    Resizer.imageFileResizer(file, 1024, 768, 'PNG', 100, 0,
-    uri => {
-      resolve(uri);
-    }, 'base64' );
-    console.log("resize done")
-    console.log(file)
-});
   const uploadImage = async () => {
     try {
       setImageLoading(true);
@@ -106,6 +97,7 @@ const AddProduct = ({
       if (data) {
         fetchProducts();
         setLoading(false);
+        alert("Article ajouté");
       }
     } catch (error) {
       console.log(error);
@@ -124,6 +116,7 @@ const AddProduct = ({
 
     try {
       const fields = {};
+      //verify data before request
       if (name && name !== editProduct.name) fields.name = name;
       if (price && price !== editProduct.price) fields.price = price;
       if (stock && stock !== editProduct.stock) fields.stock = stock;
@@ -131,11 +124,12 @@ const AddProduct = ({
         fields.category = category.value;
       if (image && image !== editProduct.image) fields.image = image;
       setLoading(true);
-      const { data } = await axios.put(`products/${editProduct.id}`, fields);
+      const { data } = await axios.put(`api/products/${editProduct.id}`, fields);
       if (data) {
         fetchProducts();
         setLoading(false);
         setEditProduct(null);
+        alert("Article modifié");
         setEdit(false);
         handleReset();
       }
@@ -170,7 +164,6 @@ const AddProduct = ({
       onSubmit={!edit ? handleSubmitAdd : handleSubmitEdit}
     >
       {error}
-
       <Box sx={{ textAlign: "center" }}>
         <TextField
           type="text"
@@ -237,7 +230,8 @@ const AddProduct = ({
         }}
       >
         <Button variant="contained" color="warning" component="label">
-          Image <ArrowCircleUpIcon color="red" />
+          Image (en portrait)  <ArrowCircleUpIcon color="red" />
+          
           <input
             type="file"
             accept="images/*"
@@ -277,7 +271,7 @@ const AddProduct = ({
           type="submit"
           variant="contained"
           sx={{ margin: "0 10px" }}
-          disabled={loading || isPending || imageLoading}
+          disabled={loading || isPending || imageLoading || image === ""}
           className="submitBtn"
         >
           {edit ? "Update" : "Add"}

@@ -15,21 +15,21 @@ const ProductBox = ({ product }) => {
       <CardContent>
         <Typography
           gutterBottom
-          variant="h5"
+          variant="h7"
           sx={{ textAlign: "center", fontWeight: "bold" }}
+          className = "productBoxTitle"
           component="div"
         >
           {product.name.toUpperCase()}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h8" component="div">
           <Typography gutterBottom variant="subtitle1" component="span">
-            Category :{" "}
+            Catégorie :{" "}
           </Typography>
           {product.category}
         </Typography>
         {/* <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          description 
         </Typography> */}
       </CardContent>
     </Card>

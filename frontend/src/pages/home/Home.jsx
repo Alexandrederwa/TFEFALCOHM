@@ -150,13 +150,13 @@ const Home = () => {
         <Typewriter 
             options={{
               strings: [
-                "votre partenaire audiovisuel",
-                "la solution idéale",
-                "l'expertise audiovisuel",
+                "votre partenaire événementiel !",
+                "la solution idéale !",
+                "l'expertise audiovisuel !",
               ],
               autoStart: true,
               loop: true,
-              delay: 50
+              delay: 80
             }}
         
         />
@@ -184,6 +184,7 @@ const Home = () => {
                 disabled={loading}
                 to={"/request_quote"}
                 className="buttonAbout"
+                sx = {{display : "none"}}
                 >
                 En savoir plus
               </Button>
@@ -191,7 +192,12 @@ const Home = () => {
 
           </div>
           <div className="col-xl-6 col-lg-6 rightpictureDiv">
-          <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"></img>
+          {isBigScreen ? 
+              <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1659800229/296873810_745709496541099_8575950716506421386_n_tsjiav.jpg"></img>
+              :
+              <img className="rightPicture" src="https://res.cloudinary.com/dutkkgjm5/image/upload/v1662050549/bflkavcurv3ca9akfamq.jpg"></img>
+          }
+          
           </div>
         </div>
 
@@ -294,6 +300,7 @@ const Home = () => {
 
       <Box sx={{ textAlign: "center" }}>
         <TextField
+          type="number"
           inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
           value={phone}
           sx={{ width: "80%", margin: " 10px auto", padding: "4px" }}
@@ -303,7 +310,6 @@ const Home = () => {
       </Box>
       <Box sx={{ textAlign: "center" }}>
         <TextField
-          type="number"
           value={detail}
           multiline
           rows={5}
