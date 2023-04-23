@@ -3,15 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const errorHandler_1 = require("../utils/errorHandler");
 exports.default = (err, __, res, _) => {
     err.statusCode = err.statusCode || 500;
-    if (process.env.NODE_ENV === 'development') {
-        return res.status(err.statusCode).json({
-            success: false,
-            error: err,
-            message: err.message,
-            stack: err.stack
-        });
-    }
-    if (process.env.NODE_ENV = 'production') {
+    if (process.env.NODE_ENV === 'production') {
         let error = Object.assign({}, err);
         error.message = err.message;
         if (err.name === 'CastError') {

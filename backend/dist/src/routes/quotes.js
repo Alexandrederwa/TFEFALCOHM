@@ -17,10 +17,8 @@ const Quote_1 = require("./../entity/Quote");
 const Product_1 = require("./../entity/Product");
 const mail_1 = __importDefault(require("@sendgrid/mail"));
 require('dotenv').config();
-if (process.env.NODE_ENV !== 'production') {
-    const apiKey = process.env.SENDGRID_API_KEY;
-    mail_1.default.setApiKey(apiKey);
-}
+const apiKey = process.env.SENDGRID_API_KEY;
+mail_1.default.setApiKey(apiKey);
 const express_1 = require("express");
 const data_source_1 = require("../data-source");
 const itemDetail_1 = require("../entity/itemDetail");
@@ -165,10 +163,43 @@ const userDecisionQuote = (0, catchAsyncError_1.default)((req, res, next) => __a
         return res.status(200).json({ success: true, quote });
     }
     else if (quote.userDecision == Quote_1.UserDecision.REJECTED) {
-        console.log("");
+        const msgReject = {
+            to: "falcohmsystem@gmail.com",
+            from: "falcohm6tm@outlook.com",
+            templateId: 'd-7a742199462042c9b4230a48cd880ca9',
+            dynamicTemplateData: {
+                subject: "Un client à refusé un devis !",
+                name: `${quote.nameClient}`,
+                linkToQuote: `https://www.falcohmsystem.be/#/dashboard/quotes`,
+                phoneNumber: `${quote.phone}`,
+                price: `${quote.totalPrice}`,
+                idQuote: `${quote.id}`,
+                dateCrea: `${quote.createdAt}`,
+                emailClient: `${quote.userEmail}`,
+            }
+        };
+        mail_1.default.send(msgReject);
+        console.log("Email is send");
+        return res.status(200).json({ success: true, quote });
     }
     else if (quote.userDecision == Quote_1.UserDecision.ASKDISCOUNT) {
-        console.log("");
+        const msgDiscount = {
+            to: "falcohmsystem@gmail.com",
+            from: "falcohm6tm@outlook.com",
+            templateId: 'd-8799fe923b254cb78e4cfa10303c4384',
+            dynamicTemplateData: {
+                subject: "Un client à demander une réduction !",
+                name: `${quote.nameClient}`,
+                linkToQuote: `https://www.falcohmsystem.be/#/dashboard/quotes`,
+                phoneNumber: `${quote.phone}`,
+                price: `${quote.totalPrice}`,
+                idQuote: `${quote.id}`,
+                dateCrea: `${quote.createdAt}`,
+                emailClient: `${quote.userEmail}`,
+            }
+        };
+        mail_1.default.send(msgDiscount);
+        console.log("Email is send");
     }
 }));
 const addReqQuoteItems = (0, catchAsyncError_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -257,16 +288,6 @@ const removeQuotes = (0, catchAsyncError_1.default)((req, res, next) => __awaite
             }
         }
         yield quotesRespository.remove(found);
-        const msg = {
-            to: found.userEmail,
-            from: "falcohm6tm@outlook.com",
-            subject: "Quote Status",
-            text: "Hey, You quote was Rejected... ",
-            html: `<h3 style="margin:20px;color:crimson;">
-        Sadly your Requested Quote has been deleted.</h3>`,
-        };
-        yield mail_1.default.send(msg);
-        console.log("Email send is => ", msg["html"]);
         return res.json({ success: true });
     }
     catch (error) {
@@ -290,15 +311,6 @@ const giveDiscount = (0, catchAsyncError_1.default)((req, res, next) => __awaite
         const saved = yield quotesRespository.save(found, { reload: true });
         if (!saved)
             return next(new errorHandler_1.errorHandler("Failed to give the discount", 400));
-        const msg = {
-            to: found.userEmail,
-            from: "falcohm6tm@outlook.com",
-            subject: "Quote Status",
-            text: "Hey, You got a Discount ",
-            html: `<h3 style="margin:20px;color:green;">
-        Hey you have been given a discount</h3>`,
-        };
-        yield mail_1.default.send(msg);
         return res.json({ success: true });
     }
     catch (error) {
